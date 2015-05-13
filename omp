@@ -2,6 +2,7 @@ player = game:GetService("Players").LocalPlayer or owner
 repeat wait() until player.Character ~=nil
 player.Character:WaitForChild('Humanoid')
 par = Instance.new("Part", player.Character)
+par.Transparency = 1
 par.Anchored = true
 par.FormFactor = "Custom"
 par.Size = Vector3.new(20,10,.1)
