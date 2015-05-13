@@ -6,7 +6,7 @@ par.Transparency = 1
 par.Anchored = true
 par.FormFactor = "Custom"
 par.CanCollide = true
-par.Size = Vector3.new(2000000,100000,.1000)
+par.Size = Vector3.new(200,100,.1)
 local lastsound = nil
 
 coroutine.wrap(function()
