@@ -143,10 +143,6 @@ end
 --look of the fox here
 game:service'InsertService':LoadAsset(151784320):children()[1].Parent = char
 Instance.new("PointLight", head).Range = 10
- 
-print'sweg, madiik made dis kthx' --ogm y found meh sekret
- 
- 
 local speed = 0.3
 local angle = 0
 local sitting = false
