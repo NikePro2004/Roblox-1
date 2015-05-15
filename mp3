@@ -1,0 +1,586 @@
+local rbxassetbeguin = "http://www.roblox.com/asset/?id="
+
+--function pluginmanagement()
+local plugin = PluginManager():CreatePlugin()
+local toolbar = plugin:CreateToolbar("Music GUI")
+local bttn = toolbar:CreateButton(
+	"Music", 
+	"Activate Music GUI!",""
+)
+
+--end
+
+function makegui()
+MusicGui = Instance.new("ScreenGui")
+	MusicGui.Name = "MusicGui"
+	
+
+MusicPlayer = Instance.new("Frame")
+	MusicPlayer.Name = "MusicPlayer"
+	MusicPlayer.Parent = MusicGui
+	MusicPlayer.Position = UDim2.new(0, 10, 0.93999999761581, -10)
+	MusicPlayer.Size = UDim2.new(0, 250, 0, -440)
+	MusicPlayer.BackgroundColor = BrickColor.new("Really black")
+	MusicPlayer.BackgroundTransparency = 0.30000001192093
+	MusicPlayer.BorderColor = BrickColor.new("Really black")
+	MusicPlayer.BorderSizePixel = 0
+	MusicPlayer.Style = Enum.FrameStyle.RobloxRound
+	MusicPlayer.Transparency = 0.30000001192093
+
+Title = Instance.new("TextLabel")
+	Title.Name = "Title"
+	Title.Parent = MusicPlayer
+	Title.Position = UDim2.new(0.5, 0, 0, 0)
+	Title.Font = Enum.Font.ArialBold
+	Title.FontSize = Enum.FontSize.Size14
+	Title.Text = "Music Player"
+	Title.TextColor = BrickColor.new("Institutional white")
+
+Play = Instance.new("TextButton")
+	Play.Name = "Play"
+	Play.Parent = MusicPlayer
+	Play.Active = false
+	Play.Position = UDim2.new(0.10000000149012, 0, 1, 0)
+	Play.Size = UDim2.new(0, 75, 0, -30)
+	Play.Style = Enum.ButtonStyle.RobloxButtonDefault
+	Play.Font = Enum.Font.ArialBold
+	Play.FontSize = Enum.FontSize.Size12
+	Play.Text = ""
+	Play.TextColor = BrickColor.new("Institutional white")
+
+Songs = Instance.new("Frame")
+	Songs.Name = "Songs"
+	Songs.Parent = MusicPlayer
+	Songs.Position = UDim2.new(0, 0, 0, 30)
+	Songs.Size = UDim2.new(1, 0, 1, -50)
+	Songs.BackgroundColor = BrickColor.new("Really black")
+	Songs.BackgroundTransparency = 1
+	Songs.BorderColor = BrickColor.new("Really black")
+	Songs.Transparency = 1
+
+s01 = Instance.new("TextButton")
+	s01.Name = "s01"
+	s01.Parent = Songs
+	s01.Size = UDim2.new(1, 0, 0, 20)
+	s01.Style = Enum.ButtonStyle.RobloxButton
+	s01.AutoButtonColor = false
+	s01.Font = Enum.Font.ArialBold
+	s01.FontSize = Enum.FontSize.Size14
+	s01.Text = "Flight of the Bumblebee"
+	s01.TextColor = BrickColor.new("Institutional white")
+	s01.TextXAlignment = Enum.TextXAlignment.Left
+
+Song = Instance.new("Sound")
+	Song.Name = "Song"
+	Song.Parent = s01
+	Song.Pitch = 3
+	Song.SoundId = rbxassetbeguin .. "27697719"
+	Song.Volume = 1
+
+s02 = Instance.new("TextButton")
+	s02.Name = "s02"
+	s02.Parent = Songs
+	s02.Position = UDim2.new(0, 0, 0, 20)
+	s02.Size = UDim2.new(1, 0, 0, 20)
+	s02.Style = Enum.ButtonStyle.RobloxButton
+	s02.AutoButtonColor = false
+	s02.Font = Enum.Font.ArialBold
+	s02.FontSize = Enum.FontSize.Size14
+	s02.Text = "Gothic"
+	s02.TextColor = BrickColor.new("Institutional white")
+	s02.TextXAlignment = Enum.TextXAlignment.Left
+
+Song2 = Instance.new("Sound")
+	Song2.Name = "Song"
+	Song2.Parent = s02
+	Song2.Pitch = 3
+	Song2.SoundId = rbxassetbeguin .. "27697743"
+	Song2.Volume = 1
+
+s03 = Instance.new("TextButton")
+	s03.Name = "s03"
+	s03.Parent = Songs
+	s03.Position = UDim2.new(0, 0, 0, 40)
+	s03.Size = UDim2.new(1, 0, 0, 20)
+	s03.Style = Enum.ButtonStyle.RobloxButton
+	s03.AutoButtonColor = false
+	s03.Font = Enum.Font.ArialBold
+	s03.FontSize = Enum.FontSize.Size14
+	s03.Text = "Tunnel"
+	s03.TextColor = BrickColor.new("Institutional white")
+	s03.TextXAlignment = Enum.TextXAlignment.Left
+
+Song3 = Instance.new("Sound")
+	Song3.Name = "Song"
+	Song3.Parent = s03
+	Song3.SoundId = rbxassetbeguin .. "9650822"
+	Song3.Volume = 1
+
+s04 = Instance.new("TextButton")
+	s04.Name = "s04"
+	s04.Parent = Songs
+	s04.Position = UDim2.new(0, 0, 0, 60)
+	s04.Size = UDim2.new(1, 0, 0, 20)
+	s04.Style = Enum.ButtonStyle.RobloxButton
+	s04.AutoButtonColor = false
+	s04.Font = Enum.Font.ArialBold
+	s04.FontSize = Enum.FontSize.Size14
+	s04.Text = "Action"
+	s04.TextColor = BrickColor.new("Institutional white")
+	s04.TextXAlignment = Enum.TextXAlignment.Left
+
+Song4 = Instance.new("Sound")
+	Song4.Name = "Song"
+	Song4.Parent = s04
+	Song4.Pitch = 3
+	Song4.SoundId = rbxassetbeguin .. "27697713"
+	Song4.Volume = 1
+
+s05 = Instance.new("TextButton")
+	s05.Name = "s05"
+	s05.Parent = Songs
+	s05.Position = UDim2.new(0, 0, 0, 80)
+	s05.Size = UDim2.new(1, 0, 0, 20)
+	s05.Style = Enum.ButtonStyle.RobloxButton
+	s05.AutoButtonColor = false
+	s05.Font = Enum.Font.ArialBold
+	s05.FontSize = Enum.FontSize.Size14
+	s05.Text = "Nezzera"
+	s05.TextColor = BrickColor.new("Institutional white")
+	s05.TextXAlignment = Enum.TextXAlignment.Left
+
+Song5 = Instance.new("Sound")
+	Song5.Name = "Song"
+	Song5.Parent = s05
+	Song5.SoundId = rbxassetbeguin .. "8610025"
+	Song5.Volume = 1
+
+s06 = Instance.new("TextButton")
+	s06.Name = "s06"
+	s06.Parent = Songs
+	s06.Position = UDim2.new(0, 0, 0, 100)
+	s06.Size = UDim2.new(1, 0, 0, 20)
+	s06.Style = Enum.ButtonStyle.RobloxButton
+	s06.AutoButtonColor = false
+	s06.Font = Enum.Font.ArialBold
+	s06.FontSize = Enum.FontSize.Size14
+	s06.Text = "Halo Theme Song"
+	s06.TextColor = BrickColor.new("Institutional white")
+	s06.TextXAlignment = Enum.TextXAlignment.Left
+
+Song6 = Instance.new("Sound")
+	Song6.Name = "Song"
+	Song6.Parent = s06
+	Song6.SoundId = rbxassetbeguin .. "1034065"
+	Song6.Volume = 1
+
+s07 = Instance.new("TextButton")
+	s07.Name = "s07"
+	s07.Parent = Songs
+	s07.Position = UDim2.new(0, 0, 0, 120)
+	s07.Size = UDim2.new(1, 0, 0, 20)
+	s07.Style = Enum.ButtonStyle.RobloxButton
+	s07.AutoButtonColor = false
+	s07.Font = Enum.Font.ArialBold
+	s07.FontSize = Enum.FontSize.Size14
+	s07.Text = "Medieval"
+	s07.TextColor = BrickColor.new("Institutional white")
+	s07.TextXAlignment = Enum.TextXAlignment.Left
+
+Song7 = Instance.new("Sound")
+	Song7.Name = "Song"
+	Song7.Parent = s07
+	Song7.SoundId = rbxassetbeguin .. "5982975"
+	Song7.Volume = 1
+
+s08 = Instance.new("TextButton")
+	s08.Name = "s08"
+	s08.Parent = Songs
+	s08.Position = UDim2.new(0, 0, 0, 140)
+	s08.Size = UDim2.new(1, 0, 0, 20)
+	s08.Style = Enum.ButtonStyle.RobloxButton
+	s08.AutoButtonColor = false
+	s08.Font = Enum.Font.ArialBold
+	s08.FontSize = Enum.FontSize.Size14
+	s08.Text = "Schala"
+	s08.TextColor = BrickColor.new("Institutional white")
+	s08.TextXAlignment = Enum.TextXAlignment.Left
+
+Song8 = Instance.new("Sound")
+	Song8.Name = "Song"
+	Song8.Parent = s08
+	Song8.SoundId = rbxassetbeguin .. "5985787"
+	Song8.Volume = 1
+
+s09 = Instance.new("TextButton")
+	s09.Name = "s09"
+	s09.Parent = Songs
+	s09.Position = UDim2.new(0, 0, 0, 160)
+	s09.Size = UDim2.new(1, 0, 0, 20)
+	s09.Style = Enum.ButtonStyle.RobloxButton
+	s09.AutoButtonColor = false
+	s09.Font = Enum.Font.ArialBold
+	s09.FontSize = Enum.FontSize.Size14
+	s09.Text = "Sweedish Techno"
+	s09.TextColor = BrickColor.new("Institutional white")
+	s09.TextXAlignment = Enum.TextXAlignment.Left
+
+Song9 = Instance.new("Sound")
+	Song9.Name = "Song"
+	Song9.Parent = s09
+	Song9.SoundId = rbxassetbeguin .. "2303479"
+	Song9.Volume = 1
+
+s10 = Instance.new("TextButton")
+	s10.Name = "s10"
+	s10.Parent = Songs
+	s10.Position = UDim2.new(0, 0, 0, 180)
+	s10.Size = UDim2.new(1, 0, 0, 20)
+	s10.Style = Enum.ButtonStyle.RobloxButton
+	s10.AutoButtonColor = false
+	s10.Font = Enum.Font.ArialBold
+	s10.FontSize = Enum.FontSize.Size14
+	s10.Text = "One Winged Angel"
+	s10.TextColor = BrickColor.new("Institutional white")
+	s10.TextXAlignment = Enum.TextXAlignment.Left
+
+Song10 = Instance.new("Sound")
+	Song10.Name = "Song"
+	Song10.Parent = s10
+	Song10.SoundId = rbxassetbeguin .. "1372260"
+	Song10.Volume = 1
+
+s11 = Instance.new("TextButton")
+	s11.Name = "s11"
+	s11.Parent = Songs
+	s11.Position = UDim2.new(0, 0, 0, 200)
+	s11.Size = UDim2.new(1, 0, 0, 20)
+	s11.Style = Enum.ButtonStyle.RobloxButton
+	s11.AutoButtonColor = false
+	s11.Font = Enum.Font.ArialBold
+	s11.FontSize = Enum.FontSize.Size14
+	s11.Text = "Cursed Abbey"
+	s11.TextColor = BrickColor.new("Institutional white")
+	s11.TextXAlignment = Enum.TextXAlignment.Left
+
+Song11 = Instance.new("Sound")
+	Song11.Name = "Song"
+	Song11.Parent = s11
+	Song11.SoundId = rbxassetbeguin .. "1372257"
+	Song11.Volume = 1
+
+s12 = Instance.new("TextButton")
+	s12.Name = "s12"
+	s12.Parent = Songs
+	s12.Position = UDim2.new(0, 0, 0, 220)
+	s12.Size = UDim2.new(1, 0, 0, 20)
+	s12.Style = Enum.ButtonStyle.RobloxButton
+	s12.AutoButtonColor = false
+	s12.Font = Enum.Font.ArialBold
+	s12.FontSize = Enum.FontSize.Size14
+	s12.Text = "Wind Of Jords"
+	s12.TextColor = BrickColor.new("Institutional white")
+	s12.TextXAlignment = Enum.TextXAlignment.Left
+
+Song12 = Instance.new("Sound")
+	Song12.Name = "Song"
+	Song12.Parent = s12
+	Song12.SoundId = rbxassetbeguin .. "1015394"
+	Song12.Volume = 1
+
+s13 = Instance.new("TextButton")
+	s13.Name = "s13"
+	s13.Parent = Songs
+	s13.Position = UDim2.new(0, 0, 0, 240)
+	s13.Size = UDim2.new(1, 0, 0, 20)
+	s13.Style = Enum.ButtonStyle.RobloxButton
+	s13.AutoButtonColor = false
+	s13.Font = Enum.Font.ArialBold
+	s13.FontSize = Enum.FontSize.Size14
+	s13.Text = "Woman King"
+	s13.TextColor = BrickColor.new("Institutional white")
+	s13.TextXAlignment = Enum.TextXAlignment.Left
+
+Song13 = Instance.new("Sound")
+	Song13.Name = "Song"
+	Song13.Parent = s13
+	Song13.SoundId = rbxassetbeguin .. "5986151"
+	Song13.Volume = 1
+
+s14 = Instance.new("TextButton")
+	s14.Name = "s14"
+	s14.Parent = Songs
+	s14.Position = UDim2.new(0, 0, 0, 260)
+	s14.Size = UDim2.new(1, 0, 0, 20)
+	s14.Style = Enum.ButtonStyle.RobloxButton
+	s14.AutoButtonColor = false
+	s14.Font = Enum.Font.ArialBold
+	s14.FontSize = Enum.FontSize.Size14
+	s14.Text = "DOTR"
+	s14.TextColor = BrickColor.new("Institutional white")
+	s14.TextXAlignment = Enum.TextXAlignment.Left
+
+Song14 = Instance.new("Sound")
+	Song14.Name = "Song"
+	Song14.Parent = s14
+	Song14.SoundId = rbxassetbeguin .. "11420922"
+	Song14.Volume = 1
+
+s15 = Instance.new("TextButton")
+	s15.Name = "s15"
+	s15.Parent = Songs
+	s15.Position = UDim2.new(0, 0, 0, 280)
+	s15.Size = UDim2.new(1, 0, 0, 20)
+	s15.Style = Enum.ButtonStyle.RobloxButton
+	s15.AutoButtonColor = false
+	s15.Font = Enum.Font.ArialBold
+	s15.FontSize = Enum.FontSize.Size14
+	s15.Text = "Entertainer"
+	s15.TextColor = BrickColor.new("Institutional white")
+	s15.TextXAlignment = Enum.TextXAlignment.Left
+
+Song15 = Instance.new("Sound")
+	Song15.Name = "Song"
+	Song15.Parent = s15
+	Song15.Pitch = 1.2000000476837
+	Song15.SoundId = rbxassetbeguin .. "27697267"
+	Song15.Volume = 1
+
+s16 = Instance.new("TextButton")
+	s16.Name = "s16"
+	s16.Parent = Songs
+	s16.Position = UDim2.new(0, 0, 0, 300)
+	s16.Size = UDim2.new(1, 0, 0, 20)
+	s16.Style = Enum.ButtonStyle.RobloxButton
+	s16.AutoButtonColor = false
+	s16.Font = Enum.Font.ArialBold
+	s16.FontSize = Enum.FontSize.Size14
+	s16.Text = "Foggy Moutain"
+	s16.TextColor = BrickColor.new("Institutional white")
+	s16.TextXAlignment = Enum.TextXAlignment.Left
+
+Song16 = Instance.new("Sound")
+	Song16.Name = "Song"
+	Song16.Parent = s16
+	Song16.SoundId = rbxassetbeguin .. "27697298"
+	Song16.Volume = 1
+
+s17 = Instance.new("TextButton")
+	s17.Name = "s17"
+	s17.Parent = Songs
+	s17.Position = UDim2.new(0, 0, 0, 320)
+	s17.Size = UDim2.new(1, 0, 0, 20)
+	s17.Style = Enum.ButtonStyle.RobloxButton
+	s17.AutoButtonColor = false
+	s17.Font = Enum.Font.ArialBold
+	s17.FontSize = Enum.FontSize.Size14
+	s17.Text = "TOPW"
+	s17.TextColor = BrickColor.new("Institutional white")
+	s17.TextXAlignment = Enum.TextXAlignment.Left
+
+Song17 = Instance.new("Sound")
+	Song17.Name = "Song"
+	Song17.Parent = s17
+	Song17.SoundId = rbxassetbeguin .. "11420933"
+	Song17.Volume = 1
+
+s18 = Instance.new("TextButton")
+	s18.Name = "s18"
+	s18.Parent = Songs
+	s18.Position = UDim2.new(0, 0, 0, 340)
+	s18.Size = UDim2.new(1, 0, 0, 20)
+	s18.Style = Enum.ButtonStyle.RobloxButton
+	s18.AutoButtonColor = false
+	s18.Font = Enum.Font.ArialBold
+	s18.FontSize = Enum.FontSize.Size14
+	s18.Text = "Chrono Trigger - The BEST music on a cartage in the WORLD!!!"
+	s18.TextColor = BrickColor.new("Institutional white")
+	s18.TextXAlignment = Enum.TextXAlignment.Left
+
+Song18 = Instance.new("Sound")
+	Song18.Name = "Song"
+	Song18.Parent = s18
+	Song18.SoundId = rbxassetbeguin .. "1280463"
+	Song18.Volume = 1
+
+Volume = Instance.new("Frame")
+	Volume.Name = "Volume"
+	Volume.Parent = MusicPlayer
+	Volume.Position = UDim2.new(0.89999997615814, -75, 1, -16)
+	Volume.Size = UDim2.new(0, 75, 0, 2)
+	Volume.BackgroundColor = BrickColor.new("Institutional white")
+	Volume.BorderColor = BrickColor.new("Institutional white")
+	Volume.BorderSizePixel = 0
+
+Current = Instance.new("TextButton")
+	Current.Name = "Current"
+	Current.Parent = Volume
+	Current.Position = UDim2.new(1, -3, 0, -15)
+	Current.Size = UDim2.new(0, 6, 0, 30)
+	Current.BackgroundColor = BrickColor.new("Really red")
+	Current.BorderColor = BrickColor.new("Institutional white")
+	Current.ZIndex = 2
+	Current.Text = ""
+	Current.TextColor = BrickColor.new("Institutional white")
+
+MouseArea = Instance.new("Frame")
+	MouseArea.Name = "MouseArea"
+	MouseArea.Parent = Volume
+	MouseArea.Position = UDim2.new(0, -10, 0, -15)
+	MouseArea.Size = UDim2.new(1, 20, 1, 30)
+	MouseArea.BackgroundTransparency = 1
+	MouseArea.Transparency = 1
+
+Vol = Instance.new("NumberValue")
+	Vol.Name = "Vol"
+	Vol.Parent = Volume
+	Vol.Value = 1
+
+Title2 = Instance.new("TextLabel")
+	Title2.Name = "Title"
+	Title2.Parent = Volume
+	Title2.Position = UDim2.new(0.5, 0, 5, 0)
+	Title2.ZIndex = 3
+	Title2.Font = Enum.Font.ArialBold
+	Title2.FontSize = Enum.FontSize.Size12
+	Title2.Text = "Volume"
+	Title2.TextColor = BrickColor.new("Institutional white")
+--[[
+Collapse = Instance.new("TextButton")
+	Collapse.Name = "Collapse"
+	Collapse.Parent = MusicPlayer
+	Collapse.Position = UDim2.new(1, 0, 0, -6)
+	Collapse.Size = UDim2.new(0, -32, 0, 16)
+	Collapse.Style = Enum.ButtonStyle.RobloxButton
+	Collapse.Font = Enum.Font.ArialBold
+	Collapse.FontSize = Enum.FontSize.Size12
+	Collapse.Text = "<<"
+	Collapse.TextColor = BrickColor.new("Institutional white")
+--]]
+MusicGui.Parent = game:GetService("CoreGui")
+end
+makegui()
+
+local songs = {}
+local selected = {button=nil;song=nil}
+local playing = {button=nil;song=nil}
+local playB = MusicPlayer.Play
+local volume = MusicPlayer.Volume
+
+--local player = game.Players.LocalPlayer
+
+function getSongs()
+	for _,v in pairs(MusicPlayer.Songs:GetChildren()) do
+		table.insert(songs,{button=v;song=v.Song})
+	end
+end
+
+function openCloseGui()
+	if (cur == 0) then return
+	elseif (cur == 1) then
+		cur = 0
+		for i = 10,-MusicPlayer.AbsoluteSize.x,-20 do
+			MusicPlayer.Position = UDim2.new(0,i,MusicPlayer.Position.Y.Scale,MusicPlayer.Position.Y.Offset)
+			wait()
+		end
+		MusicPlayer.Position = UDim2.new(0,-MusicPlayer.AbsoluteSize.x,MusicPlayer.Position.Y.Scale,MusicPlayer.Position.Y.Offset)
+		cur = -1
+	else
+		cur = 0
+		for i = -MusicPlayer.AbsoluteSize.x,10,20 do
+			MusicPlayer.Position = UDim2.new(0,i,MusicPlayer.Position.Y.Scale,MusicPlayer.Position.Y.Offset)
+			wait()
+		end
+		MusicPlayer.Position = UDim2.new(0,10,MusicPlayer.Position.Y.Scale,MusicPlayer.Position.Y.Offset)
+		cur = 1
+	end
+
+end
+
+function setup()
+	for _,data0 in pairs(songs) do
+		data0.button.MouseButton1Click:connect(function()
+			for _,data1 in pairs(songs) do
+				data1.button.Style = 2
+			end
+			if (selected.button == data0.button) then
+				selected.button,selected.song = nil,nil
+				playB.Active = false
+				playB.Text = ""
+			else
+				selected.button,selected.song = data0.button,data0.song
+				playB.Active = true
+				playB.Text = (playing.button == data0.button and "STOP" or "PLAY")
+				data0.button.Style = 1
+			end
+		end)
+	end
+	local function red(b)
+		delay(0,function()
+			for i = 1,0,-0.1 do
+				b.TextColor3 = Color3.new((0.6+(i*0.4)),i,i)
+				wait()
+			end
+			b.TextColor3 = Color3.new(0.6,0,0)
+		end)
+	end
+	local function white(b)
+		delay(0,function()
+			for i = 0,1,0.1 do
+				b.TextColor3 = Color3.new((0.6+(i*0.4)),i,i)
+				wait()
+			end
+			b.TextColor3 = Color3.new(1,1,1)
+		end)
+	end
+	playB.MouseButton1Click:connect(function()
+		if (not playB.Active) then return end
+		if (selected.button ~= playing.button) then
+			if (playing.song) then playing.song:stop() end
+			if (playing.button) then white(playing.button) end
+			playing.button,playing.song = nil,nil
+		end
+		if (playing.button) then
+			playing.song:stop()
+			white(playing.button)
+			playing.button,playing.song = nil,nil
+			playB.Text = "PLAY"
+		elseif (selected.button) then
+			playing.button,playing.song = selected.button,selected.song
+			playing.song:play()
+			red(playing.button)
+			playB.Text = "STOP"
+		end
+	end)
+	volume.Vol.Changed:connect(function()
+		for _,data in pairs(songs) do
+			data.song.Volume = volume.Vol.Value
+		end
+	end)
+	local drag = false
+	local function setCur(x)
+		if (not drag) then return end
+		local Start = volume.AbsolutePosition.x
+		local End = (volume.AbsolutePosition.x+volume.AbsoluteSize.x)
+		local full = (End-Start)
+		local cur = (x-Start)
+		local ratio = (cur/full)
+		ratio = (ratio < 0.05 and 0 or ratio > 0.95 and 1 or ratio)
+		volume.Current.Position = UDim2.new(ratio,-3,0,-15)
+		volume.Vol.Value = ratio
+	end
+	local cur = 1
+	bttn.Click:connect(function()
+		openCloseGui()
+	end)
+	volume.Current.MouseButton1Down:connect(function(x) drag = true setCur(x) end)
+	volume.Current.MouseButton1Up:connect(function() drag = false end)
+	volume.Current.MouseMoved:connect(function(x) setCur(x) end)
+	volume.MouseArea.MouseMoved:connect(function(x) setCur(x) end)
+	volume.MouseArea.MouseLeave:connect(function() drag = false end)
+end
+
+getSongs()
+setup()
+openCloseGui()
+openCloseGui()
