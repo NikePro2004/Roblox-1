@@ -155,7 +155,7 @@ end)
 end
 
 
-q1 = Instance.new('SurfaceGui',par)
+q1 = Instance.new('PlayerGui')
 q1.Archivable = true
 q1.Face = "Back"
 q2 = Instance.new('Frame',q1)
