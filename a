@@ -44,7 +44,7 @@ child3.TopImage = "http://www.roblox.com/asset/?id=188173743"
 
 table1 = {
 --{Track,Decal,Soundid,Artist,Time,Album,Added,User}
-{"Gavins remix wiggle",186872217","249301795","Unknown",88,"ROBLOX","15.11,2015","Gavinsharp100"};
+{"Gavins remix wiggle","186872217","249301795","Unknown",88,"ROBLOX","15.11,2015","Gavinsharp100"};
 }
 
 for k,v in pairs(table1) do
@@ -115,7 +115,7 @@ child5.ClipsDescendants = false
 child5.Draggable = false
 local child6 = Instance.new("TextLabel", child5)
 child6.BackgroundColor3 = Color3.new(1, 1, 1)
-child6.BackgroundTransparency = 1
+G.BackgroundTransparency = 1
 child6.BorderColor3 = Color3.new(0.105882, 0.164706, 0.207843)
 child6.BorderSizePixel = 1
 child6.Rotation = 0
