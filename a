@@ -6,7 +6,7 @@ part.CanCollide = true
 part.Size= Vector3.new(15,12,.1)
 local sound
 local sound = Instance.new("Sound", game.Workspace)
-sound.Name = "AnimeSound"
+sound.Name = "Gavin"
 sound.Volume = 1
 game:GetService("RunService").RenderStepped:connect(function() part.CFrame = player.Character.Torso.CFrame *CFrame.new(0,5,-7) *CFrame.fromEulerAnglesXYZ(0,math.pi,0) end)
 child1 = Instance.new("SurfaceGui", part)
@@ -14,7 +14,7 @@ child2 = Instance.new("Frame", child1)
 child2.BackgroundColor3 = Color3.new(0.0705882, 0.0745098, 0.0784314)
 child2.BackgroundTransparency = 0
 child2.BorderColor3 = Color3.new(0.105882, 0.164706, 0.207843)
-child2.BorderSizePixel = 0
+child2.BorderSizePixel = 1
 child2.Rotation = 0
 child2.Position = UDim2.new(0,0,0,0)
 child2.Size = UDim2.new(0.11999999731779,0,1,0)
@@ -44,29 +44,7 @@ child3.TopImage = "http://www.roblox.com/asset/?id=188173743"
 
 table1 = {
 --{Track,Decal,Soundid,Artist,Time,Album,Added,User}
-{"Tokyo Ghoul",173694168,165730729,"Unknown",85,"ROBLOX","12.11.2014","AnimeWiki"};
-{"Shingeki no Kyojin Great Escape",149406182,142292439,"Unknown",87,"ROBLOX","12.11.2014","AnimeWiki"};
-{"Shingeki no Kyojin OST",155401515,185888468,"Unknown",100,"ROBLOX","12.11.2014","AnimeWiki"};
-{"Shingeki no Kyojin Opening 2",132578801,161108776,"Unknown",88,"ROBLOX","12.11,2014","AnimeWiki"};
-{"Shingeki no Kyojin Opening 1",166966900,142313640,"Unknown",90,"ROBLOX","12.11,2014","AnimeWiki"};
-{"Shingeki no Kyojin",163842117,142291950,"Unknown",109,"ROBLOX","12.11,2014","AnimeWiki"};
-{"Akame Ga Kill Opening 1",184025216,176368690,"Unknown",78,"ROBLOX","12.11,2014","AnimeWiki"};
-{"Akame Ga Kill Opening 2",186467818,182980568,"Unknown",90,"ROBLOX","12.11,2014","AnimeWiki"};
-{"Naruto Despair",2230915,173858284,"Unknown",114,"ROBLOX","12.11,2014","AnimeWiki"};
-{"Naruto Stalemate",4042664,169331507,"Unknown",106,"ROBLOX","12.11,2014","AnimeWiki"};
-{"Naruto Openning 15",101737877,159498281,"Unknown",88,"ROBLOX","12.11,2014","AnimeWiki"};
-{"Pokemon",171143906,142301307,"Unknown",88,"ROBLOX","12.11,2014","AnimeWiki"};
-{"One piece",29358074,154920642,"Unknown",88,"ROBLOX","12.11,2014","AnimeWiki"};
-{"Gun Gale Online (Ending 1)",172324686,179872015,"Unknown",88,"ROBLOX","12.11,2014","AnimeWiki"};
-{"Gundam Build Fighters",185152845,144809781,"Unknown",88,"ROBLOX","12.11,2014","AnimeWiki"};
-{"Captain Earth (Opening 2)",44023473,166917141,"Unknown",88,"ROBLOX","12.11,2014","AnimeWiki"};
-{"Digimon",169460588,151281998,"Unknown",88,"ROBLOX","12.11,2014","AnimeWiki"};
-{"Bleach",150668617,149342383,"Unknown",88,"ROBLOX","12.11,2014","AnimeWiki"};
-{"Sword Art Online (Opening 1)",167554905,142292652,"Unknown",88,"ROBLOX","12.11,2014","AnimeWiki"};
-{"No Game No Life",171961990,154612529,"Unknown",88,"ROBLOX","12.11,2014","AnimeWiki"};
-{"Accel World",134628290,147771961,"Unknown",88,"ROBLOX","12.11,2014","AnimeWiki"};
-{"Log Horizon Ending 2",143510896,184272831,"Unknown",88,"ROBLOX","15.11,2014","AnimeWiki"};
-{"Log Horizon Starting 1",186872217,156230892,"Unknown",88,"ROBLOX","15.11,2014","AnimeWiki"};
+{"Gavins remix wiggle",186872217","249301795","Unknown",88,"ROBLOX","15.11,2015","Gavinsharp100"};
 }
 
 for k,v in pairs(table1) do
@@ -169,7 +147,7 @@ end
 
 
 game:GetService("Workspace")	.DescendantRemoving:connect(function(child)
-if child.Name == "AnimeSound" then
+if child.Name == "Gavin" then
 child:Stop()
 sound = child:Clone()
 sound.Parent = game:GetService("Workspace")	
