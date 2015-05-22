@@ -1805,6 +1805,17 @@ Command("UnFF", 3, "Removes A Player's ForceField", function(Msg, Speaker)
 	end
 end)
 
+Command("doge", 1, "Doge", function(Msg, Speaker)
+	local PlrTab = getPlayer(Speaker, Msg)
+	if #PlrTab > 0 then
+		for _,v in pairs(PlrTab) do
+			ypcall(function()
+			
+			end)
+		end
+	end
+end)
+
 Command("TP", 2, "Teleports A Player To Another Player", function(Msg, Speaker)
 	local Split = GetSplit(Msg)
 	local PlrTab = getPlayer(Speaker, Msg:sub(1, Split - 1))
