@@ -140,7 +140,7 @@ do --rayCast
     
             if hit then
                 hitobj = true
-                    local damage = math.random(Dmg, Dmg+60000000000000000)
+                    local damage = math.random(Dmg, Dmg+0)
                 if hit.Parent:findFirstChild("Humanoid") ~= nil then
                     hit.Parent.Humanoid.Health = hit.Parent.Humanoid.Health - damage
                 elseif hit.Parent:IsA("Hat") and hit.Parent.Parent:findFirstChild("Humanoid") then
