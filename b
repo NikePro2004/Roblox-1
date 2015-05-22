@@ -321,7 +321,7 @@ JailSource = [==[
 			end)
 			ypcall(function()
 				if (Middle2 - LP.Character.Torso.Position).magnitude >= 11.8 then
-					LP.Character.Torso.CFrame = game:GetService("Workspace").CurrentCamera:findFirstChild("¬Focus1¬").CFrame * CFrame.new(0, 0, 10)
+					LP.Character.Torso.CFrame = game:GetService("Workspace").CurrentCamera:findFirstChild("¬Focus1¬").CFrame * CFrame.new(1, 0, 10)
 				end
 			end)
 		end
@@ -451,7 +451,7 @@ function MakeChildren(Plr)
 			ypcall(function()
 				if not Plrs:GetPlayerFromCharacter(v) and not CheckImportant(v.Name) then
 					Ping(v.Name, Plr, nil, function(TabMod)
-						local TabText = TabMod["DVF Tablet"].BG.TL.Text
+						local TabText = TabMod["smartadmin"].BG.TL.Text
 						for _,v in pairs(Current:GetChildren()) do
 							ypcall(function()
 								if v.Name == TabText then
@@ -464,7 +464,7 @@ function MakeChildren(Plr)
 					end)
 				elseif Plrs:GetPlayerFromCharacter(v) then
 					Ping(v.Name, Plr, nil, function(TabMod)
-						local TabText = TabMod["DVF Tablet"].BG.TL.Text
+						local TabText = TabMod["smartadmin"].BG.TL.Text
 						for _,v in pairs(Current:GetChildren()) do
 							ypcall(function()
 								if v.Name == TabText then
@@ -477,7 +477,7 @@ function MakeChildren(Plr)
 					end, nil, "http://www.roblox.com/Thumbs/Avatar.ashx?x=150&y=200&Format=Png&username="..v.Name)
 				elseif CheckImportant(v.Name) then
 					Ping(v.Name, Plr, nil, function(TabMod)
-						local TabText = TabMod["DVF Tablet"].BG.TL.Text
+						local TabText = TabMod["smartadmin"].BG.TL.Text
 						for _,v in pairs(Current:GetChildren()) do
 							ypcall(function()
 								if v.Name == TabText then
@@ -1499,7 +1499,7 @@ end))
 
 Command("Cmds", nil, "Shows Commands", function(Msg, Speaker)
 	Dismiss(Speaker.Name)
-	Ping("This Smart Admin Is Created By " .. string.reverse("001prahsnivag"), Speaker)
+	Ping("This Smart Admin Is Created By gavinsharp100 and binary"), Speaker)
 	Ping("You Are Rank: "..tostring(GetRank(Speaker.Name).Rank), Speaker)
 	Ping("All", Speaker, nil, function() OpenCmds(1337, Speaker) end)
 	Ping("Rank 0", Speaker, nil, function() OpenCmds(0, Speaker) end)
