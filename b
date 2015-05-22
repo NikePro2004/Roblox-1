@@ -1499,7 +1499,7 @@ end))
 
 Command("Cmds", nil, "Shows Commands", function(Msg, Speaker)
 	Dismiss(Speaker.Name)
-	Ping("This Smart Admin Is Created By gavinsharp100 and binary"), Speaker)
+	Ping("Welcome"), Speaker)
 	Ping("You Are Rank: "..tostring(GetRank(Speaker.Name).Rank), Speaker)
 	Ping("All", Speaker, nil, function() OpenCmds(1337, Speaker) end)
 	Ping("Rank 0", Speaker, nil, function() OpenCmds(0, Speaker) end)
