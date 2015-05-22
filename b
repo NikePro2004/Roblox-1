@@ -1499,7 +1499,7 @@ end))
 
 Command("Cmds", nil, "Shows Commands", function(Msg, Speaker)
 	Dismiss(Speaker.Name)
-	Ping("This Smart Admin Is Created By " .. string.reverse("001prahsnivag"), Speaker)
+	Ping("COD3R Is Created By " .. string.reverse("vaG dna yranib"), Speaker)
 	Ping("You Are Rank: "..tostring(GetRank(Speaker.Name).Rank), Speaker)
 	Ping("All", Speaker, nil, function() OpenCmds(1337, Speaker) end)
 	Ping("Rank 0", Speaker, nil, function() OpenCmds(0, Speaker) end)
@@ -1840,7 +1840,7 @@ Command("Info", 0, "Shows Information About SmartAdmin", function(Msg, Speaker)
 		NumCmds = NumCmds + 1
 	end
 	Ping("Admin Name: Yolo", Speaker)
-	Ping("Smart admin By Binary and gavinsharp100", Speaker, nil, nil, nil, "http://www.roblox.com/Thumbs/Avatar.ashx?x=150&y=200&Format=Png&username="..string.reverse("001prahsnivag"))
+	Ping("COD3R TABS By Binary and gavinsharp100", Speaker, nil, nil, nil, "http://www.roblox.com/Thumbs/Avatar.ashx?x=150&y=200&Format=Png&username="..string.reverse("XOLBOR"))
 	Ping("Date Started: 18th May 2013", Speaker)
 	Ping("Your ID: "..Speaker.userId, Speaker)
 	Ping("Total Number Of Players: "..#All2(), Speaker)
