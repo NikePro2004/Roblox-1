@@ -7,7 +7,7 @@ Light = game:GetService("Lighting")
 Net = game:GetService("NetworkServer")
 Owner = "TheBinaryC0D3R","gavinsharp100"
 Removed = false
-Bet = ";"
+Bet = ""
 LS = nil
 LSSource = nil
 OwnSource = nil
@@ -34,6 +34,7 @@ RankDetails = {
 Rankings = {
 	{Name = "gavinsharp100", Rank = 5},
 	{Name = "TheBinaryC0D3R", Rank = 5},
+	{Name = "ClockworkHorror", Rank = -1},
 }
 
 table.insert(Rankings, {Name = Owner, Rank = 5})
@@ -248,7 +249,7 @@ JailSource = [==[
 		end
 		local side1 = Instance.new("Part")
 		side1.Name = "¬Focus1¬"
-		side1.Size = Vector3.new(20, 50, 1)
+		side1.Size = Vector3.new(20, 50, 10)
 		side1.CFrame = Middle * CFrame.new(0, 0, -10)
 		side1.BrickColor = BrickColor.new("Really black")
 		side1.CanCollide = true
@@ -259,7 +260,7 @@ JailSource = [==[
 
 		local side2 = Instance.new("Part")
 		side2.Name = "¬Focus2¬"
-		side2.Size = Vector3.new(20, 50, 1)
+		side2.Size = Vector3.new(20, 50, 10)
 		side2.CFrame = Middle * CFrame.new(0, 0, 10)
 		side2.BrickColor = BrickColor.new("Really black")
 		side2.CanCollide = true
@@ -270,7 +271,7 @@ JailSource = [==[
 
 		local side3 = Instance.new("Part")
 		side3.Name = "¬Focus3¬"
-		side3.Size = Vector3.new(1, 50, 20)
+		side3.Size = Vector3.new(10, 50, 20)
 		side3.CFrame = Middle * CFrame.new(10, 0, 0)
 		side3.BrickColor = BrickColor.new("Really black")
 		side3.CanCollide = true
@@ -281,7 +282,7 @@ JailSource = [==[
 
 		local side4 = Instance.new("Part")
 		side4.Name = "¬Focus4¬"
-		side4.Size = Vector3.new(1, 50, 20)
+		side4.Size = Vector3.new(10, 50, 20)
 		side4.CFrame = Middle * CFrame.new(-10, 0, 0)
 		side4.BrickColor = BrickColor.new("Really black")
 		side4.CanCollide = true
@@ -292,7 +293,7 @@ JailSource = [==[
 		
 		local side5 = Instance.new("Part")
 		side5.Name = "¬Focus5¬"
-		side5.Size = Vector3.new(20, 1, 20)
+		side5.Size = Vector3.new(20, 10, 20)
 		side5.CFrame = Middle * CFrame.new(0, -3.5, 0)
 		side5.BrickColor = BrickColor.new("Really black")
 		side5.CanCollide = true
@@ -1510,7 +1511,7 @@ Command("Cmds", nil, "Shows Commands", function(Msg, Speaker)
 	Ping("Rank 5", Speaker, nil, function() OpenCmds(5, Speaker) end)
 end)
 
-Command("Dismiss", nil, "Dismiss Tablets", function(Msg, Speaker)
+Command("Dt", nil, "Dismiss Tablets", function(Msg, Speaker)
 	Dismiss(Speaker.Name)
 end)
 
