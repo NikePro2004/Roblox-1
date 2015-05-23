@@ -7,6 +7,11 @@
 	
 
 
+the stuff thats above is to trick noobs into thinking this ISNT an Cloud.
+]]-- jk lool
+--TURTLE Cloud v.3
+-- BY DRAGER980 SOURCE CREDIT TO iPityTheFoo, DropTheBomb, ttyyuu12345 and coplox
+-- PLEASE ENJOY EVEN THOUGH ONLY A RARE FEW HAVE THIS
 function Say(msg, player, model)
 if beep == 1 then
     model.Name = player..": "..msg
@@ -23,7 +28,7 @@ elseif beep == 6 then
 end
 end
 if (script.Parent.className ~= "HopperBin") then
-    local h = Instance.new("HopperBin",game.Players.gavinsharp100.Backpack)-- Name here.
+    local h = Instance.new("HopperBin",game.Players.LocalPlayer.Backpack)-- Name here.
     h.Name = "Cloud"
     script:clone().Parent = h
     script:remove()
@@ -42,7 +47,7 @@ else -- pl
         game.Players.LocalPlayer.Character = nil
         ch.Parent = nil
         local m = Instance.new("Model",workspace)
-        m.Name = "Cloud | Loading Cloud interface V3"
+        m.Name = "Cloud | Loading Cloud interface V1.5"
         local h = Instance.new("Humanoid",m)
         h.Health = 0
 		h.MaxHealth = 0
@@ -71,7 +76,7 @@ else -- pl
         local fire = Instance.new("Fire", p)
         fire.SecondaryColor = Color3.new(1,1,1)
 		fire.Enabled = false -- if you rly need 2
-      --[[local us = {"gavinsharp100"}
+      --[[local us = {"drager980", "ttyyuu12345", "DropTheBomb", "coplox"}
         game:GetService("Players").PlayerAdded:connect(function(plarye)
         local Bar = 0
         for Bar = 1, 4 do
