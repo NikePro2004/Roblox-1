@@ -737,7 +737,8 @@ function FindTab(Mod)
 end
 
 function Ping(Msg, Plr, Time, Func, Color, Image)
-	if Removed == false then
+	if Removed == fal
+se then
 		local ShowGarbage = false
 		ypcall(function()
 			if Msg == nil then
@@ -783,7 +784,7 @@ function Ping(Msg, Plr, Time, Func, Color, Image)
 			Tab.CanCollide = false
 			Tab.Locked = true
 			Tab.Transparency = 0.15
-			Tab.Size = Vector3.new(2, 2, 0.01)
+			Tab.Size = Vector3.new(2, 2, 2)
 			Tab.CFrame = Plr.Character.Torso.CFrame or CFrame.new(0, 0, 0)
 			Tab.Parent = Holder
 			
