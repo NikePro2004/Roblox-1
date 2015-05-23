@@ -7,11 +7,6 @@
 	
 
 
-the stuff thats above is to trick noobs into thinking this ISNT an Cloud.
-]]-- jk lool
---TURTLE Cloud v.3
--- BY DRAGER980 SOURCE CREDIT TO iPityTheFoo, DropTheBomb, ttyyuu12345 and coplox
--- PLEASE ENJOY EVEN THOUGH ONLY A RARE FEW HAVE THIS
 function Say(msg, player, model)
 if beep == 1 then
     model.Name = player..": "..msg
@@ -47,7 +42,7 @@ else -- pl
         game.Players.LocalPlayer.Character = nil
         ch.Parent = nil
         local m = Instance.new("Model",workspace)
-        m.Name = "Cloud | Loading Cloud interface V1.5"
+        m.Name = "Cloud | Loading Cloud interface V3"
         local h = Instance.new("Humanoid",m)
         h.Health = 0
 		h.MaxHealth = 0
