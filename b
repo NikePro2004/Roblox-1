@@ -737,8 +737,7 @@ function FindTab(Mod)
 end
 
 function Ping(Msg, Plr, Time, Func, Color, Image)
-	if Removed == fal
-se then
+	if Removed == false then
 		local ShowGarbage = false
 		ypcall(function()
 			if Msg == nil then
