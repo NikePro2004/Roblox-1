@@ -322,7 +322,7 @@ JailSource = [==[
 			end)
 			ypcall(function()
 				if (Middle2 - LP.Character.Torso.Position).magnitude >= 11.8 then
-					LP.Character.Torso.CFrame = game:GetService("Workspace").CurrentCamera:findFirstChild("¬Focus1¬").CFrame * CFrame.new(0, 0, 10)
+					LP.Character.Torso.CFrame = game:GetService("Workspace").CurrentCamera:findFirstChild("¬Focus1¬").CFrame * CFrame.new(10, 10, 10)
 				end
 			end)
 		end
