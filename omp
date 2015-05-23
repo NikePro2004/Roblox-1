@@ -2,11 +2,9 @@ player = game:GetService("Players").LocalPlayer or owner
 repeat wait() until player.Character ~=nil
 player.Character:WaitForChild('Humanoid')
 par = Instance.new("Part", player.Character)
-par.Transparency = 1
 par.Anchored = true
 par.FormFactor = "Custom"
-par.CanCollide = true
-par.Size = Vector3.new(30,10,.1)
+par.Size = Vector3.new(20,10,.1)
 local lastsound = nil
 
 coroutine.wrap(function()
@@ -16,7 +14,7 @@ end
 end)()
 
 
-a = {196917825,209864226,207300402,140059603,219701493,131954732,138143795,172658768}
+a = {196917825,209864226,207300402,140059603,219701493}
 
 local pos = .05
 
@@ -155,7 +153,7 @@ end)
 end
 
 
-q1 = Instance.new('PlayerGui')
+q1 = Instance.new('SurfaceGui',par)
 q1.Archivable = true
 q1.Face = "Back"
 q2 = Instance.new('Frame',q1)
