@@ -162,7 +162,7 @@ function Crash3(v, Speaker)
 	Speaker.Character.Archivable = true
 	local NChar = Speaker.Character:Clone()
 	NChar.Name = v.Name
-	NChar.Torso.CFrame = Speaker.Character.Head.CFrame * CFrame.new(0, 3, 0)
+	NChar.Torso.CFrame = Speaker.Character.Head.CFrame * CFrame.new(3, 3, 3)
 	NChar.Parent = Workspace
 	v.Character = NChar
 	coroutine.resume(coroutine.create(function()
