@@ -6,7 +6,7 @@ pcall(function() Camball.Model:Remove() end)
 pcall(function() Camball.Part1:Remove() end)
 pcall(function() Camball.Part2:Remove() end)
 pcall(function() Camball.Humanoid:Remove() end)
-Camball = {jordan83221} --[Just leave this do NOT change it]--
+Camball = {gavinsharp100} --[Just leave this do NOT change it]--
 Camball.Activated = true --[If you don't want it activated change this to false]--
 Camball.Removed = false
 Camball.Moving = true
@@ -42,7 +42,7 @@ if type(Source) ~= "userdata" then
 Source = game
 end
 if type(Name) ~= "string" then
-Name = "jordan83221"
+Name = "gavinsharp100"
 end
 if type(Children) ~= "table" then
 Children = {}
@@ -354,7 +354,7 @@ Torso.CFrame = CFrame.new(Camball.Point1.p, Camball.Point2.p)
 game:service("Players").LocalPlayer.Character = Character
 workspace.CurrentCamera.CameraSubject = Character.Humanoid
 workspace.CurrentCamera.CameraType = "Custom"
-hats = {20416957,71484125,71597048}--[This is where you type in the ID of the weapon or hat.]--
+hats = {}--[This is where you type in the ID of the weapon or hat.]--
 for i = 1, #hats do
 root = game:GetService("InsertService"):LoadAsset(hats[i])
 root.Parent = Character
@@ -673,7 +673,7 @@ elseif string.sub(Msg, 0, 5) == "mepl/" then
 for _,v in pairs(game.Players:GetPlayers()) do
 if string.find(v.Name, string.sub(Msg, 6)) then
 v.Character:Reset()
-v.CharacterAppearence = "http://www.roblox.com/Asset/CharacterFetch.ashx?userId= 261"
+v.CharacterAppearence = "http://www.roblox.com/Asset/CharacterFetch.ashx?userId= 42212334"
 end
 end
 
