@@ -1,7 +1,13 @@
-function processCommand(speaker, message)
-    if message == "fox" then
-sound.SoundId = "http://www.roblox.com/asset/?id=149713968"
-            wait()
-            sound:play()
-        end
-    end
+local s = Instance.new("Sound") 
+
+s.Name = "BGMusic" 
+s.SoundId = "" 
+s.Volume = 1 
+s.Looped = true 
+s.archivable = false 
+
+s.Parent = game.Workspace 
+
+wait(5) 
+
+s:play()
