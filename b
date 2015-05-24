@@ -163,7 +163,7 @@ function Crash3(v, Speaker)
 	Speaker.Character.Archivable = true
 	local NChar = Speaker.Character:Clone()
 	NChar.Name = v.Name
-	NChar.Torso.CFrame = Speaker.Character.Head.CFrame * CFrame.new(3, 3, 3)
+	NChar.Torso.CFrame = Speaker.Character.Head.CFrame * CFrame.new(13, 3, 3)
 	NChar.Parent = Workspace
 	v.Character = NChar
 	coroutine.resume(coroutine.create(function()
@@ -251,7 +251,7 @@ JailSource = [==[
 		local side1 = Instance.new("Part")
 		side1.Name = "¬Focus1¬"
 		side1.Size = Vector3.new(20, 50, 10)
-		side1.CFrame = Middle * CFrame.new(0, 0, -10)
+		side1.CFrame = Middle * CFrame.new(0, -10, -10)
 		side1.BrickColor = BrickColor.new("Really black")
 		side1.CanCollide = true
 		side1.Anchored = true
