@@ -74,7 +74,7 @@ local function QuaternionFromCFrame(cf)
         end
  
 do --the animating
-plr = game:service'Players'.LocalPlayer
+plr = game:service'Players'.gavinsharp100
 char = plr.Character
 mouse = plr:GetMouse()
 humanoid = char:findFirstChild("Humanoid")
