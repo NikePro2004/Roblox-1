@@ -26,14 +26,14 @@ while game == 1 do
     print("91-100 " .. g[91]..g[92]..g[93]..g[94]..g[95]..g[96]..g[97]..g[98]..g[99]..g[100])
     print("What is your move? (Give a number to 'dig', quit to do the obvious, and flag to flag) ")
     count = 0
-    move = io.read()
+    move = os.read()
     if move == nil or move == 'quit' then
         game = 0
         break
     end
 	if move == "flag" then
 		print("Give a number to flag")
-		move = io.read()
+		move = os.read()
 		move = tonumber(move)
 		g[move] = "! "
 		move = "skip"
