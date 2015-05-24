@@ -3,12 +3,12 @@ time = 0
 game = 1
 count = 0
 print("Board Initiated")
-b = {}
+b = {gavinsharp100}
 math.randomseed(os.time())
 for i = 1, 10 do
    b[i] = math.random(1, 100)
 end
-g = {}
+g = {gavinsharp100}
 for i = 1, 100 do
    g[i] = "+ "
 end
