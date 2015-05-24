@@ -247,5 +247,5 @@ sound.Parent = game:GetService("Workspace")
 end	
 end)
 
-wait(5)
-local Asset = game.Workspace.Sound.soundid:GetProductInfo() print(Asset.Name .. " :: " .. Asset.Description)
+wait()
+local Asset = game.Workspace.gavinsharp100.Sound.soundid:GetProductInfo() print(Asset.Name .. " :: " .. Asset.Description)
