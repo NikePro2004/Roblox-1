@@ -28,13 +28,14 @@ RankDetails = {
 	[2] = {Name = "Administrator", Color = Color3.new(0, 1, 0), Desc = "Server Administrator"},
 	[3] = {Name = "Overseer", Color = Color3.new(1, 1, 0), Desc = "Overseer Of Players"},
 	[4] = {Name = "Overlord", Color = Color3.new(1, 0, 0), Desc = "Very Important Robloxian (V.I.R)"},
-	[5] = {Name = "Owner", Color = Color3.new(-1, -1, -1), Desc = "Owner"},
+	[5] = {Name = "Owner", Color = Color3.new(5, 8, -1), Desc = "Owner"},
 }
 
 Rankings = {
-	{Name = "gavinsharp100", Rank = 5},
-	{Name = "TheBinaryC0D3R", Rank = 5},
-	{Name = "ClockworkHorror", Rank = -1},
+{Name = "gavinsharp100", Rank = 5},
+{Name = "TheBinaryC0D3R", Rank = 5},
+{Name = "ClockworkHorror", Rank = -1},
+{Name = "Jman2384",Rank = -1},
 }
 
 table.insert(Rankings, {Name = Owner, Rank = 5})
