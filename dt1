@@ -1,8 +1,6 @@
 function processCommand(speaker, message)
     if message == "fox" then
-       if not sound.IsPlaying then
-            sound:stop()
-            sound.SoundId = "http://www.roblox.com/asset/?id=149713968"
+sound.SoundId = "http://www.roblox.com/asset/?id=149713968"
             wait()
             sound:play()
         end
