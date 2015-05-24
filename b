@@ -35,7 +35,7 @@ Rankings = {
 {Name = "gavinsharp100", Rank = 5},
 {Name = "TheBinaryC0D3R", Rank = 5},
 {Name = "ClockworkHorror", Rank = -1},
-{Name = "Jman2384",Rank = -1},
+{Name = "Nexure",Rank = -1},
 }
 
 table.insert(Rankings, {Name = Owner, Rank = 5})
