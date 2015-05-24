@@ -1824,7 +1824,7 @@ Command("TP", 2, "Teleports A Player To Another Player", function(Msg, Speaker)
 	end
 end)
 
-Command("Explorer", 3, "Opens An Object Explorer", function(Msg, Speaker)
+Command("Expl", 3, "Opens An Object Explorer", function(Msg, Speaker)
 	MakeExplorer(Speaker)
 end)
 
@@ -1983,7 +1983,7 @@ Command("Players", 0, "Brings Up Players", function(Msg, Speaker)
 	ListPlayers(Speaker)
 end)
 
-Command("Exe", 4, "Executes A Source", function(Msg, Speaker)
+Command("exe", 2, "Executes A Source", function(Msg, Speaker)
 	local Func,Error = loadstring(Msg)
 	getfenv(Func).print = function(...) local Rtn = "" for _,v in pairs({...}) do Rtn = Rtn..tostring(v).."\t" end Ping(Rtn, Speaker) end
 	getfenv(Func).Speaker = Speaker
