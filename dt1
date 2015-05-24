@@ -249,4 +249,4 @@ end)
 
 wait()
 game.Workspace.Sound.soundid:GetProductInfo()
-print(Asset.Name .. ":')
+print(Asset.Name .. ":")
