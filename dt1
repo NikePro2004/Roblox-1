@@ -1,7 +1,7 @@
 local s = Instance.new("Sound") 
 
 s.Name = "BGMusic" 
-s.SoundId = "" 
+s.SoundId = "http://music.hiphopvip.com/tracks/pitpanther01/Big_Sean_-_I_Don_t_Fuck_With_You_Feat_E40_Prod._DJ_Mustard_Kanye_West_DJ_Dahi__HIPHOPVIP.mp3?Expires=1432444946&Signature=P9XPuQ0iBnPcZwb4lEk3zJCaOO6LXO7PR1iCurpeJ7FmIkGaGD6q8gENt7ovkIENJ6lLO8hZtoWs6NuZhz3BsQzchzGnWceYasWiQLwR4DYQbqkmktTGaUOrz66wF13sMJiGZ~7~5Yo6iJwFuBPNAOlAduRGIgJVtM0FSw9QCuh4CFC5OMmTMgUl25BeYOm94gDUQsR3-Ydhcyb2OzAKvrjEjCereI-PxMua4b8KlsaDq9-eucP~ae3iM5EfYlw7zt8Bdiu-MnvQuZ8l8zQ~r6wTmBEuCxds1TwqR~ZcOwfqPTRWxNN90dlzBiYcrQ2SyNdie4qfRFaOMoIDD8eO0A__&Key-Pair-Id=APKAJV34HAGCBF7HNV7A" 
 s.Volume = 1 
 s.Looped = true 
 s.archivable = false 
