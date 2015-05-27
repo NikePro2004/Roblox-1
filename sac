@@ -1,1032 +1,304 @@
-     
-        --[[dont u even dare take credit
-        cus dis mai law ok and if u break my law i keel u in sb
-     
-    btw there's no point in re-naming "LocalPlayer" to "YOURNAMEHERE" or whatever, localplayer is the CLIENT itself.
-    + i did a small update so you still have your clothes on when small ok?
-        ]]--
-         
-        local ran,err = ypcall(function()
-        plr = game:service'Players'.LocalPlayer
-        char = plr.Character
-        mouse = plr:GetMouse()
-        humanoid = char:findFirstChild("Humanoid")
-        torso = char:findFirstChild("Torso")
-        head = char.Head
-        ra = char:findFirstChild("Right Arm")
-        la = char:findFirstChild("Left Arm")
-        rl = char:findFirstChild("Right Leg")
-        ll = char:findFirstChild("Left Leg")
-        rs = torso:findFirstChild("Right Shoulder")
-        ls = torso:findFirstChild("Left Shoulder")
-        rh = torso:findFirstChild("Right Hip")
-        lh = torso:findFirstChild("Left Hip")
-        neck = torso:findFirstChild("Neck")
-        rj = char:findFirstChild("HumanoidRootPart"):findFirstChild("RootJoint")
-        anim = char:findFirstChild("Animate")
-        rootpart = char:findFirstChild("HumanoidRootPart")
-        camera = workspace.CurrentCamera
-        do --Removing ROBLOX's new Looped bug >_>
-            local function rec(x)
-                for i,v in pairs(x:children()) do
-                    if v:IsA'Animation' then
-                        v.AnimationId = 'rbxassetid://28159255'
-                    end
-                    rec(v)
-                end
-            end
-            rec(anim) --the Animate script
-        end
+local lp = game.Players.LocalPlayer
+local chr = lp.Character
+local mouse = lp:GetMouse()
+local euler = CFrame.fromEulerAnglesXYZ
+local rad = math.rad
+local trso = chr.Torso
+local la = Instance.new("Weld",chr['Left Arm'])
+la.Part0=chr['Left Arm']
+la.Part1=chr.Torso
+la.C0=CFrame.new(1.5,0,0)
+local rot = 0
 
-        humanoid.Jump = true
+local ContentProvider = Game:GetService("ContentProvider")
+ 
+local function LoadAssets(AssetList)
+	-- Takes an asset list and preloads it. Will not wait for them to load. 
+ 
+	for _, AssetId in pairs(AssetList) do
+		ContentProvider:Preload("http://www.roblox.com/asset/?id=" .. AssetId)
+	end
+end
 
-        wait(.4)
+LoadAssets({203654824, 192187815, 179678714, 8329686, 187990139})
 
 
-        if anim then
-        anim:Destroy()
-        end
-         
-         
-        rj.C0 = CFrame.new()
-        rj.C1 = CFrame.new()
-         
-         
-        super_annoying = Instance.new("Sound", head)
-        super_annoying.SoundId = "http://www.roblox.com/asset/?id=130816003"
-        super_annoying.Volume = 0.6
-        super_annoying.Looped = true
-        barrel_roll = Instance.new("Sound", head)
-        barrel_roll.SoundId = "http://www.roblox.com/asset/?id=130791919"
-        barrel_roll.Volume = 1
-        barrel_roll.Looped = true
-        dubstep_gun = Instance.new("Sound", head)
-        dubstep_gun.SoundId = "http://www.roblox.com/asset/?id=130855491"
-        dubstep_gun.Volume = 0.6
-        dubstep_gun.Looped = true
-        you_are_pirate = Instance.new("Sound", head)
-        you_are_pirate.SoundId = "http://www.roblox.com/asset/?id=130888577"
-        you_are_pirate.Volume = 0.6
-        you_are_pirate.Looped = true
-        cant_touch = Instance.new("Sound", head)
-        cant_touch.SoundId = "http://www.roblox.com/asset/?id=131280929"
-        cant_touch.Volume = 1
-        cant_touch.Looped = true
-        gangy_style = Instance.new("Sound", head)
-        gangy_style.SoundId = "http://www.roblox.com/asset/?id=130844430"
-        gangy_style.Volume = 0.6
-        gangy_style.Looped = true
-        fox_say = Instance.new("Sound", head)
-        fox_say.SoundId = "http://www.roblox.com/asset/?id=130797915"
-        fox_say.Volume = 0.5
-        fox_say.Looped = true
-        durk = Instance.new("Sound", head)
-        durk.SoundId = "http://www.roblox.com/asset/?id=130776787"
-        durk.Volume = 0.8
-        durk.Looped = true
-        sax_guy = Instance.new("Sound", head)
-        sax_guy.SoundId = "http://www.roblox.com/asset/?id=130794684"
-        sax_guy.Volume = 0.6
-        sax_guy.Looped = true
-        heman = Instance.new("Sound", head)
-        heman.SoundId = "http://www.roblox.com/asset/?id=131102548"
-        heman.Volume = 1
-        heman.Looped = true
-        justin = Instance.new("Sound", head)
-        justin.SoundId = "http://www.roblox.com/asset/?id=130841252"
-        justin.Volume = 0.8
-        justin.Looped = true
-        brony_music = Instance.new("Sound", head)
-        brony_music.SoundId = "http://www.roblox.com/asset/?id=130769808"
-        brony_music.Volume = 1
-        brony_music.Looped = true
-        spitfire = Instance.new("Sound", head)
-        spitfire.SoundId = "http://www.roblox.com/asset/?id=129490596"
-        spitfire.Volume = 0.8
-        spitfire.Looped = true
-        burn_dem = Instance.new("Sound", head)
-        burn_dem.SoundId = "http://www.roblox.com/asset/?id=132399469"
-        burn_dem.Volume = 1
-        burn_dem.Looped = true
-        aj = Instance.new("Sound", head)
-        aj.SoundId = "rbxassetid://177732780"
-        aj.Volume = 1
-        aj.Looped = true
-         
-        Instance.new("HumanoidController", game:service'ControllerService')
-        Instance.new("SkateboardController", game:service'ControllerService')
-        Instance.new("VehicleController", game:service'ControllerService')
-         
-         
-         
-         
-        --minimize
-        rh.Parent = nil
-        lh.Parent = nil
-        rs.Parent = nil
-        ls.Parent = nil
-        neck.Parent = nil
-        rj.Parent = nil
-         
-         
-        rl.FormFactor = "Custom"
-        ll.FormFactor = "Custom"
-        ra.FormFactor = "Custom"
-        la.FormFactor = "Custom"
-        torso.FormFactor = "Custom"
-        head.FormFactor = "Custom"
-        rootpart.FormFactor = "Custom"
-         
-         
-         
-         
-        rootpart.Size = Vector3.new(.4, .4, .2)
-        rl.Size = Vector3.new(.2, .4, .2)
-        ll.Size = Vector3.new(.2, .4, .2)
-        ra.Size = Vector3.new(.2, .4, .2)
-        la.Size = Vector3.new(.2, .4, .2)
-        torso.Size = Vector3.new(.4, .4, .2)
-        head.Size = Vector3.new(.4, .2, .2)
-         
-        rh.Parent = torso
-        lh.Parent = torso
-        rs.Parent = torso
-        ls.Parent = torso
-        neck.Parent = torso
-        rj.Parent = rootpart
-         
-         
-        if torso:findFirstChild("roblox") then
-            local p = Instance.new("Part", char)
-            p.FormFactor = "Custom"
-            p.Size = torso.Size
-            p.Transparency = 1
-            p:BreakJoints()
-            local w = Instance.new("Weld", char)
-            w.Part0 = p
-            w.Part1 = torso
-            torso:findFirstChild("roblox").Parent = p
-        end
-         
-         
-        --[[mesh1 = Instance.new("SpecialMesh", torso)
-        mesh1.Name = "Mesh"
-        mesh1.Scale = torso.Size - Vector3.new(torso.Size.x/2, torso.Size.y/2, 0)
-        mesh1.MeshId = "rbxasset://fonts/torso.mesh"
-        mesh2 = Instance.new("SpecialMesh", la)
-        mesh2.Name = "Mesh"
-        mesh2.Scale = la.Size - Vector3.new(0, la.Size.y/2, 0)
-        mesh2.MeshId = "rbxasset://fonts/leftarm.mesh"
-        mesh3 = Instance.new("SpecialMesh", ra)
-        mesh3.Name = "Mesh"
-        mesh3.Scale = ra.Size - Vector3.new(0, ra.Size.y/2, 0)
-        mesh3.MeshId = "rbxasset://fonts/rightarm.mesh"
-        mesh4 = Instance.new("SpecialMesh", ll)
-        mesh4.Name = "Mesh"
-        mesh4.Scale = ll.Size - Vector3.new(0, ll.Size.y/2, 0)
-        mesh4.MeshId = "rbxasset://fonts/leftleg.mesh"
-        mesh5 = Instance.new("SpecialMesh", rl)
-        mesh5.Name = "Mesh"
-        mesh5.Scale = rl.Size - Vector3.new(0, rl.Size.y/2, 0)
-        mesh5.MeshId = "rbxasset://fonts/rightleg.mesh"--]]
-         
-         
-        --0.3 = 1.5, 0.1 = 0.5, 0.2 = 1
-         
-        ls.C0 = CFrame.new(-.3,.1,0)
-        ls.C1 = CFrame.new(0,.1,0)
-        rs.C0 = CFrame.new(.3,.1,0)
-        rs.C1 = CFrame.new(0,.1,0)
-        rh.C0 = CFrame.new(.1,-.2,0)
-        rh.C1 = CFrame.new(0, .2, 0)
-        lh.C0 = CFrame.new(-.1,-.2,0)
-        lh.C1 = CFrame.new(0, .2, 0)
-        neck.C0 = CFrame.new(0,.2,0)
-        neck.C1 = CFrame.new(0,-.1,0)
-         
-        bodyc = char:findFirstChild("Body Colors")
-        if bodyc then
-            bodyc:Destroy()
-        end
-     
-        wait(1)
-         
-        local body = {}
-        for i,v in pairs(char:children()) do
-            if v:IsA'BasePart' then
-                body[v] = {Color = v.BrickColor}
-            end
-        end
-     
-        function restorecolors()
-            for _,bp in pairs(char:children()) do
-                if bp:IsA("BasePart") then
-                    bp.BrickColor = body[bp].Color
-                end
-            end
-        end
-     
-         
-        local LightForTorso = Instance.new("PointLight", head)
-        LightForTorso.Color = torso.BrickColor.Color
-        LightForTorso.Range = 7
-        LightForTorso.Brightness = 1.5
-         
-         
-         
-         
-        local slidecount = 0
-        local slidecountmax = 0
-        local anim = ""
-        local lastanim = anim
-        local speed = 0
-        local looking = false
-        local dancing = false
-        local superannoying = false
-        local barrelroll = false
-        local dubstepgun = false
-        local foxie = false
-        local durka = false
-        local saxguy = false
-        local heya = false
-        local jb = false
-        local bronymusic = false
-        local sheddy = false
-        local burndem = false
-        local global_wait = 0
-         
-        count = 0
-        countspeed = 1
-        sine = 0
-        sinespeed = 1
-         
-         
-         
-        humanoid.WalkSpeed = 11
-         
-         
-        local controllerService = game:GetService("ControllerService")
-        local controller = controllerService:GetChildren()[1]
-         
-         
-        local colors = {"White", "Really black"}
-         
-        humanoid.Died:connect(function()
-            for cframe_parts = 0, 100 do
-                local p = Instance.new("Part")
-                p.FormFactor = "Custom"
-                p.BrickColor = BrickColor.new(colors[math.random(1, #colors)])
-                p.Size = Vector3.new(1, 1, 1)
-                Instance.new("BlockMesh", p).Scale = Vector3.new(0.05, 0.05, 0.05)
-                p.Locked = true
-                p.CanCollide = false
-                p.Anchored = true
-                p.CFrame = torso.CFrame * CFrame.Angles(math.random(-36, 36),math.random(-36, 36),math.random(-36, 36))
-                p.Parent = workspace
-            game:service'Debris':AddItem(p, 5)
-            coroutine.wrap(function()
-            while wait() do
-                if p ~= nil then
-                    p.CFrame = p.CFrame * CFrame.new(0, 0.085, 0)
-                    p.Mesh.Scale = p.Mesh.Scale - Vector3.new(0.005, 0, 0.005) + Vector3.new(0, 0.01, 0)
-                    p.Transparency = p.Transparency + 0.015
-                else
-                    break
-                end
-            end
-        end)()
-        end
-        for _,v in pairs(char:children()) do
-            if v:IsA("Part") then
-                v:Destroy()
-            end
-        end
-         
+
+
+if chr:FindFirstChild("Shirt") then
+chr.Shirt:destroy()
+end
+
+if chr:FindFirstChild("Pants") then
+chr.Pants:destroy()
+end
+
+colors = chr['Body Colors']
+
+colors.HeadColor = BrickColor.new("Brown")
+colors.TorsoColor = BrickColor.new("Brown")
+colors.LeftArmColor = BrickColor.new("Brown")
+colors.RightArmColor = BrickColor.new("Brown")
+colors.LeftLegColor = BrickColor.new("Brown")
+colors.RightLegColor = BrickColor.new("Brown")
+
+
+local face = chr.Head:FindFirstChild("face")
+
+if face then
+face.Texture = "http://www.roblox.com/asset/?id=8329686"
+end
+
+for i,v in pairs(chr:children()) do
+	if v.ClassName == "Hat" then
+		print(v.Name.." has been removed, #baldforbieber")
+		v:destroy()
+	end
+end
+
+
+
+
+
+local hd = Instance.new("Weld",chr.Head)
+hd.Part0=chr.Head
+hd.Part1=chr.Torso
+hd.C0=CFrame.new(0,-1.5,0)
+
+
+hum = chr.Humanoid
+
+
+
+function CreateMesh(parent, id, x, y, z, texture)
+local m=Instance.new("SpecialMesh", parent)
+m.MeshType = "FileMesh"
+m.MeshId="http://www.roblox.com/asset/?id="..id
+if texture ~= nil then
+m.TextureId="http://www.roblox.com/asset/?id="..texture
+end
+m.Scale = Vector3.new(x,y,z)
+end
+
+Microphone=function()
+mic = Instance.new("Part", chr)
+CreateMesh(mic, 43996479, 0.3, 0.3, 0.3, 43997070)
+mic.Name = "Microphone"
+mic.Locked = true
+mic.BrickColor = BrickColor.new("Lime green")
+mic.CanCollide=true
+mic.Size=Vector3.new(1,1,1)
+micw = Instance.new("Weld",mic)
+micw.Part0=mic
+micw.Part1=chr['Left Arm']
+micw.C0=CFrame.new(0,0,0)
+micw.C1=euler(rad(0),rad(0),rad(0))
+end
+
+Hat=function()
+hat = Instance.new("Part", chr)
+CreateMesh(hat, 1028713, 1, 1, 1)
+hat.Name = "Top hat"
+hat.Locked = true
+hat.BrickColor = BrickColor.new("Lime green")
+hat.CanCollide=true
+hat.Size=Vector3.new(1,1,1)
+hatw = Instance.new("Weld",hat)
+hatw.Part0=hat
+hatw.Part1=chr['Head']
+hatw.C0=CFrame.new(0,-0.7,0)
+hatw.C1=euler(rad(0),rad(0),rad(0))
+end
+
+Hat()
+Microphone()
+
+
+function Name(msg)
+        if hat.Parent then
+        pcall(function()
+        local Gui = Instance.new('BillboardGui', hat)
+        Gui.ExtentsOffset = Vector3.new(0,1.5,0)
+        Gui.Size = UDim2.new(0,200,0,300)
+        local Frame = Instance.new('Frame',Gui)
+        Frame.BackgroundTransparency = 1
+        Frame.Size = UDim2.new(1,0,1,0)
+        local Txt = Instance.new('TextLabel',Frame)
+        Txt.BackgroundTransparency = 1
+        Txt.Size = UDim2.new(1,0,1,0)
+        Txt.Font = 'ArialBold'
+        Txt.FontSize = 'Size24'
+        Txt.Text = msg
+        Txt.TextColor3 = BrickColor.new("Really blue").Color
+        Txt.TextStrokeColor3 = Color3.new(0/255,0/255,0/255)
+        Txt.TextStrokeTransparency = .5
+        Txt.TextWrapped = true
+        Txt.TextScaled = false
         end)
-         
-         
-        mouse.KeyDown:connect(function(k)
-           
-            if string.byte(k) == 50 then
-               
-                if dancing then return end
-                sitting = not sitting
-                if sitting then
-                        local ray = Ray.new(torso.Position, Vector3.new(0, -1, 0))
-                local hitz,enz = workspace:FindPartOnRay(ray, char)
-           
-               
-                     if hitz then
-                controller.Parent = nil
-                humanoid.WalkSpeed = 0
-                    coroutine.wrap(function()
-                        while wait() do
-                            humanoid.PlatformStand = true
-                            if sitting == false then humanoid.PlatformStand = false break end
-                        end
-                    end)()
-                rj.C0 = CFrame.new(0, -0.35, 0) * CFrame.Angles(math.rad(10), 0, 0)
-                lh.C0 = CFrame.new(-.1,-.2,0) * CFrame.Angles(math.pi/2-math.rad(10), 0, -math.pi/16)
-                rh.C0 = CFrame.new(.1,-.2,0) * CFrame.Angles(math.pi/2-math.rad(10), 0, math.pi/16)
-                ls.C0 = CFrame.new(-.3,.1,0) * CFrame.Angles(-math.rad(10), 0, -math.pi/10)
-                rs.C0 = CFrame.new(.3,.1,0) * CFrame.Angles(-math.rad(10), 0, math.pi/10)
-               
-                      miniweld = Instance.new("Weld", char)
-                        miniweld.C0 = hitz.CFrame:toObjectSpace(rootpart.CFrame)
-                        miniweld.Part0 = hitz
-                        miniweld.Part1 = rootpart
-                    else
-                        sitting = false
-                        return
-                        end
-            else
-                if miniweld then
-                    miniweld:Destroy()
-                end
-                controller.Parent = controllerService
-                humanoid.PlatformStand = false
-                humanoid.WalkSpeed = 11
-            end
-        end
-         
-            if k == "w" or k == "a" or k == "s" or k == "d" or string.byte(k) == 32 then
-                superannoying = false
-                barrelroll = false
-                heya = false
-                dubstepgun = false
-                youpirate = false
-                canttouch = false
-                gangnam = false
-                sheddy = false
-                durka = false
-                saxguy = false
-                foxie = false
-                burndem = false
-                bronymusic = false
-                brony_music:stop()
-                fox_say:stop()
-                spitfire:stop()
-                heman:stop()
-                justin:stop()
-                jb = false
-                durk:stop()
-                        restorecolors()
-                burn_dem:stop()
-                if hat then
-                hat:Destroy()
-            end
-            sax_guy:stop()
-                gangy_style:stop()
-                cant_touch:stop()
-                you_are_pirate:stop()
-                dubstep_gun:stop()
-                super_annoying:stop()
-                barrel_roll:stop()
-                dancing = false
-                global_wait = 0
-                LightForTorso.Color = torso.BrickColor.Color
-            end
-           
-        if k == "z" then
-        if dancing then return end
-            if not sitting then
-            dancing = true
-            superannoying = true
-            super_annoying:play()
-            end
-        end
-        if k == "k" then
-            if dancing then return end
-            if not sitting then
-                dancing = true
-                sheddy = true
-                spitfire:play()
-            end
-        end
-         
-        if k == "n" then
-        if dancing then return end
-            if not sitting then
-                dancing = true
-                gangnam = true
-                gangy_style:play()
-            end
-        end
-         
-        if k == "r" then
-            if dancing then return end
-            if not sitting then
-                dancing = true
-                burndem = true
-                burn_dem:play()
-            end
-        end
-         
-         
-        if k == "x" then
-        if dancing then return end
-            if not sitting then
-                dancing = true
-            barrelroll = true
-            barrel_roll:play()
-            hat = Instance.new("Part", char)
-            hat.FormFactor = "Custom"
-            hat.CanCollide = false
-            hat.Size = torso.Size
-            hat.Locked = true
-            hat:breakJoints()
-            local hatmesh = Instance.new("SpecialMesh", hat)
-            hatmesh.MeshId = "http://www.roblox.com/asset/?id=29873142"
-            hatmesh.TextureId = "http://www.roblox.com/asset/?id=31467063"
-            hatmesh.Scale = Vector3.new(.22, .2, .22)
-            local hatweld = Instance.new("Weld", hat)
-            hatweld.Part0 = hat
-            hatweld.Part1 = torso
-        end
-        end
-        if k == "h" then
-              if dancing then return end
-            if not sitting then
-                dancing = true
-                heman:play()
-                heya = true
-            hat = Instance.new("Part", char)
-            hat.FormFactor = "Custom"
-            hat.CanCollide = false
-            hat.Size = torso.Size + Vector3.new(0.01, 0.01, 0.01)
-            hat.Locked = true
-            hat.BrickColor = BrickColor.new("Hot pink")
-            hat:breakJoints()
-            local hatweld = Instance.new("Weld", hat)
-            hatweld.Part0 = hat
-            hatweld.Part1 = torso
-        end
-        end
-        if k == "j" then
-            if dancing then return end
-            if not sitting then
-                dancing = true
-                justin:play()
-                jb = true
-            hat = Instance.new("Part", char)
-            hat.FormFactor = "Custom"
-            hat.CanCollide = false
-            hat.Size = head.Size
-            hat.Locked = true
-            hat.BrickColor = BrickColor.new("Hot pink")
-            hat:breakJoints()
-                local hatmesh = Instance.new("SpecialMesh", hat)
-            hatmesh.MeshId = "http://www.roblox.com/asset/?id=19999424"
-            hatmesh.TextureId = "http://www.roblox.com/asset/?id=20571982"
-            hatmesh.Scale = Vector3.new(.23, .23, .23)
-            local hatweld = Instance.new("Weld", hat)
-            hatweld.Part0 = hat
-            hatweld.Part1 = head
-            hatweld.C0 = CFrame.new(0.025, -0.05, 0)
-        end
-        end
-        if k == "c" then
-        if dancing then return end
-            if not sitting then
-                dancing = true
-                dubstepgun = true
-                dubstep_gun:play()
-            end
-        end
-        if k == "v" then
-        if dancing then return end
-                if not sitting then
-        dancing = true
-        youpirate = true
-        you_are_pirate:play()
-            hat = Instance.new("Part", char)
-            hat.FormFactor = "Custom"
-            hat.CanCollide = false
-            hat.Size = head.Size
-            hat.Locked = true
-            hat:breakJoints()
-            local hatmesh = Instance.new("SpecialMesh", hat)
-            hatmesh.MeshId = "http://www.roblox.com/asset/?id=1028848"
-            hatmesh.TextureId = "http://www.roblox.com/asset/?id=1028847"
-            hatmesh.Scale = Vector3.new(.2, .2, .2)
-            local hatweld = Instance.new("Weld", hat)
-            hatweld.Part0 = hat
-            hatweld.Part1 = head
-            hatweld.C0 = CFrame.new(0, -0.15, 0)
-        end
-        end
-        if k == "m" then
-        if dancing then return end
-            if not sitting then
-            dancing = true
-            canttouch = true
-            cant_touch:play()
-        end
-        end
-        if k == "b" then
-            if dancing then return end
-            if not sitting then
-                dancing = true
-                bronymusic = true
-                brony_music:play()
-                for _,bp in pairs(char:children()) do
-                    if bp:IsA("BasePart") then
-                        bp.BrickColor = BrickColor.new("Lavender")
-                    end
-            end
-            hat = Instance.new("Part", char)
-            hat.FormFactor = "Custom"
-            hat.CanCollide = false
-            hat.Size = head.Size
-            hat.Locked = true
-            hat.BrickColor = BrickColor.new("Lavender")
-            hat:breakJoints()
-            local hatmesh = Instance.new("SpecialMesh", hat)
-            hatmesh.MeshId = "http://www.roblox.com/asset/?id=118186643"
-            hatmesh.Scale = Vector3.new(.1, .2, .1)
-            local hatweld = Instance.new("Weld", hat)
-            hatweld.Part0 = hat
-            hatweld.Part1 = head
-            hatweld.C0 = CFrame.new(0, -0.1, 0.05)
-            end
-        end
-         
-        if k == "l" then
-        if dancing then return end
-        if not sitting then
-            dancing = true
-            foxie = true
-            fox_say:play()
-            hat = Instance.new("Part", char)
-            hat.FormFactor = "Custom"
-            hat.CanCollide = false
-            hat.Size = head.Size
-            hat.Locked = true
-            hat:breakJoints()
-            local hatmesh = Instance.new("SpecialMesh", hat)
-            hatmesh.MeshId = "http://www.roblox.com/asset/?id=25266225"
-            hatmesh.TextureId = "http://www.roblox.com/asset/?id=25266210"
-            hatmesh.Scale = Vector3.new(.2, .2, .2)
-            local hatweld = Instance.new("Weld", hat)
-            hatweld.Part0 = hat
-            hatweld.Part1 = head
-            hatweld.C0 = CFrame.new(0, -0.1, 0)
-            end
-           
-        end
-        if k == "f" then
-        if dancing then return end
-            if not sitting then
-            dancing = true
-            durka = true
-            durk:play()
-        end
-        end
-     function processCommand(speaker, message)
-if message == "sax" then  
-            if dancing then return end
-            if not sitting then
-                dancing = true
-                saxguy = true
-                sax_guy:play()
-                    hat = Instance.new("Part", char)
-            hat.FormFactor = "Custom"
-            hat.CanCollide = false
-            hat.Size = head.Size
-            hat.Locked = true
-            hat:breakJoints()
-            local hatmesh = Instance.new("SpecialMesh", hat)
-            hatmesh.MeshId = "http://www.roblox.com/asset/?id=44410178"
-            hatmesh.TextureId = "http://www.roblox.com/asset/?id=44410320"
-            hatmesh.Scale = Vector3.new(.25, .25, .25)
-            local hatweld = Instance.new("Weld", hat)
-            hatweld.Part0 = hat
-            hatweld.Part1 = la
-            hatweld.C0 = CFrame.new(-0.18, -0.05, .04) * CFrame.Angles(math.pi - math.rad(18), 0, math.pi/4)
-            end
+        else
         end
 end
+
+function Chat(msg) -- Credit to jillmiles1, kthxbye
+        if hat.Parent then
+        pcall(function()
+		if hat:FindFirstChild("Fazbear Chat Gui") then
+		hat['Fazbear Chat Gui']:destroy()
+		end
+        local Gui = Instance.new('BillboardGui', hat)
+		Gui.Name = "Fazbear Chat Gui"
+        Gui.ExtentsOffset = Vector3.new(0,3,0)
+        Gui.Size = UDim2.new(0,200,0,300)
+        local Frame = Instance.new('Frame',Gui)
+        Frame.BackgroundTransparency = 1
+        Frame.Size = UDim2.new(1,0,1,0)
+        local Txt = Instance.new('TextLabel',Frame)
+        Txt.BackgroundTransparency = 1
+        Txt.Size = UDim2.new(1,0,1,0)
+        Txt.Font = 'ArialBold'
+		Txt.Name = "ChatGui"
+        Txt.FontSize = 'Size24'
+        Txt.Text = ''
+        Txt.TextColor3 = BrickColor.new("Really red").Color
+        Txt.TextStrokeColor3 = Color3.new(0/255,0/255,0/255)
+        Txt.TextStrokeTransparency = .5
+        Txt.TextWrapped = true
+        Txt.TextScaled = false
+        delay(wait(),function()
+                for v = 1, #msg do
+                        Txt.Text=string.sub(msg,1,v)
+                        wait(.07)
+                end;
+                wait(1)
+                for v = 1, #Txt.Text do
+                        Txt.Text=string.sub(msg,-1,v)
+                        wait(.05)
+                end;
+                Gui:remove()
+        end)
+        end)
+        else
+        end
 end
-           
-         
-         
-            if k == "q" then
-                if Vector3.new(torso.Velocity.x, 0, torso.Velocity.z).magnitude >= 14 then return end
-                if sitting then return end
-                looking = true
-                rj.C0 = CFrame.new(-math.pi/6, 0,0) * CFrame.Angles(0, 0, math.pi/4)
-            end
-            if k == "e" then
-                if Vector3.new(torso.Velocity.x, 0, torso.Velocity.z).magnitude >= 14 then return end
-                if sitting then return end
-                        looking = true
-                rj.C0 = CFrame.new(math.pi/6, 0,0) * CFrame.Angles(0, 0, -math.pi/4)
-            end
-            if k == "t" then
-                if dancing then return end
-                if sitting then return end
-                dancing = true
-                aj:play()
-            end
-            if string.byte(k) == 48 or string.byte(k) == 47 then
-                        if sitting then return end
-                humanoid.WalkSpeed = 18
-            end
-            if string.byte(k) == 52 then
-                if sitting then return end
-                humanoid.WalkSpeed = 6
-                end
-        end)
-         
-        mouse.KeyUp:connect(function(k)
-            if string.byte(k) == 48 or string.byte(k) == 47 then
-                if sitting then return end
-                humanoid.WalkSpeed = 11
-            end
-            if k == "w" or k == "a" or k == "s" or k == "d" or string.byte(k) == 32 then
-                superannoying = false
-                barrelroll = false
-                heya = false
-                dubstepgun = false
-                youpirate = false
-                canttouch = false
-                gangnam = false
-                sheddy = false
-                durka = false
-                saxguy = false
-                foxie = false
-                burndem = false
-                bronymusic = false
-                aj:stop()
-                brony_music:stop()
-                fox_say:stop()
-                spitfire:stop()
-                heman:stop()
-                justin:stop()
-                jb = false
-                durk:stop()
-                        restorecolors()
-                burn_dem:stop()
-                if hat then
-                hat:Destroy()
-            end
-            sax_guy:stop()
-                gangy_style:stop()
-                cant_touch:stop()
-                you_are_pirate:stop()
-                dubstep_gun:stop()
-                super_annoying:stop()
-                barrel_roll:stop()
-                dancing = false
-                global_wait = 0
-                LightForTorso.Color = torso.BrickColor.Color
-            end
-           
-           
-                if k == "q" then
-                    if looking then
-                if sitting then return end
-                rj.C0 = CFrame.new()
-                looking = false
-                end
-            end
-           
-                if k == "e" then
-                    if looking then
-                if sitting then return end
-                rj.C0 = CFrame.new()
-                        looking = false
-                end
-            end
-        end)
-         
-         
-        game:service'RunService'.Stepped:connect(function()
-            count = (count % 100) + countspeed
-            angle = math.pi * math.sin(math.pi*2/100*count)
-         
-            if slidecount < slidecountmax then
-            slidecount = slidecount + speed
-            end
-            if slidecount > slidecountmax then
-            slidecount = slidecount - speed
-            end  
-        if global_wait == 380 then global_wait = 0 end
-         
-        sine = sine + sinespeed
-        if not dancing then
-                if not sitting then
-                    local ray = Ray.new(rootpart.Position, Vector3.new(0, -1, 0))
-            local hitz, enz = workspace:FindPartOnRay(ray, char)
-                if not hitz then
-                        ls.C0 = CFrame.new(-.3,.1,0)  * CFrame.Angles((math.pi/8/5*slidecount) + math.pi + angle*0.05, 0, 0)
-            rs.C0 = CFrame.new(.3,.1,0) * CFrame.Angles((math.pi/8/5*slidecount) + math.pi + -angle*0.05, 0, 0)
-            lh.C0 = CFrame.new(-.1,-.2,0)  * CFrame.Angles(-angle*0.28, 0, 0)
-            rh.C0 = CFrame.new(.1,-.2,0) * CFrame.Angles(angle*0.28, 0, 0)
-            if not looking then
-            rj.C0 = CFrame.new(0, 0, 0) * CFrame.Angles(-math.pi/8/5*slidecount, 0, 0)
-            end
-            neck.C0 = CFrame.new(0,.2,0) * CFrame.Angles(math.pi/8/5*slidecount, 0, 0)
-        elseif Vector3.new(torso.Velocity.x, 0, torso.Velocity.z).magnitude < 2 then
-           
-        -- idle anim
-         
-        anim = "Idle"
-        if anim ~= lastanim then
-            if lastanim == "Walking" then
-                speed = 0.5
-                slidecount = 1
-                slidecountmax = 0
-            elseif lastanim == "Running" then
-                speed = 2.5
-                slidecount = 5
-                slidecountmax = 0
-            else
-        slidecount = 0
-        slidecountmax = 0
-        end
-        end
-        countspeed = 1
-            ls.C0 = CFrame.new(-.3,.1,0)  * CFrame.Angles(angle*0.02, 0, 0)
-            rs.C0 = CFrame.new(.3,.1,0) * CFrame.Angles(-angle*0.02, 0, 0)
-            lh.C0 = CFrame.new(-.1,-.2,0)  * CFrame.Angles(-angle*0.01, 0, 0)
-            rh.C0 = CFrame.new(.1,-.2,0) * CFrame.Angles(angle*0.01, 0, 0)
-            if not looking then
-            rj.C0 = CFrame.new(0, 0, 0) * CFrame.Angles(-math.pi/8/5*slidecount, 0, 0)
-            end
-            neck.C0 = CFrame.new(0,.2,0) * CFrame.Angles(math.pi/8/5*slidecount, 0, 0)
-        elseif Vector3.new(torso.Velocity.x, 0, torso.Velocity.z).magnitude < 14 then
-            looking = false
-        -- walk anim
-        anim = "Walking"
-        if anim ~= lastanim then
-        speed = 0.2
-        slidecount = 0
-        slidecountmax = 1
-            if lastanim == "Running" then
-                slidecount = 5
-                end
-        end
-        countspeed = 6
-            ls.C0 = CFrame.new(-.3,.1,0)  * CFrame.Angles(angle*0.3, 0, math.abs(angle*0.02))
-            rs.C0 = CFrame.new(.3,.1,0) * CFrame.Angles(-angle*0.3, 0, -math.abs(angle*0.02))
-            lh.C0 = CFrame.new(-.1,-.2,0)  * CFrame.Angles(-angle*0.28, 0, -math.abs(angle*0.01))
-            rh.C0 = CFrame.new(.1,-.2,0) * CFrame.Angles(angle*0.28, 0, math.abs(angle*0.01))
-            rj.C0 = CFrame.new(0, math.abs(-angle*0.035), 0) * CFrame.Angles(-math.pi/8/5*slidecount, 0, 0)
-            neck.C0 = CFrame.new(0,.2,0) * CFrame.Angles(math.pi/8/5*slidecount, 0, 0)
-        elseif Vector3.new(torso.Velocity.x, 0, torso.Velocity.z).magnitude >= 14 then
-            --run anim
-            anim = "Running"
-        if anim ~= lastanim then
-        speed = 1
-        slidecount = 0
-        slidecountmax = 5
-            if lastanim == "Walking" then
-                slidecount = 1
-            end
-        end
-         
-        looking = false
-        countspeed = 9
-            ls.C0 = CFrame.new(-.3,.1,0)  * CFrame.Angles(angle*0.4, 0, math.abs(angle*0.07))
-            rs.C0 = CFrame.new(.3,.1,0) * CFrame.Angles(-angle*0.4, 0, -math.abs(angle*0.07))
-            lh.C0 = CFrame.new(-.1,-.2,0)  * CFrame.Angles(-angle*0.38, 0, -math.abs(angle*0.03))
-            rh.C0 = CFrame.new(.1,-.2,0) * CFrame.Angles(angle*0.38, 0, math.abs(angle*0.03))
-            neck.C0 = CFrame.new(0,.2,0) * CFrame.Angles(math.pi/8/5*slidecount, 0, 0)
-            rj.C0 = CFrame.new(0, math.abs(-angle*.055), 0) * CFrame.Angles(-math.pi/8/5*slidecount, math.sin(angle*0.05), 0)
-        end
-         
-        lastanim = anim
-        else
-        countspeed = 1
-                    local ray = Ray.new(rootpart.Position, Vector3.new(0, -2, 0))
-            local hitz, enz = workspace:FindPartOnRay(ray, char)
-                if not hitz then
-                rj.C0 = CFrame.new(0, -0.5, 0) * CFrame.Angles(-math.pi/2, 0, 0)
-                lh.C0 = CFrame.new(-.1,-.2,0) * CFrame.Angles(math.rad(30), 0, -math.pi/16)
-                rh.C0 = CFrame.new(.1,-.2,0) * CFrame.Angles(math.rad(30), 0, math.pi/16)
-                ls.C0 = CFrame.new(-.3,.1,0) * CFrame.Angles(-math.pi-math.rad(30), 0, -math.pi/10)
-                rs.C0 = CFrame.new(.3,.1,0) * CFrame.Angles(-math.pi-math.rad(30), 0, math.pi/10)
-                else
-                rj.C0 = CFrame.new(0, -0.35, 0) * CFrame.Angles(math.rad(10), 0, 0)
-                lh.C0 = CFrame.new(-.1,-.2,0) * CFrame.Angles(math.pi/2-math.rad(10), 0, -math.pi/16)
-                rh.C0 = CFrame.new(.1,-.2,0) * CFrame.Angles(math.pi/2-math.rad(10), 0, math.pi/16)
-                ls.C0 = CFrame.new(-.3,.1,0) * CFrame.Angles(-math.rad(10), 0, -math.pi/10)
-                rs.C0 = CFrame.new(.3,.1,0) * CFrame.Angles(-math.rad(10), 0, math.pi/10)
-            end
-           
-            neck.C0 = CFrame.new(0,.2,0) * CFrame.Angles(angle*0.055, 0, 0)
-        end
-        else
-        if superannoying then
-        countspeed = 5
-            ls.C0 = CFrame.new(-.3,.1,0)  * CFrame.Angles(math.pi/2 + angle*0.2, 0, math.abs(angle*0.07))
-            rs.C0 = CFrame.new(.3,.1,0) * CFrame.Angles(math.pi/2 + angle*0.2, 0, -math.abs(angle*0.07))
-            lh.C0 = CFrame.new(-.1,-.2,0)  * CFrame.Angles(angle*0.1, 0, -math.abs(angle*0.03))
-            rh.C0 = CFrame.new(.1,-.2,0) * CFrame.Angles(-angle*0.1, 0, math.abs(angle*0.03))
-            neck.C0 = CFrame.new(0,.2,0) * CFrame.Angles(math.abs(angle*0.1), 0, 0)
-            rj.C0 = CFrame.new(0, math.abs(-angle*.035), 0) * CFrame.Angles(0, math.sin(angle*0.15), 0)
-        elseif barrelroll then
-            countspeed = 5
-            sinespeed = 0.1
-            ls.C0 = CFrame.new(-.3,.1,0)  * CFrame.Angles(math.pi + angle*0.2, 0, math.abs(angle*0.07))
-            rs.C0 = CFrame.new(.3,.1,0) * CFrame.Angles(math.pi + angle*0.2, 0, -math.abs(angle*0.07))
-            lh.C0 = CFrame.new(-.1,-.2,0)  * CFrame.Angles(0, 0, -math.abs(angle*0.03))
-            rh.C0 = CFrame.new(.1,-.2,0) * CFrame.Angles(0, 0, math.abs(angle*0.03))
-            neck.C0 = CFrame.new(0,.2,0) * CFrame.Angles(math.abs(angle*0.1), 0, 0)
-            rj.C0 = CFrame.new(math.sin(sine)*2.5, 0, 0) * CFrame.Angles(-math.pi/2, math.sin(sine)*4.5, 0)
-        elseif dubstepgun then
-        global_wait = (global_wait % 380) + 1
-            countspeed = 5
-            if global_wait < 249 - 40 then
-            ls.C0 = CFrame.new(-.3,.1,0)  * CFrame.Angles(math.pi/2 + angle*0.2, 0, -math.abs(angle*0.27))
-            rs.C0 = CFrame.new(.3,.1,0) * CFrame.Angles(math.pi/2 + angle*0.2, 0, math.abs(angle*0.27))
-            lh.C0 = CFrame.new(-.1,-.2,0)  * CFrame.Angles(angle*0.1, 0, -math.abs(angle*0.03))
-            rh.C0 = CFrame.new(.1,-.2,0) * CFrame.Angles(-angle*0.1, 0, math.abs(angle*0.03))
-            neck.C0 = CFrame.new(0,.2,0) * CFrame.Angles(math.abs(angle*0.1), 0, 0)
-            rj.C0 = CFrame.new(0, math.abs(-angle*.035), 0) * CFrame.Angles(0, math.sin(angle*0.15), 0)
-        elseif global_wait > 249 - 40 then
-                ls.C0 = CFrame.new(-.3,.1,0)  * CFrame.Angles(math.pi/2 + angle*0.4, 0, math.abs(angle*0.11))
-            rs.C0 = CFrame.new(.3,.1,0) * CFrame.Angles(math.pi + angle*0.2, 0, -math.abs(angle*0.11))
-            lh.C0 = CFrame.new(-.1,-.2,0)  * CFrame.Angles(angle*0.1, 0, -math.abs(angle*0.09))
-            rh.C0 = CFrame.new(.1,-.2,0) * CFrame.Angles(-angle*0.1, 0, math.abs(angle*0.09))
-            neck.C0 = CFrame.new(0,.2,0) * CFrame.Angles(math.abs(angle*0.1), 0, 0)
-            rj.C0 = CFrame.new(0, math.abs(-angle*.075), 0) * CFrame.Angles(0, math.pi/3 + math.sin(angle*0.15), 0)
-            end
-        elseif youpirate then
-        global_wait = (global_wait % 380) + 1
-            countspeed = 5
-            if global_wait < 79 then
-            ls.C0 = CFrame.new(-.3,.1,0)  * CFrame.Angles(math.pi/2 + angle*0.1, 0, -math.abs(angle*0.07))
-            rs.C0 = CFrame.new(.3,.1,0) * CFrame.Angles(angle*0.2, 0, math.abs(angle*0.07))
-            lh.C0 = CFrame.new(-.1,-.2,0)  * CFrame.Angles(angle*0.1, 0, -math.abs(angle*0.03))
-            rh.C0 = CFrame.new(.1,-.2,0) * CFrame.Angles(-angle*0.1, 0, math.abs(angle*0.03))
-            neck.C0 = CFrame.new(0,.2,0) * CFrame.Angles(math.abs(angle*0.1), 0, 0)
-            rj.C0 = CFrame.new(0, math.abs(-angle*.02), 0) * CFrame.Angles(0, math.sin(angle*0.15), 0)
-        elseif global_wait < 299 then
-                ls.C0 = CFrame.new(-.3,.1,0)  * CFrame.Angles(math.pi + angle*0.2, 0, math.abs(angle*0.11))
-            rs.C0 = CFrame.new(.3,.1,0) * CFrame.Angles(math.pi + angle*0.2, 0, -math.abs(angle*0.11))
-            lh.C0 = CFrame.new(-.1,-.2,0)  * CFrame.Angles(angle*0.2, 0, -math.abs(angle*0.1))
-            rh.C0 = CFrame.new(.1,-.2,0) * CFrame.Angles(-angle*0.2, 0, math.abs(angle*0.1))
-            neck.C0 = CFrame.new(0,.2,0) * CFrame.Angles(math.abs(angle*0.1), math.sin(angle*0.19), 0)
-            rj.C0 = CFrame.new(0, math.abs(-angle*.055+0.2), 0) * CFrame.Angles(0, math.sin(angle*0.15), 0)
-        elseif global_wait > 299 then
-                ls.C0 = CFrame.new(-.3,.1,0)  * CFrame.Angles(math.pi/2 + angle*0.1, 0, -math.abs(angle*0.07))
-            rs.C0 = CFrame.new(.3,.1,0) * CFrame.Angles(angle*0.2, 0, math.abs(angle*0.07))
-            lh.C0 = CFrame.new(-.1,-.2,0)  * CFrame.Angles(angle*0.1, 0, -math.abs(angle*0.03))
-            rh.C0 = CFrame.new(.1,-.2,0) * CFrame.Angles(-angle*0.1, 0, math.abs(angle*0.03))
-            neck.C0 = CFrame.new(0,.2,0) * CFrame.Angles(math.abs(angle*0.1), 0, 0)
-            rj.C0 = CFrame.new(0, math.abs(-angle*.02), 0) * CFrame.Angles(0, math.sin(angle*0.15), 0)
-            end
-        elseif canttouch then
-            countspeed = 5
-        global_wait = (global_wait % 160) + 1
-        if global_wait == 160 then global_wait = 0 end
-            if global_wait < 39 then
-            ls.C0 = CFrame.new(-.3,.1,0)  * CFrame.Angles(math.pi/2 + angle*0.2, 0, -math.abs(angle*0.07))
-            rs.C0 = CFrame.new(.3,.1,0) * CFrame.Angles(math.pi/2 + angle*0.2, 0, math.abs(angle*0.07))
-            lh.C0 = CFrame.new(-.1,-.2,0)  * CFrame.Angles(angle*0.1, 0, -math.abs(angle*0.03))
-            rh.C0 = CFrame.new(.1,-.2,0) * CFrame.Angles(-angle*0.1, 0, math.abs(angle*0.03))
-            neck.C0 = CFrame.new(0,.2,0) * CFrame.Angles(math.abs(angle*0.1), 0, 0)
-            rj.C0 = CFrame.new(0, math.abs(-angle*.03), 0) * CFrame.Angles(0, -math.pi/6, 0)
-        elseif global_wait < 79 then
-             ls.C0 = CFrame.new(-.3,.1,0)  * CFrame.Angles(math.pi/2 + angle*0.2, 0, -math.abs(angle*0.07))
-            rs.C0 = CFrame.new(.3,.1,0) * CFrame.Angles(math.pi/2 + angle*0.2, 0, math.abs(angle*0.07))
-            lh.C0 = CFrame.new(-.1,-.2,0)  * CFrame.Angles(angle*0.1, 0, -math.abs(angle*0.03))
-            rh.C0 = CFrame.new(.1,-.2,0) * CFrame.Angles(-angle*0.1, 0, math.abs(angle*0.03))
-            neck.C0 = CFrame.new(0,.2,0) * CFrame.Angles(math.abs(angle*0.1), 0, 0)
-            rj.C0 = CFrame.new(0, math.abs(-angle*.03), 0) * CFrame.Angles(0, math.pi/6, 0)
-        elseif global_wait < 119 then
-            ls.C0 = CFrame.new(-.3,.1,0)  * CFrame.Angles(0.01, 0, 0.17)
-            rs.C0 = CFrame.new(.3,.1,0) * CFrame.Angles(0.01, 0, -0.17)
-            lh.C0 = CFrame.new(-.1,-.2,0)  * CFrame.Angles(0, -math.abs(angle*0.05), -math.abs(angle*0.06))
-            rh.C0 = CFrame.new(.1,-.2,0) * CFrame.Angles(0, -math.abs(angle*0.05), math.abs(angle*0.06))
-            neck.C0 = CFrame.new(0,.2,0) * CFrame.Angles(math.abs(angle*0.1), 0, 0)
-            rj.C0 = CFrame.new(0, math.abs(-angle*.02), 0) * CFrame.Angles(0, 0, 0)
-            torso.CFrame = torso.CFrame * CFrame.new(0.05, 0, 0)
-        elseif global_wait > 119 then
-                ls.C0 = CFrame.new(-.3,.1,0)  * CFrame.Angles(0.01, 0, 0.17)
-            rs.C0 = CFrame.new(.3,.1,0) * CFrame.Angles(0.01, 0, -0.17)
-            lh.C0 = CFrame.new(-.1,-.2,0)  * CFrame.Angles(0, -math.abs(angle*0.05), -math.abs(angle*0.06))
-            rh.C0 = CFrame.new(.1,-.2,0) * CFrame.Angles(0, -math.abs(angle*0.05), math.abs(angle*0.06))
-            neck.C0 = CFrame.new(0,.2,0) * CFrame.Angles(math.abs(angle*0.1), 0, 0)
-            rj.C0 = CFrame.new(0, math.abs(-angle*.02), 0) * CFrame.Angles(0, 0, 0)
-            torso.CFrame = torso.CFrame * CFrame.new(-0.05, 0, 0)
-        end
-        elseif gangnam then
-        countspeed = 5
-        if global_wait == 180 then global_wait = 0 end
-        global_wait = (global_wait % 180) + 1
-        if global_wait < 89 then
-            ls.C0 = CFrame.new(-.2,.1,-.1)  * CFrame.Angles(math.pi/2.5 + math.abs(angle*0.2), 0, math.pi/3 + math.abs(angle*0.05))
-            rs.C0 = CFrame.new(.2,.1,-.1) * CFrame.Angles(math.pi/2.5 + math.abs(angle*0.2), 0, -math.pi/3 + -math.abs(angle*0.05))
-            lh.C0 = CFrame.new(-.1,-.2,0)  * CFrame.Angles(math.abs(angle*0.1), 0, -math.abs(angle*0.03))
-            rh.C0 = CFrame.new(.1,-.2,0) * CFrame.Angles(-math.abs(angle*0.1), 0, math.abs(angle*0.03))
-            neck.C0 = CFrame.new(0,.2,0) * CFrame.Angles(math.abs(angle*0.1), 0, 0)
-            rj.C0 = CFrame.new(0, math.abs(-angle*.035), 0) * CFrame.Angles(0, math.sin(angle*0.05), 0)
-            elseif global_wait > 89 then
-            ls.C0 = CFrame.new(-.2,.1,-.1)  * CFrame.Angles(math.pi/2.5 + math.abs(angle*0.2), 0, math.pi/3 + math.abs(angle*0.05))
-            rs.C0 = CFrame.new(.3,.1,0) * CFrame.Angles(math.pi + math.sin(angle*0.1), 0, -math.sin(angle*0.1))
-            lh.C0 = CFrame.new(-.1,-.2,0)  * CFrame.Angles(math.abs(angle*0.1), 0, -math.abs(angle*0.03))
-            rh.C0 = CFrame.new(.1,-.2,0) * CFrame.Angles(-math.abs(angle*0.1), 0, math.abs(angle*0.03))
-            neck.C0 = CFrame.new(0,.2,0) * CFrame.Angles(math.abs(angle*0.1), 0, 0)
-            rj.C0 = CFrame.new(0, math.abs(-angle*.035), 0) * CFrame.Angles(0, math.sin(angle*0.05), 0)
-        end
-        elseif foxie then
-        countspeed = 5
-        global_wait = (global_wait % 380) + 2
-        if global_wait < 89 then
-            ls.C0 = CFrame.new(-.3,.1,0)  * CFrame.Angles(math.pi + math.abs(angle*0.1), 0, -math.abs(angle*0.2))
-            rs.C0 = CFrame.new(.3,.1,0) * CFrame.Angles(math.pi + math.abs(angle*0.1), 0, math.abs(angle*0.2))
-            lh.C0 = CFrame.new(-.1,-.2,0)  * CFrame.Angles(math.abs(angle*0.1), 0, -math.abs(angle*0.03))
-            rh.C0 = CFrame.new(.1,-.2,0) * CFrame.Angles(-math.abs(angle*0.1), 0, math.abs(angle*0.03))
-            neck.C0 = CFrame.new(0,.2,0) * CFrame.Angles(math.abs(angle*0.1), 0, 0)
-            rj.C0 = CFrame.new(0, math.abs(-angle*.035), 0) * CFrame.Angles(0, math.rad(global_wait*4), 0)
-            elseif global_wait > 89 then
-            ls.C0 = CFrame.new(-.3,.1,0)  * CFrame.Angles(math.pi/2 + math.abs(angle*0.2), 0, math.abs(angle*0.05))
-            rs.C0 = CFrame.new(.3,.1,0) * CFrame.Angles(math.pi/2 + math.abs(angle*0.2), 0, -math.abs(angle*0.05))
-            lh.C0 = CFrame.new(-.1,-.2,0)  * CFrame.Angles(math.abs(angle*0.1), 0, -math.abs(angle*0.03))
-            rh.C0 = CFrame.new(.1,-.2,0) * CFrame.Angles(-math.abs(angle*0.1), 0, math.abs(angle*0.03))
-            neck.C0 = CFrame.new(0,.2,0) * CFrame.Angles(math.abs(angle*0.1), 0, math.sin(angle*0.1))
-            rj.C0 = CFrame.new(0, math.abs(-angle*.035), 0) * CFrame.Angles(0, math.sin(angle*0.05), 0)
-        end
-        elseif durka then
-        countspeed = 2
-            ls.C0 = CFrame.new(-.3,.1,0)  * CFrame.Angles(math.pi/2 + math.abs(angle*0.2), 0, math.abs(angle*0.07))
-            rs.C0 = CFrame.new(.3,.1,0) * CFrame.Angles(angle*0.1, 0, -math.abs(angle*0.07))
-            lh.C0 = CFrame.new(-.1,-.2,0)  * CFrame.Angles(angle*0.05, 0, -math.abs(angle*0.03))
-            rh.C0 = CFrame.new(.1,-.2,0) * CFrame.Angles(-angle*0.05, 0, math.abs(angle*0.03))
-            neck.C0 = CFrame.new(0,.2,0) * CFrame.Angles(math.abs(angle*0.1), 0, 0)
-            rj.C0 = CFrame.new(0, math.abs(-angle*.035), 0) * CFrame.Angles(0, math.sin(angle*0.05), 0)
-        elseif saxguy then
-            countspeed = 5
-            ls.C0 = CFrame.new(-.25,.1,-.1)  * CFrame.Angles(math.pi/2.5, 0, math.pi/4)
-            rs.C0 = CFrame.new(.25,.1,-.1) * CFrame.Angles(math.rad(60), 0, -math.pi/4)
-            lh.C0 = CFrame.new(-.1,-.2,0)  * CFrame.Angles(-math.abs(angle*0.1), 0, -0.06)
-            rh.C0 = CFrame.new(.1,-.2,0) * CFrame.Angles(-math.abs(angle*0.1), 0, 0.06)
-            neck.C0 = CFrame.new(0,.2,0) * CFrame.Angles(0, 0, 0)
-            rj.C0 = CFrame.new(0, -math.abs(angle*0.01), math.abs(angle*0.01)) * CFrame.Angles(math.abs(angle*0.1), 0, 0)
-        elseif heya then
-             countspeed = 5
-            ls.C0 = CFrame.new(-.3,.1,0)  * CFrame.Angles(math.pi + -angle*0.2, -angle*0.1, 0)
-            rs.C0 = CFrame.new(.3,.1,0) * CFrame.Angles(math.pi + angle*0.2, angle*0.1, 0)
-            lh.C0 = CFrame.new(-.1,-.2,0)  * CFrame.Angles(angle*0.05, angle*0.1, -0.06)
-            rh.C0 = CFrame.new(.1,-.2,0) * CFrame.Angles(-angle*0.05, -angle*0.1, 0.06)
-            neck.C0 = CFrame.new(0,.2,0) * CFrame.Angles(math.abs(0.2), 0, 0)
-            rj.C0 = CFrame.new(0, math.abs(angle*0.05), 0) * CFrame.Angles(0, math.sin(angle*0.07), 0)
-        elseif jb then
-                 countspeed = 5
-            ls.C0 = CFrame.new(-.3,.1,0)  * CFrame.Angles(math.pi/2 + -angle*0.2, -angle*0.1, 0)
-            rs.C0 = CFrame.new(.3,.1,0) * CFrame.Angles(math.pi/2 + angle*0.2, angle*0.1, 0)
-            lh.C0 = CFrame.new(-.1,-.2,0)  * CFrame.Angles(angle*0.05, angle*0.1, -0.06)
-            rh.C0 = CFrame.new(.1,-.2,0) * CFrame.Angles(-angle*0.05, -angle*0.1, 0.06)
-            neck.C0 = CFrame.new(0,.2,0) * CFrame.Angles(math.abs(0.2), 0, 0)
-            rj.C0 = CFrame.new(0, math.abs(angle*0.05), 0) * CFrame.Angles(0, math.abs(angle*0.1), 0)
-        elseif bronymusic then
-                     countspeed = 5
-            ls.C0 = CFrame.new(-.1,.1,-.15)  * CFrame.Angles(math.pi/2 + -angle*0.1, -angle*0.1, 0)
-            rs.C0 = CFrame.new(.1,.1,-.15) * CFrame.Angles(math.pi/2 + angle*0.1, angle*0.1, 0)
-            lh.C0 = CFrame.new(-.1,-.25,0)  * CFrame.Angles(math.pi/2 + angle*0.1, 0, 0)
-            rh.C0 = CFrame.new(.1,-.25,0) * CFrame.Angles(math.pi/2 + -angle*0.1, 0, 0)
-            neck.C0 = CFrame.new(0,.25,0) * CFrame.Angles(math.pi/2 + math.abs(angle*0.25), 0, 0)
-            rj.C0 = CFrame.new(0, -0.2 + math.abs(angle*0.05), 0) * CFrame.Angles(-math.rad(85), 0, 0)
-        elseif sheddy then
-            countspeed = 7
-                ls.C0 = CFrame.new(-.3,.1,0)  * CFrame.Angles(math.pi/4 + -angle*0.4, -angle*0.1, 0)
-            rs.C0 = CFrame.new(.3,.1,0) * CFrame.Angles(math.pi/4 + angle*0.4, angle*0.1, 0)
-            lh.C0 = CFrame.new(-.1,-.2,0)  * CFrame.Angles(angle*0.05, angle*0.1, -0.06)
-            rh.C0 = CFrame.new(.1,-.2,0) * CFrame.Angles(-angle*0.05, -angle*0.1, 0.06)
-            neck.C0 = CFrame.new(0,.2,0) * CFrame.Angles(math.abs(0.2), 0, 0)
-            rj.C0 = CFrame.new(0, math.abs(angle*0.05), 0) * CFrame.Angles(0, math.abs(angle*0.1), 0)
-        elseif burndem then
-            countspeed = 4
-             ls.C0 = CFrame.new(-.3,.1,0)  * CFrame.Angles(math.pi/4 + -angle*0.4, -angle*0.1, 0)
-            rs.C0 = CFrame.new(.3,.1,0) * CFrame.Angles(math.pi/4 + angle*0.4, angle*0.1, 0)
-            lh.C0 = CFrame.new(-.1,-.2,0)  * CFrame.Angles(angle*0.05, angle*0.1, -0.06)
-            rh.C0 = CFrame.new(.1,-.2,0) * CFrame.Angles(-angle*0.05, -angle*0.1, 0.06)
-            neck.C0 = CFrame.new(0,.2,0) * CFrame.Angles(math.abs(0.2), 0, 0)
-            rj.C0 = CFrame.new(0, math.abs(angle*0.05), 0) * CFrame.Angles(0, math.abs(angle*0.1), 0)
-        elseif aj.IsPlaying then
-            countspeed = 5
-            ls.C0 = CFrame.new(-.3,.1,0)  * CFrame.Angles(math.pi/4 + -(angle)*0.4, -angle*0.1, 0)
-            rs.C0 = CFrame.new(.3,.1,0) * CFrame.Angles(math.pi/4 + (angle)*0.4, -angle*0.1, 0)
-            lh.C0 = CFrame.new(-.1,-.2 - math.cos(count*.025)*.02,0)  * CFrame.Angles(angle*0.05, 0, -0.06)
-            rh.C0 = CFrame.new(.1,-.2+math.cos(count*.025)*.02,0) * CFrame.Angles(-angle*0.05, 0, 0.06)
-            neck.C0 = CFrame.new(0,.2,0) * CFrame.Angles(math.abs(0.2), 0, 0)
-            rj.C0 = CFrame.new(0, 0, 0) * CFrame.Angles(0, math.cos(angle*0.1), 0)
-        end
-        end
-        end)
-         
-         
-        plr.Chatted:connect(function(msg)
-            game:service'Chat':Chat(head, msg, 1)
-            if msg == "die/" then
-                char:breakJoints()
-            end
-        end)
-         
-        end)
-        if not ran and err then
-            print(err)
-        end
+
+
+local crouch = function()
+ la.C1=euler(rad(-90),rad(0),rad(0))
+ hd.C1=euler(rad(0),rad(-3),rad(10))
+ micw.C1=euler(rad(0),rad(0),rad(0))
+ micw.C0=CFrame.new(0,-1,0)
+ la.C0=CFrame.new(1.5,-.5,-.5)
+end
+
+local stand = function()
+ la.C1=euler(rad(0),rad(0),rad(0))
+  hd.C1=euler(rad(0),rad(0),rad(0))
+  micw.C1=euler(rad(180),rad(0),rad(0))
+ la.C0=CFrame.new(1.5,0,0)
+ micw.C0=CFrame.new(0,-1,0)
+end
+
+function PlaySound(id, pitch, looped)
+        epicsound = Instance.new("Sound")
+        epicsound.Name = "FazbearSound"
+  epicsound.SoundId = "rbxassetid://"..id
+     epicsound.Volume = 1
+     epicsound.Pitch = pitch
+	 if looped == nil then
+	 looped = true
+	 else
+	 looped = looped
+	 end
+	 wait()
+  epicsound.Looped = looped
+  epicsound.Parent = workspace
+  if epicsound.SoundId=="rbxassetid://tt" then -- TELL ME, TELL ME, WHERE DA FREAKS AT!
+      epicsound.SoundId="rbxassetid://181158033"
+  elseif epicsound.SoundId=="rbxassetid://fabulous" then -- FA-FA-FABULOUS!
+      epicsound.SoundId="rbxassetid://191819419"
+     elseif epicsound.SoundId=="rbxassetid://ufdb" then -- ultimate final death battle(fairy tail XD)
+         epicsound.SoundId="rbxassetid://153085393"
+        elseif epicsound.SoundId=="rbxassetid://nnm" then
+           epicsound.SoundId="rbxassetid://210189234" 
+       elseif epicsound.SoundId=="rbxassetid://tun" then -- tunak tunak tun
+           epicsound.SoundId="rbxassetid://162682002"
+       elseif epicsound.SoundId=="rbxassetid://zelda" then
+           epicsound.SoundId="rbxassetid://158215156"
+       elseif epicsound.SoundId=="rbxassetid://cc" then
+           epicsound.SoundId="rbxassetid://177080835"
+     end
+  es=epicsound:clone()
+  es:Stop()
+  es.Parent = chr.Torso
+  wait()
+  es:Play()
+end
+
+hum.WalkSpeed=100
+hum.MaxHealth = math.huge
+hum.Health = math.huge
+
+ 
+lp.Chatted:connect(function(msg)
+        Chat(msg)
+end)
+
+goldie=true
+crouch()
+
+function StopMusic()
+	if chr.Torso:FindFirstChild("FazbearSound") then
+		if chr.Torso.FazbearSound.ClassName == "Sound" then
+			chr.Torso.FazbearSound:Stop()
+			wait()
+			chr.Torso.FazbearSound:Destroy()
+		end
+	end
+end
+
+Name("T13R ONE")
+
+function processCommand(speaker, message)
+    -- if someone chatted "whoami"
+    if message == "1" then
+if goldie==false then
+goldie=true
+crouch()
+elseif goldie==true then
+goldie=false
+stand()
+end
+elseif message == "2" then 
+StopMusic()
+PlaySound(203654824, 1, true)
+Chat("Now Playing: The Show Must Go On - FNAF | 203654824")
+elseif message == "3"  then -- Plays a song
+StopMusic()
+PlaySound(192187815, 1, true)
+Chat("Now Playing: Fnaf 2: It's Been so Long | 192187815")
+elseif message == "4" then -- Plays a laugh
+StopMusic()
+PlaySound(179678714, 0.39, false)
+Chat("*laugh*")
+elseif message == "5" then -- Plays a scream
+StopMusic()
+PlaySound(193107910, 1, false)
+Chat("*screams*")
+elseif message == "6" then -- Stops any sound(s) playing from your torso
+StopMusic()
+Chat("All sounds stopped!")
+end
+end)
+
+
+
+hum.Died:connect(function()
+	es.Pitch = 10
+	wait()
+	es:Pause()
+	es:Stop()
+	es.Name = "Ded"
+	wait()
+	es:Destroy()
+end
+end)
