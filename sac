@@ -1,6 +1,5 @@
 local lp = game.Players.gavinsharp100
 local chr = lp.Character
-local mouse = lp:GetMouse()
 local euler = CFrame.fromEulerAnglesXYZ
 local rad = math.rad
 local trso = chr.Torso
@@ -259,7 +258,6 @@ end
 Name("T13R ONE")
 
 function processCommand(speaker, message)
-    -- if someone chatted "whoami"
     if message == "1" then
 if goldie==false then
 goldie=true
