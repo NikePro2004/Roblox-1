@@ -288,4 +288,4 @@ elseif message == "6" then -- Stops any sound(s) playing from your torso
 StopMusic()
 Chat("All sounds stopped!")
 end
-end)
+end
