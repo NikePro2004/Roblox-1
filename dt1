@@ -246,5 +246,4 @@ sound:Play()
 sound.Parent = game:GetService("Workspace")
 end	
 end)
-
 local Asset = game.Workspace.par.soundid:GetProductInfo() print(Asset.Name .. " :: " .. Asset.Description)
