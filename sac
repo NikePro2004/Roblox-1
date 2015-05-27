@@ -289,16 +289,3 @@ StopMusic()
 Chat("All sounds stopped!")
 end
 end)
-
-
-
-hum.Died:connect(function()
-	es.Pitch = 10
-	wait()
-	es:Pause()
-	es:Stop()
-	es.Name = "Ded"
-	wait()
-	es:Destroy()
-end
-end)
