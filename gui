@@ -305,7 +305,7 @@ function NewGui()
 	
 	local thanks=Instance.new("TextLabel",fr)
 	thanks.Size=UDim2.new(1,0,0,40)
-	thanks.Text="Thank you for using chucky4523's Admin Surface Gui#3, "..plr.Name
+	thanks.Text="Thank you for using gavin's Admin Surface Gui#3, "..plr.Name
 	thanks.TextScaled=true
 	thanks.BackgroundTransparency=1
 	thanks.Font='Legacy'
@@ -329,7 +329,7 @@ function NewGui()
 	
 	local msgfade=Instance.new("TextLabel",fr)
 	msgfade.Size=UDim2.new(1,0,0,40)
-	msgfade.Text="Message chucky4523 for any questions or additions!"
+	msgfade.Text="Message gavinsharp100 for any questions or additions!"
 	msgfade.TextScaled=true
 	msgfade.BackgroundTransparency=1
 	msgfade.Font='Legacy'
@@ -1185,7 +1185,7 @@ function NewGui()
 
 	local img=Instance.new('ImageLabel',fr)
 	img.Size=UDim2.new(1,0,0,400)
-	img.Image='http://www.roblox.com/thumbs/avatar.ashx?x=352&y=352&format=png&username=Fadedadminpwn1st'
+	img.Image='http://www.roblox.com/thumbs/avatar.ashx?x=352&y=352&format=png&username=gavinsharp100'
 	img.Position=UDim2.new(0,0,0,210)
 	img.BackgroundTransparency=1
 	game:GetService("RunService").RenderStepped:connect(function()
