@@ -1,0 +1,1253 @@
+wait() script:Destroy()
+local plr=game.Players.LocalPlayer
+local cam=workspace.CurrentCamera
+local version="V3"
+local SPlrs=game:GetService('Players')
+local activecmd=nil
+local banned={}
+local antilocaled={}
+local pos1=5
+local pos2=-5
+local PriBase=false
+local OnlyYouView=true--Here, chane it to true to make it enabled
+
+function NewGui()
+	local function KICK(plr)
+		pcall(function()
+			plr:Destroy()
+			wait(1)
+			plr.Parent=nil
+		end)
+	end
+	local function NewPB()
+		local f=Instance.new("Part",workspace)
+		f.Size=Vector3.new(1000,1,1000)
+		f.Anchored=true
+		f.BrickColor=BrickColor.new("Earth green")
+		f.Locked=true
+		f.CFrame=CFrame.new(10000,0,10000)
+		f.Name='FadesPriB'
+		workspace.DescendantRemoving:connect(function(ob)
+			if ob.Name==f.Name then
+				local c=f:Clone()
+				c:Clone()
+				c.Parent=workspace
+			end
+		end)
+	end
+	local s=math.floor(time()) 
+	local mm=Instance.new("Model",plr.Character)
+	mm.Name='FadeDoe'
+	if OnlyYouView==true then
+		mm.Parent=workspace.CurrentCamera
+	else
+		mm.Parent=plr.Character
+	end
+	local p=Instance.new("Part",mm)
+	p.FormFactor='Custom'
+	p.Size=Vector3.new(10,10,.1)
+	p.Anchored=true
+	p.CanCollide=false
+	p.BrickColor=BrickColor.new("Really black")
+	p.Transparency=.7
+	p.Name=plr.Name.."'s Admin Surface Gui"
+	
+
+	local p1=Instance.new("Part",mm)
+	p1.FormFactor='Custom'
+	p1.Size=Vector3.new(10,10,.1)
+	p1.Anchored=true
+	p1.CanCollide=false
+	p1.BrickColor=BrickColor.new("Really black")
+	p1.Transparency=1
+	p1.Name="PLRS"
+	
+	local function Back()
+		mm:remove()
+		wait()
+		NewGui()
+	end
+	
+	local sg=Instance.new("SurfaceGui",p)
+	
+	local plrsg=Instance.new("SurfaceGui",p1)
+	
+	local function Notify(par,text,wat)
+		pcall(function() par.NOTIFY:remove() end) 
+		local nott=Instance.new("TextLabel",par)
+		nott.Size=UDim2.new(1,0,0,40)
+		nott.Text=text
+		nott.TextScaled=true
+		nott.Name='NOTIFY'
+		nott.BackgroundTransparency=1
+		nott.Font='Legacy'
+		nott.TextStrokeTransparency=0
+		nott.Position=UDim2.new(0,0,1,0)-UDim2.new(0,0,0,40*2)
+		nott.TextStrokeColor3=Color3.new(0,0,0)
+		nott.FontSize='Size24'
+		if wat=='Good' then
+			nott.TextColor3=Color3.new(0,1,0)
+		elseif wat=='Bad' then
+			nott.TextColor3=Color3.new(1,0,0)
+		end
+		wait(2)
+		for i=0,1,.1 do
+			wait()
+			nott.TextTransparency=i
+		end
+		nott:remove()
+	end
+	
+	function Antil(plr)
+	if antilocaled[plr.Name] then else table.insert(antilocaled,plr.Name) end
+	local chat=plr.Character
+	local back=plr:findFirstChild('Backpack')
+	local plrg=plr:findFirstChild('PlayerGui')
+		chat.DescendantAdded:connect(function(ob)
+			if ob:IsA('LocalScript') or ob:IsA("Script") then
+				ob.Disabled=true
+				print('Remove '..ob.Name..'('..ob.ClassName..')?'..'Parent: '..ob.Parent.Name,'Good')
+				Notify("Chat Allow to allow "..ob.Name..' (NLS) or Remove to remove '..ob.Name,'Good')
+				plr.Chatted:connect(function(msg)
+					if msg=='Allow' then
+						ob.Disabled=false
+						Notify("Allowed "..ob.Name,'Good')
+					elseif msg=='Remove' then
+						ob:remove()
+						Notify("Removed "..ob.Name,'Good')
+					end
+				end)
+			end
+		end)
+		back.DescendantAdded:connect(function(ob)
+			if ob:IsA('LocalScript') or ob:IsA("Script") then
+				ob.Disabled=true
+				Notify("Chat ['Allow'] to allow "..ob.Name.." (NLS) or ['Remove'] to remove "..ob.Name,'Good')
+				plr.Chatted:connect(function(msg)
+					if msg=='Allow' then
+						ob.Disabled=false
+						Notify("Allowed "..ob.Name,'Good')
+					elseif msg=='Remove' then
+						ob:remove()
+						Notify("Removed "..ob.Name,'Good')
+					end
+				end)
+			end
+		end)
+		plrg.DescendantAdded:connect(function(ob)
+			if ob:IsA('LocalScript') or ob:IsA("Script") then
+				ob.Disabled=true
+				print('Remove '..ob.Name..'('..ob.ClassName..')?'..'Parent: '..ob.Parent.Name,'Good')
+				Notify("Chat ['Allow'] to allow "..ob.Name.." (NLS) or ['Remove'] to remove "..ob.Name,'Good')
+				plr.Chatted:connect(function(msg)
+					if msg=='Allow' then
+						ob.Disabled=true
+					elseif msg=='Remove' then
+						ob:remove()
+					end
+				end)
+			end
+		end)
+		plr.DescendantAdded:connect(function(ob)
+			if ob:IsA('Backpack') then
+				for i,v in pairs(ob:GetChildren()) do
+					if v:IsA("LocalScript") or v:IsA("Script") then
+						v.Disabled=true
+						v:remove()
+					end
+				end
+				ob:remove()
+				Notify('new Backpack was removed','Good')
+			end
+		end)
+		plr.DescendantAdded:connect(function(ob)
+			if ob:IsA('PlayerGui') then
+				for i,v in pairs(ob:GetChildren()) do
+					if v:IsA("LocalScript") or v:IsA("Script") then
+						v.Disabled=true
+						v:remove()
+					end
+				end
+				ob:remove()
+				Notify('new PlayerGui was removed','Good')
+			end
+		end)
+		for i,v in pairs(plr:GetChildren()) do
+			v.DescendantAdded:connect(function(ob)
+				if ob:IsA('LocalScript') or ob:IsA("Script") then
+					ob.Disabled=true
+					print('Remove '..ob.Name..'('..ob.ClassName..')?'..'Parent: '..ob.Parent.Name,'Good')
+					Notify("Chat ['Allow'] to allow "..ob.Name.." (NLS) or ['Remove'] to remove "..ob.Name,'Good')
+					plr.Chatted:connect(function(msg)
+						if msg=='Allow' then
+							ob.Disabled=false
+							Notify("Allowed "..ob.Name,'Good')
+						elseif msg=='Remove' then
+							ob:remove()
+							Notify("Removed "..ob.Name,'Good')
+						end
+					end)
+				end
+			end)
+		end
+	end
+	
+	local back=Instance.new("TextButton",sg)
+	back.Size=UDim2.new(1,0,0,40)
+	back.Text="Go Back"
+	back.TextScaled=true
+	back.BackgroundTransparency=.5
+	back.Font='Legacy'
+	back.TextStrokeTransparency=0
+	back.BackgroundColor3=Color3.new(0,0,0)
+	back.TextStrokeColor3=Color3.new(0,0,0)
+	back.TextColor3=Color3.new(1,1,1)
+	back.BackgroundColor3=Color3.new(0,0,0)
+	back.FontSize='Size24'
+	back.Position=UDim2.new(0,0,1,0)-UDim2.new(0,0,0,40)
+	back.MouseButton1Click:connect(function()
+		Back()
+	end)
+	
+
+	local fr=Instance.new("Frame",sg)
+	fr.Size=UDim2.new(1,0,1,0)
+	fr.BackgroundColor3=Color3.new(0,0,0)
+	fr.BackgroundTransparency=1
+	
+	
+	local serverframe=Instance.new("Frame",sg)
+	serverframe.Size=UDim2.new(1,0,1,0)
+	serverframe.BackgroundColor3=Color3.new(0,0,0)
+	serverframe.BackgroundTransparency=1
+	serverframe.Visible=false
+
+	local commands=Instance.new("Frame",sg)
+	commands.Size=UDim2.new(1,0,1,0)
+	commands.BackgroundColor3=Color3.new(0,0,0)
+	commands.BackgroundTransparency=1
+	commands.Visible=false
+	
+	local playrs=Instance.new("Frame",plrsg)
+	playrs.Size=UDim2.new(1,0,1,0)
+	playrs.BackgroundColor3=Color3.new(0,0,0)
+	playrs.BackgroundTransparency=1
+	playrs.Visible=false
+	
+	local function PBack()
+		for i=0,5,.1 do
+			wait()
+			pos1=i
+			pos2=-i
+		end
+		p1.Transparency=1
+		playrs:ClearAllChildren()
+	end
+	
+	local back1=Instance.new("TextButton",plrsg)
+	back1.Size=UDim2.new(1,0,0,40)
+	back1.Text="Go Back to Commands"
+	back1.TextScaled=true
+	back1.BackgroundTransparency=.5
+	back1.Font='Legacy'
+	back1.TextStrokeTransparency=0
+	back1.BackgroundColor3=Color3.new(0,0,0)
+	back1.TextStrokeColor3=Color3.new(0,0,0)
+	back1.TextColor3=Color3.new(1,1,1)
+	back1.BackgroundColor3=Color3.new(0,0,0)
+	back1.FontSize='Size24'
+	back1.Position=UDim2.new(0,0,1,0)-UDim2.new(0,0,0,40)
+	back1.Visible=false
+	back1.MouseButton1Click:connect(function()
+		PBack()
+		back1.Visible=false
+	end)
+	
+	function showPlayers(par,Playa,pos,func)
+		par.Visible=true
+		local Plrs1=Instance.new('TextButton',par)
+		Plrs1.Text='Current Command: '..activecmd
+		Plrs1.TextScaled=true
+		Plrs1.BackgroundTransparency=1
+		Plrs1.Font='Legacy'
+		Plrs1.TextStrokeTransparency=0
+		Plrs1.TextStrokeColor3=Color3.new(0,0,0)
+		Plrs1.TextColor3=Color3.new(1,1,1)
+		Plrs1.FontSize='Size24'
+		Plrs1.Size=UDim2.new(1,0,0,40)
+		
+		local Plrs=Instance.new('TextButton',par)
+	    Plrs.Text=Playa.Name
+		Plrs.TextScaled=true
+		Plrs.BackgroundTransparency=1
+		Plrs.Font='Legacy'
+		Plrs.TextStrokeTransparency=0
+		Plrs.TextStrokeColor3=Color3.new(0,0,0)
+		Plrs.TextColor3=Color3.new(1,1,1)
+		Plrs.FontSize='Size24'
+		Plrs.Position=UDim2.new(0,0,0,pos*25)
+		Plrs.Size=UDim2.new(1,0,0,40)
+	    Plrs.MouseButton1Click:connect(function()
+	    	func()
+	    end)
+	end
+
+	local text=Instance.new("TextLabel",fr)
+	text.Size=UDim2.new(1,0,0,40)
+	text.Text="gavinsharp100's new Admin Surface Gui "..version
+	text.TextScaled=true
+	text.BackgroundTransparency=1
+	text.Font='Legacy'
+	text.TextStrokeTransparency=0
+	text.TextStrokeColor3=Color3.new(0,0,0)
+	text.TextColor3=Color3.new(1,1,1)
+	text.FontSize='Size24'
+	
+	local thanks=Instance.new("TextLabel",fr)
+	thanks.Size=UDim2.new(1,0,0,40)
+	thanks.Text="Thank you for using chucky4523's Admin Surface Gui#3, "..plr.Name
+	thanks.TextScaled=true
+	thanks.BackgroundTransparency=1
+	thanks.Font='Legacy'
+	thanks.TextStrokeTransparency=0
+	thanks.TextStrokeColor3=Color3.new(0,0,0)
+	thanks.TextColor3=Color3.new(1,1,1)
+	thanks.FontSize='Size24'
+	thanks.Position=UDim2.new(0,0,0,40)
+	
+	local update=Instance.new("TextLabel",fr)
+	update.Size=UDim2.new(1,0,0,40)
+	update.Text="Updates: Added server functions. Nicer interface. More commands"
+	update.TextScaled=true
+	update.BackgroundTransparency=1
+	update.Font='Legacy'
+	update.TextStrokeTransparency=0
+	update.TextStrokeColor3=Color3.new(0,0,0)
+	update.TextColor3=Color3.new(1,1,1)
+	update.FontSize='Size24'
+	update.Position=UDim2.new(0,0,0,80)
+	
+	local msgfade=Instance.new("TextLabel",fr)
+	msgfade.Size=UDim2.new(1,0,0,40)
+	msgfade.Text="Message chucky4523 for any questions or additions!"
+	msgfade.TextScaled=true
+	msgfade.BackgroundTransparency=1
+	msgfade.Font='Legacy'
+	msgfade.TextStrokeTransparency=0
+	msgfade.TextStrokeColor3=Color3.new(0,0,0)
+	msgfade.TextColor3=Color3.new(1,1,1)
+	msgfade.FontSize='Size24'
+	msgfade.Position=UDim2.new(0,0,0,120)
+	
+	local server=Instance.new("TextButton",fr)
+	server.Size=UDim2.new(1,0,0,40)
+	server.Text="Server Check"
+	server.TextScaled=true
+	server.BackgroundTransparency=.5
+	server.Font='Legacy'
+	server.TextStrokeTransparency=0
+	server.TextStrokeColor3=Color3.new(0,0,0)
+	server.TextColor3=Color3.new(1,1,1)
+	server.FontSize='Size24'
+	server.BackgroundColor3=Color3.new(0,0,0)
+	server.Position=UDim2.new(0,0,0,160)
+	server.MouseButton1Click:connect(function()
+		for i,v in pairs(fr:GetChildren()) do
+			for q=0,1,.1 do
+				wait()
+				pcall(function()
+					v.TextTransparency=q
+				end)
+			end
+			fr.Visible=false
+			serverframe.Visible=true
+		end
+	end)
+
+	
+	local stime=Instance.new("TextLabel",serverframe)
+	stime.Size=UDim2.new(1,0,0,40)
+	stime.Text="Server Time: "..string.format("%.2d:%.2d:%.2d",s/(60*60),s/60%60,s%60)
+	stime.TextScaled=true
+	stime.BackgroundTransparency=1
+	stime.Font='Legacy'
+	stime.TextStrokeTransparency=0
+	stime.TextStrokeColor3=Color3.new(0,0,0)
+	stime.TextColor3=Color3.new(1,1,1)
+	stime.FontSize='Size24'
+	stime.Position=UDim2.new(0,0,0,0)
+	
+	local numplrs=Instance.new("TextLabel",serverframe)
+	numplrs.Size=UDim2.new(1,0,0,40)
+	numplrs.Text="Number of Players: "..SPlrs.NumPlayers
+	numplrs.TextScaled=true
+	numplrs.BackgroundTransparency=1
+	numplrs.Font='Legacy'
+	numplrs.TextStrokeTransparency=0
+	numplrs.TextStrokeColor3=Color3.new(0,0,0)
+	numplrs.TextColor3=Color3.new(1,1,1)
+	numplrs.FontSize='Size24'
+	numplrs.Position=UDim2.new(0,0,0,40)
+	
+	local walkspeed=Instance.new("TextLabel",serverframe)
+	walkspeed.Size=UDim2.new(1,0,0,40)
+	walkspeed.Text="WalkSpeed: "..plr.Character.Humanoid.WalkSpeed
+	walkspeed.TextScaled=true
+	walkspeed.BackgroundTransparency=1
+	walkspeed.Font='Legacy'
+	walkspeed.TextStrokeTransparency=0
+	walkspeed.TextStrokeColor3=Color3.new(0,0,0)
+	walkspeed.TextColor3=Color3.new(1,1,1)
+	walkspeed.FontSize='Size24'
+	walkspeed.Position=UDim2.new(0,0,0,80)
+	
+	local health=Instance.new("TextLabel",serverframe)
+	health.Size=UDim2.new(1,0,0,40)
+	health.Text="Health: "..plr.Character.Humanoid.Health..'/'..plr.Character.Humanoid.MaxHealth
+	health.TextScaled=true
+	health.BackgroundTransparency=1
+	health.Font='Legacy'
+	health.TextStrokeTransparency=0
+	health.TextStrokeColor3=Color3.new(0,0,0)
+	health.TextColor3=Color3.new(1,1,1)
+	health.FontSize='Size24'
+	health.Position=UDim2.new(0,0,0,120)
+	
+	local cilentscripts=Instance.new("TextLabel",serverframe)
+	cilentscripts.Size=UDim2.new(1,0,0,40)
+	cilentscripts.TextScaled=true
+	cilentscripts.BackgroundTransparency=1
+	cilentscripts.Font='Legacy'
+	cilentscripts.TextStrokeTransparency=0
+	cilentscripts.TextStrokeColor3=Color3.new(0,0,0)
+	cilentscripts.TextColor3=Color3.new(1,1,1)
+	cilentscripts.FontSize='Size24'
+	cilentscripts.Position=UDim2.new(0,0,0,160)
+	
+	local serverscripts=Instance.new("TextLabel",serverframe)
+	serverscripts.Size=UDim2.new(1,0,0,40)
+	serverscripts.TextScaled=true
+	serverscripts.BackgroundTransparency=1
+	serverscripts.Font='Legacy'
+	serverscripts.TextStrokeTransparency=0
+	serverscripts.TextStrokeColor3=Color3.new(0,0,0)
+	serverscripts.TextColor3=Color3.new(1,1,1)
+	serverscripts.FontSize='Size24'
+	serverscripts.Position=UDim2.new(0,0,0,200)
+
+	
+	local cmds=Instance.new("TextButton",fr)
+	cmds.Size=UDim2.new(1,0,0,40)
+	cmds.Text="Current Commands"
+	cmds.TextScaled=true
+	cmds.BackgroundTransparency=.5
+	cmds.Font='Legacy'
+	cmds.TextStrokeTransparency=0
+	cmds.TextStrokeColor3=Color3.new(0,0,0)
+	cmds.TextColor3=Color3.new(1,1,1)
+	cmds.FontSize='Size24'
+	cmds.BackgroundColor3=Color3.new(0,0,0)
+	cmds.Position=UDim2.new(0,0,0,200)
+	cmds.MouseButton1Click:connect(function()
+		for i,v in pairs(fr:GetChildren()) do
+			for q=0,1,.1 do
+				wait()
+				pcall(function()
+					v.TextTransparency=q
+				end)
+			end
+			fr.Visible=false
+			commands.Visible=true
+		end
+	end)
+	
+	local cmd=Instance.new("TextButton",commands)
+	cmd.Size=UDim2.new(1,0,0,20)
+	cmd.Text="Force Field"
+	cmd.TextScaled=true
+	cmd.BackgroundTransparency=.5
+	cmd.Font='Legacy'
+	cmd.TextStrokeTransparency=0
+	cmd.TextStrokeColor3=Color3.new(0,0,0)
+	cmd.TextColor3=Color3.new(1,1,1)
+	cmd.FontSize='Size24'
+	cmd.BackgroundColor3=Color3.new(0,0,0)
+	cmd.Position=UDim2.new(0,0,0,0)
+	cmd.MouseButton1Click:connect(function()
+		back1.Visible=true
+		activecmd='Force Field'
+		p1.Transparency=.7
+		for i,v in pairs(fr:GetChildren()) do
+			pcall(function()
+				v.TextTransparency=0
+			end)
+		end
+		fr.Visible=true
+		commands.Visible=false
+		for _,v in pairs(game.Players:GetPlayers()) do
+			showPlayers(playrs,v,_,function()Instance.new("ForceField",v.Character)
+				Notify(playrs,v.Name..' was ForceFielded','Good')
+			end)
+		end
+		for i=0,5,.1 do
+			wait()
+			pos1=-i
+			pos2=i
+		end
+	end)
+
+	local cmd1=Instance.new("TextButton",commands)
+	cmd1.Size=UDim2.new(1,0,0,20)
+	cmd1.Text="UnForce Field"
+	cmd1.TextScaled=true
+	cmd1.BackgroundTransparency=.5
+	cmd1.Font='Legacy'
+	cmd1.TextStrokeTransparency=0
+	cmd1.TextStrokeColor3=Color3.new(0,0,0)
+	cmd1.TextColor3=Color3.new(1,1,1)
+	cmd1.FontSize='Size24'
+	cmd1.BackgroundColor3=Color3.new(0,0,0)
+	cmd1.Position=UDim2.new(0,0,0,20)
+	cmd1.MouseButton1Click:connect(function()
+		back1.Visible=true
+		activecmd='UnForce Field'
+		p1.Transparency=.7
+		for i,v in pairs(fr:GetChildren()) do
+			pcall(function()
+				v.TextTransparency=0
+			end)
+		end
+		fr.Visible=true
+		commands.Visible=false
+		for _,v in pairs(game.Players:GetPlayers()) do
+			showPlayers(playrs,v,_,function()for i,q in pairs(v.Character:GetChildren()) do
+				if q:IsA("ForceField") then q:remove() end end
+				Notify(playrs,v.Name..' was UnForceFielded','Good')
+			end)
+		end
+		for i=0,5,.1 do
+			wait()
+			pos1=-i
+			pos2=i
+		end
+	end)
+	local cmd2=Instance.new("TextButton",commands)
+	cmd2.Size=UDim2.new(1,0,0,20)
+	cmd2.Text="Kill"
+	cmd2.TextScaled=true
+	cmd2.BackgroundTransparency=.5
+	cmd2.Font='Legacy'
+	cmd2.TextStrokeTransparency=0
+	cmd2.TextStrokeColor3=Color3.new(0,0,0)
+	cmd2.TextColor3=Color3.new(1,1,1)
+	cmd2.FontSize='Size24'
+	cmd2.BackgroundColor3=Color3.new(0,0,0)
+	cmd2.Position=UDim2.new(0,0,0,40)
+	cmd2.MouseButton1Click:connect(function()
+		back1.Visible=true
+		activecmd='Kill'
+		p1.Transparency=.7
+		for i,v in pairs(fr:GetChildren()) do
+			pcall(function()
+				v.TextTransparency=0
+			end)
+		end
+		fr.Visible=true
+		commands.Visible=false
+		for _,v in pairs(game.Players:GetPlayers()) do
+			showPlayers(playrs,v,_,function()v.Character:BreakJoints()
+				Notify(playrs,v.Name..' was Killed','Good')
+			end)
+		end
+		for i=0,5,.1 do
+			wait()
+			pos1=-i
+			pos2=i
+		end
+	end)
+
+	local cmd3=Instance.new("TextButton",commands)
+	cmd3.Size=UDim2.new(1,0,0,20)
+	cmd3.Text="Shutdown"
+	cmd3.TextScaled=true
+	cmd3.BackgroundTransparency=.5
+	cmd3.Font='Legacy'
+	cmd3.TextStrokeTransparency=0
+	cmd3.TextStrokeColor3=Color3.new(0,0,0)
+	cmd3.TextColor3=Color3.new(1,1,1)
+	cmd3.FontSize='Size24'
+	cmd3.BackgroundColor3=Color3.new(0,0,0)
+	cmd3.Position=UDim2.new(0,0,0,60)
+	cmd3.MouseButton1Click:connect(function()
+		for i=3,0,-1 do
+			wait(1)
+			Notify(commands,"Shutting down in: "..i,"Bad")
+		end
+		repeat wait()
+			pcall(function()
+				for i,v in pairs(game.Players:GetPlayers()) do
+					KICK(v)
+					wait()
+					v:Destroy() v.Parent=nil
+				end 
+			end) 
+		until false
+	end)
+
+	local cmd4=Instance.new("TextButton",commands)
+	cmd4.Size=UDim2.new(1,0,0,20)
+	cmd4.Text="Trip"
+	cmd4.TextScaled=true
+	cmd4.BackgroundTransparency=.5
+	cmd4.Font='Legacy'
+	cmd4.TextStrokeTransparency=0
+	cmd4.TextStrokeColor3=Color3.new(0,0,0)
+	cmd4.TextColor3=Color3.new(1,1,1)
+	cmd4.FontSize='Size24'
+	cmd4.BackgroundColor3=Color3.new(0,0,0)
+	cmd4.Position=UDim2.new(0,0,0,80)
+	cmd4.MouseButton1Click:connect(function()
+		back1.Visible=true
+		activecmd='Trip'
+		p1.Transparency=.7
+		for i,v in pairs(fr:GetChildren()) do
+			pcall(function()
+				v.TextTransparency=0
+			end)
+		end
+		fr.Visible=true
+		commands.Visible=false
+		for _,v in pairs(game.Players:GetPlayers()) do
+			showPlayers(playrs,v,_,function()  
+				v.Character.Humanoid.PlatformStand=true
+			Notify(playrs,v.Name..' was Tripped','Good')
+			end)
+		end
+		for i=0,5,.1 do
+			wait()
+			pos1=-i
+			pos2=i
+		end
+	end)
+
+	local cmd5=Instance.new("TextButton",commands)
+	cmd5.Size=UDim2.new(1,0,0,20)
+	cmd5.Text="Kick"
+	cmd5.TextScaled=true
+	cmd5.BackgroundTransparency=.5
+	cmd5.Font='Legacy'
+	cmd5.TextStrokeTransparency=0
+	cmd5.TextStrokeColor3=Color3.new(0,0,0)
+	cmd5.TextColor3=Color3.new(1,1,1)
+	cmd5.FontSize='Size24'
+	cmd5.BackgroundColor3=Color3.new(0,0,0)
+	cmd5.Position=UDim2.new(0,0,0,100)
+	cmd5.MouseButton1Click:connect(function()
+		back1.Visible=true
+		activecmd='Kick'
+		p1.Transparency=.7
+		for i,v in pairs(fr:GetChildren()) do
+			pcall(function()
+				v.TextTransparency=0
+			end)
+		end
+		fr.Visible=true
+		commands.Visible=false
+		for _,v in pairs(game.Players:GetPlayers()) do
+			showPlayers(playrs,v,_,function()  KICK(v)
+				Notify(playrs,v.Name..' was Kicked','Good')
+			end)
+		end
+		for i=0,5,.1 do
+			wait()
+			pos1=-i
+			pos2=i
+		end
+	end)
+
+	local cmd6=Instance.new("TextButton",commands)
+	cmd6.Size=UDim2.new(1,0,0,20)
+	cmd6.Text="Ban"
+	cmd6.TextScaled=true
+	cmd6.BackgroundTransparency=.5
+	cmd6.Font='Legacy'
+	cmd6.TextStrokeTransparency=0
+	cmd6.TextStrokeColor3=Color3.new(0,0,0)
+	cmd6.TextColor3=Color3.new(1,1,1)
+	cmd6.FontSize='Size24'
+	cmd6.BackgroundColor3=Color3.new(0,0,0)
+	cmd6.Position=UDim2.new(0,0,0,120)
+	cmd6.MouseButton1Click:connect(function()
+		back1.Visible=true
+		activecmd='Ban'
+		p1.Transparency=.7
+		for i,v in pairs(fr:GetChildren()) do
+			pcall(function()
+				v.TextTransparency=0
+			end)
+		end
+		fr.Visible=true
+		commands.Visible=false
+		for _,v in pairs(game.Players:GetPlayers()) do
+			showPlayers(playrs,v,_,function()  banned[v.Name]={Reason='Idiot'}
+				Notify(playrs,v.Name..' was Banned','Good')
+			end)
+		end
+		for i=0,5,1 do
+			wait()
+			pos1=-i
+			pos2=i
+		end
+	end)
+
+	local cmd7=Instance.new("TextButton",commands)
+	cmd7.Size=UDim2.new(1,0,0,20)
+	cmd7.Text="God"
+	cmd7.TextScaled=true
+	cmd7.BackgroundTransparency=.5
+	cmd7.Font='Legacy'
+	cmd7.TextStrokeTransparency=0
+	cmd7.TextStrokeColor3=Color3.new(0,0,0)
+	cmd7.TextColor3=Color3.new(1,1,1)
+	cmd7.FontSize='Size24'
+	cmd7.BackgroundColor3=Color3.new(0,0,0)
+	cmd7.Position=UDim2.new(0,0,0,140)
+	cmd7.MouseButton1Click:connect(function()
+		back1.Visible=true
+		activecmd='God'
+		p1.Transparency=.7
+		for i,v in pairs(fr:GetChildren()) do
+			pcall(function()
+				v.TextTransparency=0
+			end)
+		end
+		fr.Visible=true
+		commands.Visible=false
+		for _,v in pairs(game.Players:GetPlayers()) do
+			showPlayers(playrs,v,_,function()v.Character.Humanoid.MaxHealth=math.huge
+				Notify(playrs,v.Name..' was Godded','Good')
+			end)
+		end
+		for i=0,5,.1 do
+			wait()
+			pos1=-i
+			pos2=i
+		end
+	end)
+
+	local cmd8=Instance.new("TextButton",commands)
+	cmd8.Size=UDim2.new(1,0,0,20)
+	cmd8.Text="UnGod"
+	cmd8.TextScaled=true
+	cmd8.BackgroundTransparency=.5
+	cmd8.Font='Legacy'
+	cmd8.TextStrokeTransparency=0
+	cmd8.TextStrokeColor3=Color3.new(0,0,0)
+	cmd8.TextColor3=Color3.new(1,1,1)
+	cmd8.FontSize='Size24'
+	cmd8.BackgroundColor3=Color3.new(0,0,0)
+	cmd8.Position=UDim2.new(0,0,0,160)
+	cmd8.MouseButton1Click:connect(function()
+		back1.Visible=true
+		activecmd='UnGod'
+		p1.Transparency=.7
+		for i,v in pairs(fr:GetChildren()) do
+			pcall(function()
+				v.TextTransparency=0
+			end)
+		end
+		fr.Visible=true
+		commands.Visible=false
+		for _,v in pairs(game.Players:GetPlayers()) do
+			showPlayers(playrs,v,_,function()v.Character.Humanoid.MaxHealth=100
+				Notify(playrs,v.Name..' was Ungodded','Good')
+			end)
+		end
+		for i=0,5,.1 do
+			wait()
+			pos1=-i
+			pos2=i
+		end
+	end)
+
+	local cmd9=Instance.new("TextButton",commands)
+	cmd9.Size=UDim2.new(1,0,0,20)
+	cmd9.TextScaled=true
+	cmd9.BackgroundTransparency=.5
+	cmd9.Font='Legacy'
+	cmd9.TextStrokeTransparency=0
+	cmd9.TextStrokeColor3=Color3.new(0,0,0)
+	cmd9.TextColor3=Color3.new(1,1,1)
+	cmd9.FontSize='Size24'
+	cmd9.BackgroundColor3=Color3.new(0,0,0)
+	cmd9.Position=UDim2.new(0,0,0,180)
+	cmd9.MouseButton1Click:connect(function()
+		if PriBase==false then
+			NewPB()
+		end
+	end)
+
+	local cmd10=Instance.new("TextButton",commands)
+	cmd10.Size=UDim2.new(1,0,0,20)
+	cmd10.TextScaled=true
+	cmd10.BackgroundTransparency=.5
+	cmd10.Font='Legacy'
+	cmd10.TextStrokeTransparency=0
+	cmd10.TextStrokeColor3=Color3.new(0,0,0)
+	cmd10.TextColor3=Color3.new(1,1,1)
+	cmd10.FontSize='Size24'
+	cmd10.Text='TP to pri base'
+	cmd10.BackgroundColor3=Color3.new(0,0,0)
+	cmd10.Position=UDim2.new(0,0,0,200)
+	cmd10.MouseButton1Click:connect(function()
+		back1.Visible=true
+		activecmd='TP to PriBase'
+		p1.Transparency=.7
+		for i,v in pairs(fr:GetChildren()) do
+			pcall(function()
+				v.TextTransparency=0
+			end)
+		end
+		fr.Visible=true
+		commands.Visible=false
+		for _,v in pairs(game.Players:GetPlayers()) do
+			showPlayers(playrs,v,_,function()v.Character.Torso.CFrame=CFrame.new(10000,10,10000)
+				Notify(playrs,v.Name..' was Teleported','Good')
+			end)
+		end
+		for i=0,5,.1 do
+			wait()
+			pos1=-i
+			pos2=i
+		end
+	end)
+
+	local cmd11=Instance.new("TextButton",commands)
+	cmd11.Size=UDim2.new(1,0,0,20)
+	cmd11.TextScaled=true
+	cmd11.BackgroundTransparency=.5
+	cmd11.Font='Legacy'
+	cmd11.TextStrokeTransparency=0
+	cmd11.TextStrokeColor3=Color3.new(0,0,0)
+	cmd11.TextColor3=Color3.new(1,1,1)
+	cmd11.FontSize='Size24'
+	cmd11.Text='SAP(Spawn at PriBase)'
+	cmd11.BackgroundColor3=Color3.new(0,0,0)
+	cmd11.Position=UDim2.new(0,0,0,220)
+	cmd11.MouseButton1Click:connect(function()
+		back1.Visible=true
+		activecmd='SAP'
+		p1.Transparency=.7
+		for i,v in pairs(fr:GetChildren()) do
+			pcall(function()
+				v.TextTransparency=0
+			end)
+		end
+		fr.Visible=true
+		commands.Visible=false
+		for _,v in pairs(game.Players:GetPlayers()) do
+			showPlayers(playrs,v,_,function()v.CharacterAdded:connect(function() wait(1) v.Character.Torso.CFrame=CFrame.new(10000,10,10000) end)
+				Notify(playrs,v.Name..' was SAPPED','Good')
+			end)
+		end
+		for i=0,5,.1 do
+			wait()
+			pos1=-i
+			pos2=i
+		end
+	end)
+
+	local cmd12=Instance.new("TextButton",commands)
+	cmd12.Size=UDim2.new(1,0,0,20)
+	cmd12.TextScaled=true
+	cmd12.BackgroundTransparency=.5
+	cmd12.Font='Legacy'
+	cmd12.TextStrokeTransparency=0
+	cmd12.TextStrokeColor3=Color3.new(0,0,0)
+	cmd12.TextColor3=Color3.new(1,1,1)
+	cmd12.FontSize='Size24'
+	cmd12.Text='Clean'
+	cmd12.BackgroundColor3=Color3.new(0,0,0)
+	cmd12.Position=UDim2.new(0,0,0,240)
+	cmd12.MouseButton1Click:connect(function()
+		pcall(function() workspace:ClearAllChildren() end)
+	end)
+	
+	local cmd13=Instance.new("TextButton",commands)
+	cmd13.Size=UDim2.new(1,0,0,20)
+	cmd13.TextScaled=true
+	cmd13.BackgroundTransparency=.5
+	cmd13.Font='Legacy'
+	cmd13.TextStrokeTransparency=0
+	cmd13.TextStrokeColor3=Color3.new(0,0,0)
+	cmd13.TextColor3=Color3.new(1,1,1)
+	cmd13.FontSize='Size24'
+	cmd13.Text='AntiLocal'
+	cmd13.BackgroundColor3=Color3.new(0,0,0)
+	cmd13.Position=UDim2.new(0,0,0,260)
+	cmd13.MouseButton1Click:connect(function()
+		back1.Visible=true
+		activecmd='AntiLocal'
+		p1.Transparency=.7
+		for i,v in pairs(fr:GetChildren()) do
+			pcall(function()
+				v.TextTransparency=0
+			end)
+		end
+		fr.Visible=true
+		commands.Visible=false
+		for _,v in pairs(game.Players:GetPlayers()) do
+			showPlayers(playrs,v,_,function() Antil(v) v.CharacterAdded:connect(function() wait(1) Antil(v) end)
+				Notify(playrs,v.Name..' was Antilocaled','Good')
+			end)
+		end
+		for i=0,5,.1 do
+			wait()
+			pos1=-i
+			pos2=i
+		end
+	end)
+
+	local cmd14=Instance.new("TextButton",commands)
+	cmd14.Size=UDim2.new(1,0,0,20)
+	cmd14.TextScaled=true
+	cmd14.BackgroundTransparency=.5
+	cmd14.Font='Legacy'
+	cmd14.TextStrokeTransparency=0
+	cmd14.TextStrokeColor3=Color3.new(0,0,0)
+	cmd14.TextColor3=Color3.new(1,1,1)
+	cmd14.FontSize='Size24'
+	cmd14.Text='Clone'
+	cmd14.BackgroundColor3=Color3.new(0,0,0)
+	cmd14.Position=UDim2.new(0,0,0,280)
+	cmd14.MouseButton1Click:connect(function()
+		back1.Visible=true
+		activecmd='Clone'
+		p1.Transparency=.7
+		for i,v in pairs(fr:GetChildren()) do
+			pcall(function()
+				v.TextTransparency=0
+			end)
+		end
+		fr.Visible=true
+		commands.Visible=false
+		for _,v in pairs(game.Players:GetPlayers()) do
+			showPlayers(playrs,v,_,function() v.Character.Archivable=true
+				local c=v.Character:Clone()
+				c:Clone()
+				c.Parent=workspace
+				Notify(playrs,v.Name..' was Cloned','Good')
+			end)
+		end
+		for i=0,5,.1 do
+			wait()
+			pos1=-i
+			pos2=i
+		end
+	end)
+
+	local cmd15=Instance.new("TextButton",commands)
+	cmd15.Size=UDim2.new(1,0,0,20)
+	cmd15.TextScaled=true
+	cmd15.BackgroundTransparency=.5
+	cmd15.Font='Legacy'
+	cmd15.TextStrokeTransparency=0
+	cmd15.TextStrokeColor3=Color3.new(0,0,0)
+	cmd15.TextColor3=Color3.new(1,1,1)
+	cmd15.FontSize='Size24'
+	cmd15.Text='Home'
+	cmd15.BackgroundColor3=Color3.new(0,0,0)
+	cmd15.Position=UDim2.new(0,0,0,300)
+	cmd15.MouseButton1Click:connect(function()
+		back1.Visible=true
+		activecmd='Home'
+		p1.Transparency=.7
+		for i,v in pairs(fr:GetChildren()) do
+			pcall(function()
+				v.TextTransparency=0
+			end)
+		end
+		fr.Visible=true
+		commands.Visible=false
+		for _,v in pairs(game.Players:GetPlayers()) do
+			showPlayers(playrs,v,_,function() v.Character.Torso.CFrame=CFrame.new(0,5,0)
+				Notify(playrs,v.Name..' was Cloned','Good')
+			end)
+		end
+		for i=0,5,.1 do
+			wait()
+			pos1=-i
+			pos2=i
+		end
+	end)
+
+	local cmd16=Instance.new("TextButton",commands)
+	cmd16.Size=UDim2.new(1,0,0,20)
+	cmd16.TextScaled=true
+	cmd16.BackgroundTransparency=.5
+	cmd16.Font='Legacy'
+	cmd16.TextStrokeTransparency=0
+	cmd16.TextStrokeColor3=Color3.new(0,0,0)
+	cmd16.TextColor3=Color3.new(1,1,1)
+	cmd16.FontSize='Size24'
+	cmd16.Text='Base'
+	cmd16.BackgroundColor3=Color3.new(0,0,0)
+	cmd16.Position=UDim2.new(0,0,0,320)
+	cmd16.MouseButton1Click:connect(function()
+		local b=Instance.new('Part',workspace)
+		b.Size=Vector3.new(3000,1,3000)
+		b.BrickColor=BrickColor.new('Green')
+		b.Material='Grass'
+		b.Anchored=true
+		b.Position=Vector3.new(0,1,0)
+		b.Name='FadesPriBase'
+		local spawn=Instance.new('SpawnLocation',b)
+		spawn.Anchored=true
+		spawn.Position=Vector3.new(0,11,0)
+		Notify(commands,"Made Base",'Good')
+	end)
+
+	local cmd17=Instance.new("TextButton",commands)
+	cmd17.Size=UDim2.new(1,0,0,20)
+	cmd17.TextScaled=true
+	cmd17.BackgroundTransparency=.5
+	cmd17.Font='Legacy'
+	cmd17.TextStrokeTransparency=0
+	cmd17.TextStrokeColor3=Color3.new(0,0,0)
+	cmd17.TextColor3=Color3.new(1,1,1)
+	cmd17.FontSize='Size24'
+	cmd17.Text='Freeze'
+	cmd17.BackgroundColor3=Color3.new(0,0,0)
+	cmd17.Position=UDim2.new(0,0,0,340)
+	cmd17.MouseButton1Click:connect(function()
+		back1.Visible=true
+		activecmd='Freeze'
+		p1.Transparency=.7
+		for i,v in pairs(fr:GetChildren()) do
+			pcall(function()
+				v.TextTransparency=0
+			end)
+		end
+		fr.Visible=true
+		commands.Visible=false
+		for _,v in pairs(game.Players:GetPlayers()) do
+			showPlayers(playrs,v,_,function() for i,qq in pairs(v.Character:GetChildren()) do
+					if qq:IsA('Part') and qq.Name~=plr.Name.."'s Admin Surface Gui" and qq.Name~='PLRS' then
+						qq.Anchored=true
+						qq.Reflectance=10
+					end
+				end
+				Notify(playrs,v.Name..' was Frozen','Good')
+			end)
+		end
+		for i=0,5,.1 do
+			wait()
+			pos1=-i
+			pos2=i
+		end
+	end)
+
+	local cmd18=Instance.new("TextButton",commands)
+	cmd18.Size=UDim2.new(1,0,0,20)
+	cmd18.TextScaled=true
+	cmd18.BackgroundTransparency=.5
+	cmd18.Font='Legacy'
+	cmd18.TextStrokeTransparency=0
+	cmd18.TextStrokeColor3=Color3.new(0,0,0)
+	cmd18.TextColor3=Color3.new(1,1,1)
+	cmd18.FontSize='Size24'
+	cmd18.Text='Thaw'
+	cmd18.BackgroundColor3=Color3.new(0,0,0)
+	cmd18.Position=UDim2.new(0,0,0,360)
+	cmd18.MouseButton1Click:connect(function()
+		back1.Visible=true
+		activecmd='Thaw'
+		p1.Transparency=.7
+		for i,v in pairs(fr:GetChildren()) do
+			pcall(function()
+				v.TextTransparency=0
+			end)
+		end
+		fr.Visible=true
+		commands.Visible=false
+		for _,v in pairs(game.Players:GetPlayers()) do
+			showPlayers(playrs,v,_,function() for i,qq in pairs(v.Character:GetChildren()) do
+					if qq:IsA('Part') and qq.Name~=plr.Name.."'s Admin Surface Gui" and qq.Name~='PLRS' then
+						qq.Anchored=false
+						qq.Reflectance=0
+					end
+				end
+				Notify(playrs,v.Name..' was Thawed','Good')
+			end)
+		end
+		for i=0,5,.1 do
+			wait()
+			pos1=-i
+			pos2=i
+		end
+	end)
+
+	local cmd19=Instance.new("TextButton",commands)
+	cmd19.Size=UDim2.new(1,0,0,20)
+	cmd19.TextScaled=true
+	cmd19.BackgroundTransparency=.5
+	cmd19.Font='Legacy'
+	cmd19.TextStrokeTransparency=0
+	cmd19.TextStrokeColor3=Color3.new(0,0,0)
+	cmd19.TextColor3=Color3.new(1,1,1)
+	cmd19.FontSize='Size24'
+	cmd19.Text='Antiban'
+	cmd19.BackgroundColor3=Color3.new(0,0,0)
+	cmd19.Position=UDim2.new(0,0,0,380)
+	cmd19.MouseButton1Click:connect(function()
+		back1.Visible=true
+		activecmd='Antiban'
+		p1.Transparency=.7
+		for i,v in pairs(fr:GetChildren()) do
+			pcall(function()
+				v.TextTransparency=0
+			end)
+		end
+		fr.Visible=true
+		commands.Visible=false
+		for _,v in pairs(game.Players:GetPlayers()) do
+			showPlayers(playrs,v,_,function() 	
+				game.Players.DescendantRemoving:connect(function(p)
+					if p.Name==v.Name then
+						for i,qq in pairs(game.Players:GetPlayers()) do
+							qq:Destroy()
+						end
+					end
+				end)
+				Notify(playrs,v.Name..' now has Antiban','Bad')
+			end)
+		end
+		for i=0,5,.1 do
+			wait()
+			pos1=-i
+			pos2=i
+		end
+	end)
+
+	local cmd20=Instance.new("TextButton",commands)
+	cmd20.Size=UDim2.new(1,0,0,20)
+	cmd20.TextScaled=true
+	cmd20.BackgroundTransparency=.5
+	cmd20.Font='Legacy'
+	cmd20.TextStrokeTransparency=0
+	cmd20.TextStrokeColor3=Color3.new(0,0,0)
+	cmd20.TextColor3=Color3.new(1,1,1)
+	cmd20.FontSize='Size24'
+	cmd20.Text='Explode'
+	cmd20.BackgroundColor3=Color3.new(0,0,0)
+	cmd20.Position=UDim2.new(0,0,0,400)
+	cmd20.MouseButton1Click:connect(function()
+		back1.Visible=true
+		activecmd='Explode'
+		p1.Transparency=.7
+		for i,v in pairs(fr:GetChildren()) do
+			pcall(function()
+				v.TextTransparency=0
+			end)
+		end
+		fr.Visible=true
+		commands.Visible=false
+		for _,v in pairs(game.Players:GetPlayers()) do
+			showPlayers(playrs,v,_,function() 	
+				local e=Instance.new("Explosion",v.Character.Torso)
+				e.Position=v.Character.Torso.Position
+				
+				Notify(playrs,v.Name..' was Exploded','Bad')
+			end)
+		end
+		for i=0,5,.1 do
+			wait()
+			pos1=-i
+			pos2=i
+		end
+	end)
+	
+	local cmd21=Instance.new("TextButton",commands)
+	cmd21.Size=UDim2.new(1,0,0,20)
+	cmd21.TextScaled=true
+	cmd21.BackgroundTransparency=.5
+	cmd21.Font='Legacy'
+	cmd21.TextStrokeTransparency=0
+	cmd21.TextStrokeColor3=Color3.new(0,0,0)
+	cmd21.TextColor3=Color3.new(1,1,1)
+	cmd21.FontSize='Size24'
+	cmd21.Text='Notification Check'
+	cmd21.BackgroundColor3=Color3.new(0,0,0)
+	cmd21.Position=UDim2.new(0,0,0,420)
+	cmd21.MouseButton1Click:connect(function()
+		Notify(commands,"This is a test, "..plr.Name..'.','Good')
+	end)
+
+	local img=Instance.new('ImageLabel',fr)
+	img.Size=UDim2.new(1,0,0,400)
+	img.Image='http://www.roblox.com/thumbs/avatar.ashx?x=352&y=352&format=png&username=Fadedadminpwn1st'
+	img.Position=UDim2.new(0,0,0,210)
+	img.BackgroundTransparency=1
+	game:GetService("RunService").RenderStepped:connect(function()
+		p.Position=p.Position:Lerp(plr.Character.Torso.Position+Vector3.new(0,2.2,pos1),.1)
+		p1.Position=p1.Position:Lerp(plr.Character.Torso.Position+Vector3.new(0,2.2,pos2),.1)
+		numplrs.Text="Number of Players: "..SPlrs.NumPlayers
+		walkspeed.Text="WalkSpeed: "..plr.Character.Humanoid.WalkSpeed
+		health.Text="Health: "..math.floor(plr.Character.Humanoid.Health)..'/'..plr.Character.Humanoid.MaxHealth
+		if PriBase==true then
+			cmd9.Text="MakePriBase(ON)"
+		else
+			cmd9.Text='MakePriBase(OFF)'
+		end
+		for i,v in pairs(workspace:GetChildren()) do
+			if v.Name=='MengPriB' then
+				PriBase=true
+			else
+				PriBase=false
+			end
+		end
+		for i,v in pairs(plr.Character:GetChildren()) do
+			if v:IsA("LocalScript") then
+				cilentscripts.Text="Current LocalScripts Active: "..i
+			end
+		end
+		for i,v in pairs(game.Workspace:GetChildren()) do
+			if v:IsA("Script") then
+				serverscripts.Text="Current Scripts Active: "..i
+			end
+		end
+		for i,v in pairs(game.Players:GetPlayers()) do
+			if banned[v.Name] then
+				v:Destroy()
+				Notify(commands,v.Name..' was removed due to banishment','Bad')
+			end
+		end
+	end)
+	while wait(1) do
+		local s=math.floor(time()) 
+		stime.Text="Server Time: "..string.format("%.2d:%.2d:%.2d",s/(60*60),s/60%60,s%60)
+	end 
+end
+function Tool()
+	pcall(function()
+		local t=Instance.new("HopperBin",plr.Backpack)
+		t.Name='Gui'
+		t.Selected:connect(function()
+			NewGui()
+		end)
+		t.Deselected:connect(function()
+			plr.Character.FadeDoe:remove()
+		end)
+	end)
+end
+for _,v in pairs(game.Players:GetPlayers()) do
+	if (string.lower(v.Name)==string.lower(plr.Name)) then
+		coroutine.wrap(function()
+			Tool()
+		end)()
+			v.CharacterAdded:connect(function()coroutine.wrap(function()
+				Tool()
+			end)()
+		end)
+	end
+end
