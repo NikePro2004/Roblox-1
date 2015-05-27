@@ -1,4 +1,4 @@
-player = game:GetService("Players").gavinsharp100 or owner
+player = game:GetService("Players").LocalPlayer or owner
 repeat wait() until player.Character ~=nil
 player.Character:WaitForChild('Humanoid')
 par = Instance.new("Part", player.Character)
