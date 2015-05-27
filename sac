@@ -1,4 +1,4 @@
-local lp = game.Players.gavinsharp100
+local lp = game.Players.LocalPlayer
 local chr = lp.Character
 local euler = CFrame.fromEulerAnglesXYZ
 local rad = math.rad
@@ -240,6 +240,7 @@ hum.Health = math.huge
  
 lp.Chatted:connect(function(msg)
         Chat(msg)
+end
 end)
 
 goldie=true
