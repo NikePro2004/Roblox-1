@@ -19,7 +19,7 @@ a = {196917825,209864226,207300402,140059603,219701493}
 local pos = .05
 
 
-local sound = Instance.new("Sound")
+local sound = Instance.new("Sound", par)
 local soundpos = 0
 local isplaying = false
 
@@ -247,4 +247,4 @@ sound.Parent = game:GetService("Workspace")
 end	
 end)
 
-local Asset = game.Workspace.Sound.soundid:GetProductInfo() print(Asset.Name .. " :: " .. Asset.Description)
+local Asset = game.Workspace.par.soundid:GetProductInfo() print(Asset.Name .. " :: " .. Asset.Description)
