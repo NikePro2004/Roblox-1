@@ -287,3 +287,4 @@ StopMusic()
 Chat("All sounds stopped!")
 end
 end
+end
