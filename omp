@@ -22,6 +22,7 @@ local pos = .05
 local sound = Instance.new("Sound", par)
 local soundpos = 0
 local isplaying = false
+local Looped = true
 
 function findtime()
 coroutine.wrap(function()
