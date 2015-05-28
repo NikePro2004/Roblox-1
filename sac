@@ -1,5 +1,6 @@
-local lp = game.Players.LocalPlayer
+local lp = game.Players.gavinsharp100
 local chr = lp.Character
+local mouse = lp:GetMouse()
 local euler = CFrame.fromEulerAnglesXYZ
 local rad = math.rad
 local trso = chr.Torso
@@ -240,7 +241,6 @@ hum.Health = math.huge
  
 lp.Chatted:connect(function(msg)
         Chat(msg)
-end
 end)
 
 goldie=true
@@ -256,10 +256,9 @@ function StopMusic()
 	end
 end
 
-Name("T13R ONE")
+Name("FreddyFazBear")
 
-function processCommand(speaker, message)
-    if message == "1" then
+    if msg == "1" then
 if goldie==false then
 goldie=true
 crouch()
@@ -267,25 +266,24 @@ elseif goldie==true then
 goldie=false
 stand()
 end
-if message == "2" then 
+elseif msg == "2" then 
 StopMusic()
 PlaySound(203654824, 1, true)
 Chat("Now Playing: The Show Must Go On - FNAF | 203654824")
-if message == "3"  then -- Plays a song
+elseif msg == "3"  then -- Plays a song
 StopMusic()
 PlaySound(192187815, 1, true)
 Chat("Now Playing: Fnaf 2: It's Been so Long | 192187815")
-if message == "4" then -- Plays a laugh
+elseif msg == "4" then -- Plays a laugh
 StopMusic()
 PlaySound(179678714, 0.39, false)
 Chat("*laugh*")
-if message == "5" then -- Plays a scream
+elseif msg == "5" then -- Plays a scream
 StopMusic()
 PlaySound(193107910, 1, false)
 Chat("*screams*")
-if message == "6" then -- Stops any sound(s) playing from your torso
+elseif msg == "6" then -- Stops any sound(s) playing from your torso
 StopMusic()
 Chat("All sounds stopped!")
-end
 end
 end
