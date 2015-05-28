@@ -1,0 +1,114 @@
+game.Players.LocalPlayer.Chatted:connect(function(msg)
+	if msg == "Music" or msg == "music" then
+	local s = Instance.new("Sound")
+s.Name = "Sound21"
+s.SoundId = "http://www.roblox.com/asset/?id=219701493"
+s.Volume = 1
+s.Looped = true
+s.archivable = false
+s.Parent = game.workspace.Interactual
+s:play()
+end
+    if msg == "Stop" or msg == "stop" then
+        game.workspace.Interactual.Sound21:Destroy()
+    end
+end)
+
+
+game.Players.LocalPlayer.Chatted:connect(function(msg)
+        function Chat(part,msg)
+            game:GetService("Chat"):Chat(part,msg,Enum.ChatColor.Green)
+        end
+        head = game.Players.LocalPlayer.Character.Head
+        Chat(head, msg.."  [D0 U EVN L1FT]")
+end)
+
+game.Players.LocalPlayer.Chatted:connect(function(msg)
+	if msg == "darude" or msg == "Darude" then
+	local s = Instance.new("Sound")
+s.Name = "Sound1"
+s.SoundId = "http://www.roblox.com/asset/?id=159572349"
+s.Volume = 1
+s.Looped = true
+s.archivable = false
+s.Parent = game.workspace.Interactual
+s:play()
+end
+    if msg == "Stop" or msg == "stop" then
+        game.workspace.Interactual.Sound1:Destroy()
+    end
+end)
+
+game.Players.LocalPlayer.Chatted:connect(function(msg)
+	if msg == "illuminati" or msg == "Illuminati" then
+	local s = Instance.new("Sound")
+s.Name = "Sound12"
+s.SoundId = "http://www.roblox.com/asset/?id=185788250"
+s.Volume = 1
+s.Looped = true
+s.archivable = false
+s.Parent = game.workspace.Interactual
+s:play()
+end
+    if msg == "Stop" or msg == "stop" then
+        game.workspace.Interactual.Sound12:Destroy()
+    end
+end)
+
+game.Players.LocalPlayer.Chatted:connect(function(msg)
+	if msg == "blox" or msg == "Blox" then
+	local s = Instance.new("Sound")
+s.Name = "Sound19"
+s.SoundId = "http://www.roblox.com/asset/?id=143302576"
+s.Volume = 1
+s.Pitch = 16
+s.Looped = true
+s.archivable = false
+s.Parent = game.workspace.Interactual
+s:play()
+end
+    if msg == "Stop" or msg == "stop" then
+        game.workspace.Interactual.Sound19:Destroy()
+    end
+end)
+
+game.Players.LocalPlayer.Chatted:connect(function(msg)
+	if msg == "Bastile" or msg == "Pompeii" then
+	local s = Instance.new("Sound")
+s.Name = "Sound20"
+s.SoundId = "http://www.roblox.com/asset/?id=162900260"
+s.Volume = 1
+s.Looped = true
+s.archivable = false
+s.Parent = game.workspace.Interactual
+s:play()
+end
+    if msg == "Stop" or msg == "stop" then
+        game.workspace.Interactual.Sound20:Destroy()
+    end
+end)
+
+
+game.Players.LocalPlayer.Chatted:connect(function(msg)
+	if msg == "wprint" or msg == "wPrint" then
+	table.foreach(workspace:children(),print)
+    end
+end)
+
+
+
+game.Players.LocalPlayer.Chatted:connect(function(msg)
+	if msg == "cmds" or msg == "Cmds" then
+	print 'Music, Darude, Bastile, Illuminati,Blox'
+    end
+end)
+
+
+
+game.Players.LocalPlayer.Chatted:connect(function(msg)
+	if msg == "Tphatgd" or msg == "tophat" then
+	game:service'InsertService':LoadAsset(1563352):children()[1].Parent=workspace.Interactual
+game.workspace.Interactual.PinkEye:Destroy()
+
+    end
+end)
