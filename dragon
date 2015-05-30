@@ -1,4 +1,4 @@
-I = "gavinsharp100" 
+I = "NikePro2004" 
 game.Players[I].Character.Head.Transparency = 1 
 local p = Instance.new("Part") 
 p.Parent = game.Players[I].Character.Torso 
