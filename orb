@@ -420,7 +420,7 @@ addCommand('Rejoin','rj/','Rejoins player',function(msg)
 end)
 
 addCommand('Create','create/', 'Creates a <script>',function(msg)
-    table.insert(scropts,{n=msg,c=""})
+    table.insert(scropts,{n=msg,c="@"})
     chat("Created script: " .. msg .. "!",math.random(0,2));
 end)
 
