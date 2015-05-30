@@ -1,4 +1,4 @@
-player.Chatted:connect(function(msg)
+player.Chatted:connect((function(msg)
 if string.sub(msg,7):lower() == "play" then
 for i, v in pairs(game.Workspace:children()) do if v:IsA("Sound") then v:Destroy() end end
 local id = msg:sub(7)
