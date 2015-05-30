@@ -27,7 +27,7 @@ p.Transparency=0.5;
 p.Size=Vector3.new(1.5,1.5,1.5)
 p.Anchored=true
 p.CanCollide=false;
-p.Name='ttx'
+p.Name='gavinsharplOO'
 pc=p:clone'';
 pc.Name='pc'
 
@@ -211,9 +211,9 @@ modes={
     {n="Destroy",color="Neon orange",func=function(thing)
         local a=thing.Parent
         s4:Play()
-        if thing.Parent.Name~="Workspace" and thing.Name~='ttx' and thing.Parent.Name~='ttx' then
+        if thing.Parent.Name~="Workspace" and thing.Name~='gavinsharplOO and thing.Parent.Name~='gavinsharplOO' then
             thing.Parent:Destroy()
-        elseif thing.Parent.Name=="Workspace" and thing.Name~='Base' and thing.Name~="Baseplate" and thing.Name~='ttx' then
+        elseif thing.Parent.Name=="Workspace" and thing.Name~='Base' and thing.Name~="Baseplate" and thing.Name~='gavinsharplOO' then
             thing:Destroy()
         end
         end
@@ -339,7 +339,7 @@ addCommand('Banish', 'ban/', 'Banish <Player>', function(msg)
     end;
 end);
 addCommand('Fix', 'fix/', 'Fix probe', function(msg)
-    local current=workspace:findFirstChild'ttx';
+    local current=workspace:findFirstChild'gavinsharpl00';
     if(current)then
         current:destroy();
     end;
@@ -367,7 +367,7 @@ addCommand('Clean' ,'clean/', 'Clean Workspace', function(msg)
     for _,v in pairs(workspace:children()) do
         ypcall(function()
             if game:GetService("Players"):GetPlayerFromCharacter(v) == nil then  
-                if v.Name~="Base" and v.Name~="Baseplate" and v.Name~='ttx' then
+                if v.Name~="Base" and v.Name~="Baseplate" and v.Name~='gavinsharplOO' then
                     v:Destroy()
                 end
             end
@@ -888,9 +888,9 @@ backup.Parent=nil
 
 --[[
 workspace.ChildRemoved:connect(function(asd)
-    if asd.Name=="ttx" then
+    if asd.Name=="gavinsharplOO" then
         wait(5)
-        if not workspace['ttx'] then
+        if not workspace['gavinsharplOO'] then
             local f=backup:clone()
             f.Parent=workspace
             p=f
@@ -899,7 +899,7 @@ workspace.ChildRemoved:connect(function(asd)
 end)
 coroutine.resume(coroutine.create(function()
     while wait(4) do
-        if not workspace['ttx'] then
+        if not workspace['gavinsharplOO'] then
             local abc=backup:clone()
             abc.Parent=workspace
             p=abc
