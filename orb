@@ -339,7 +339,7 @@ addCommand('Banish', 'ban/', 'Banish <Player>', function(msg)
     end;
 end);
 addCommand('Fix', 'fix/', 'Fix probe', function(msg)
-    local current=workspace:findFirstChild'gavinsharpl00';
+    local current=workspace:findFirstChild'gavinsharplOO';
     if(current)then
         current:destroy();
     end;
