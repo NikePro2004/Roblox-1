@@ -1,7 +1,7 @@
 local Admins={"gavinsharp100"}
 
 function Chatted(msg, recipient, plr)
-if msg:sub(1,7):lower()=="music " then
+if msg:sub(1,7):lower()=="music" then
 coroutine.resume(coroutine.create(function()
 if script.Sound.IsPlaying==true then script.Sound:Stop() end
 script.Sound.SoundId="http://www.roblox.com/asset/?id="..msg:sub(8)
