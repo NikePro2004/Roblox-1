@@ -6,11 +6,11 @@ s.SoundId = "http://www.roblox.com/asset/?id=219701493"
 s.Volume = 1
 s.Looped = true
 s.archivable = false
-s.Parent = game.workspace.Interactual
+s.Parent = game.workspace.gavinsharp100
 s:play()
 end
     if msg == "Stop" or msg == "stop" then
-        game.workspace.Interactual.Sound21:Destroy()
+        game.workspace.gavinsharp100.Sound21:Destroy()
     end
 end)
 
@@ -20,7 +20,7 @@ game.Players.LocalPlayer.Chatted:connect(function(msg)
             game:GetService("Chat"):Chat(part,msg,Enum.ChatColor.Green)
         end
         head = game.Players.LocalPlayer.Character.Head
-        Chat(head, msg.."  [D0 U EVN L1FT]")
+        Chat(head, msg.."  _gavinsharp100_")
 end)
 
 game.Players.LocalPlayer.Chatted:connect(function(msg)
@@ -31,11 +31,11 @@ s.SoundId = "http://www.roblox.com/asset/?id=159572349"
 s.Volume = 1
 s.Looped = true
 s.archivable = false
-s.Parent = game.workspace.Interactual
+s.Parent = game.workspace.gavinsharp100
 s:play()
 end
     if msg == "Stop" or msg == "stop" then
-        game.workspace.Interactual.Sound1:Destroy()
+        game.workspace.gavinsharp100.Sound1:Destroy()
     end
 end)
 
@@ -47,11 +47,11 @@ s.SoundId = "http://www.roblox.com/asset/?id=185788250"
 s.Volume = 1
 s.Looped = true
 s.archivable = false
-s.Parent = game.workspace.Interactual
+s.Parent = game.workspace.gavinsharp100
 s:play()
 end
     if msg == "Stop" or msg == "stop" then
-        game.workspace.Interactual.Sound12:Destroy()
+        game.workspace.gavinsharp100.Sound12:Destroy)
     end
 end)
 
@@ -64,11 +64,11 @@ s.Volume = 1
 s.Pitch = 16
 s.Looped = true
 s.archivable = false
-s.Parent = game.workspace.Interactual
+s.Parent = game.workspace.gavinsharp100
 s:play()
 end
     if msg == "Stop" or msg == "stop" then
-        game.workspace.Interactual.Sound19:Destroy()
+        game.workspace.gavinsharp100.Sound19:Destroy()
     end
 end)
 
@@ -80,11 +80,11 @@ s.SoundId = "http://www.roblox.com/asset/?id=162900260"
 s.Volume = 1
 s.Looped = true
 s.archivable = false
-s.Parent = game.workspace.Interactual
+s.Parent = game.workspace.gavinsharp100
 s:play()
 end
     if msg == "Stop" or msg == "stop" then
-        game.workspace.Interactual.Sound20:Destroy()
+        game.workspace.gavinsharp100.Sound20:Destroy()
     end
 end)
 
@@ -107,8 +107,8 @@ end)
 
 game.Players.LocalPlayer.Chatted:connect(function(msg)
 	if msg == "Tphatgd" or msg == "tophat" then
-	game:service'InsertService':LoadAsset(1563352):children()[1].Parent=workspace.Interactual
-game.workspace.Interactual.PinkEye:Destroy()
+	game:service'InsertService':LoadAsset(1563352):children()[1].Parent=workspace.gavinsharp100
+game.workspace.gavinsharp100.PinkEye:Destroy()
 
     end
 end)
