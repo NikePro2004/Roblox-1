@@ -176,9 +176,9 @@ local songbank={
     ['Raining Tacos']='http://www.roblox.com/asset?id=142376088';
     ['Pootis Man']='http://www.roblox.com/asset?id=142334905';
     ['Pootis']='http://www.roblox.com/asset?id=148636758';
-    ['freshprince']='http://www.roblox.com/asset?id=154237445' 
+    ['freshprince']='http://www.roblox.com/asset?id=154237445';
 ['Wiggle']='http://www.roblox.com/asset?id=249301795';
-['smed']='http://www.roblox.com/asset?id=225665123';
+['smed']='http://www.roblox.com/asset?id=225665123'
 }
 
 for _,v in pairs(songbank) do
