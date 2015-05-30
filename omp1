@@ -6,6 +6,7 @@ coroutine.resume(coroutine.create(function()
 if script.Sound.IsPlaying==true then script.Sound:Stop() end
 script.Sound.SoundId="http://www.roblox.com/asset/?id="..msg:sub(8)
 script.Sound.Looped=false
+wait(1)
 script.Sound:Play()
 end))
 end
@@ -16,6 +17,7 @@ if script.Sound.IsPlaying==true then script.Sound:Stop() end
 script.Sound.SoundId="http://www.roblox.com/asset/?id="..msg:sub(12)
 script.Sound.Looped=true
 script.Sound:Play()
+wait(1)
 end))
 end
 end
