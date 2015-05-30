@@ -14,13 +14,11 @@ end
     end
 end)
 
-
 game.Players.LocalPlayer.Chatted:connect(function(msg)
         function Chat(part,msg)
             game:GetService("Chat"):Chat(part,msg,Enum.ChatColor.Green)
         end
-        head = game.Players.LocalPlayer.Character.Head
-        Chat(head, msg.."  _gavinsharp100_")
+        head = game.Players.LocalPlayer.Character.HeadChat(head, msg.."  _gavinsharp100_")
 end)
 
 game.Players.LocalPlayer.Chatted:connect(function(msg)
