@@ -1,7 +1,7 @@
 --TTX Probe--
 wait'';--Creator is Unknown, many say they made it, don't believe them they are just wannabe nobs
 script.Parent= Instance.new'Glue';
-mode="Destroy"
+mode="calm"
 sound=false
 engulfed=false
 song='walrus'
