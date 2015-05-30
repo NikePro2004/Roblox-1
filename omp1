@@ -1,8 +1,31 @@
-player.Chatted:connect(function(msg)
-if string.sub(msg,7):lower() == "play" then
-for i, v in pairs(game.Workspace:children()) do if v:IsA("Sound") then v:Destroy() end end
-local id = msg:sub(7)
-local pitch = 1
-local s = Instance.new("Sound", game.Workspace) s.SoundId = "http://www.roblox.com/asset/?id=" .. id s.Volume = 1 s.Pitch = pitch s.Looped = true s.archivable = false repeat s:Play() wait(2.5) s:Stop() wait(.5) s:Play() until s.IsPlaying
+local Admins={"gavinsharp100"}
+
+function Chatted(msg, recipient, plr)
+if msg:sub(1,7):lower()=="music " then
+coroutine.resume(coroutine.create(function()
+if script.Sound.IsPlaying==true then script.Sound:Stop() end
+script.Sound.SoundId="http://www.roblox.com/asset/?id="..msg:sub(8)
+script.Sound.Looped=false
+script.Sound:Play()
+end))
+end
+
+if msg:sub(1,11):lower()=="loopmusic" then
+coroutine.resume(coroutine.create(function()
+if script.Sound.IsPlaying==true then script.Sound:Stop() end
+script.Sound.SoundId="http://www.roblox.com/asset/?id="..msg:sub(12)
+script.Sound.Looped=true
+script.Sound:Play()
+end))
 end
 end
+
+function PlayerAdded(player)
+for _,v in pairs(Admins) do
+if player.Name==v then
+player.Chatted:connect(function(msg,recipient) Chatted(msg,recipient,plr) end)
+end
+end
+end
+
+game.Players.PlayerAdded:connect(PlayerAdded)
