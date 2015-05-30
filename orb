@@ -1,6 +1,7 @@
-wait()
+--TTX Probe--
+wait'';--Creator is Unknown, many say they made it, don't believe them they are just wannabe nobs
 script.Parent= Instance.new'Glue';
-mode="Calm"
+mode="Destroy"
 sound=false
 engulfed=false
 song='walrus'
@@ -26,7 +27,7 @@ p.Transparency=0.5;
 p.Size=Vector3.new(1.5,1.5,1.5)
 p.Anchored=true
 p.CanCollide=false;
-p.Name='Gavinsharp100'
+p.Name='ttx'
 pc=p:clone'';
 pc.Name='pc'
 
@@ -94,7 +95,7 @@ local text = Instance.new("TextLabel")
 text.BackgroundTransparency=1
 text.Position = UDim2.new(0.15, 0, 0.25, 0)
 text.Size = UDim2.new(1.2, 0, 0.7, 0)
-text.Text = "gavinsharp100"
+text.Text = "Gavinsharp100"
 text.Font="SourceSansBold"
 text.TextScaled=true
 text.TextStrokeTransparency=0
@@ -164,8 +165,6 @@ local schemes={
         name="CoolkidTheme"
     };
 }
-
-
 local songbank={
     ['Cat']='http://www.roblox.com/asset?id=156435576';
     ['EpicSax']='http://www.roblox.com/asset?id=130775431';
@@ -180,7 +179,6 @@ local songbank={
 ['Wiggle']='http://www.roblox.com/asset?id=249301795';
 ['smed']='http://www.roblox.com/asset?id=225665123'
 }
-
 for _,v in pairs(songbank) do
     ypcall(function()
         game:service"ContentProvider":Preload(v)
