@@ -310,7 +310,7 @@ CFrame.new(player.Character.Torso.Position)
 end
 
 r = r + .5
-x = x + 3
+x = x + 90000000
 
 end	
 end)()
