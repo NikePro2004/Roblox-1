@@ -80,7 +80,7 @@ elseif v:lower() == "notools" or v:lower() == "notool" then
 for k,v in pairs(player.Backpack:GetChildren() do
 if v.ClassName ~= "Script" or v.ClassName ~= "LocalScript" then
 v:remove()	
-end
+end)
 elseif v:lower() == "god" then
 pcall(function()
 player.Character.Humanoid.MaxHealth = math.huge
