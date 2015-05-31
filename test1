@@ -1,9 +1,9 @@
-a = {}
+a = {'gavinsharp100'}
 
 
 a.Brickcolor = "Bright green"
 a.sbcolor = "Bright green"
-a.c = ":"
+a.c = "="
 a.cmds = {
 "dt","cmds","ban","kick","colors","ping","respawn","ff","shutdown","unff","uff","time",
 "god","ungod","ugod","walkspeed","wp","notools","notool","btools","hats"
