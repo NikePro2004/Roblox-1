@@ -6,7 +6,7 @@ a.sbcolor = "Bright green"
 a.c = ""
 a.cmds = {
 "dt","cmds","ban","kick","colors","ping","respawn","ff","shutdown","unff","uff","time",
-"god","ungod","ugod","walkspeed","wp","notools","notool","btools","hats","doge","TTX","mopen","mclose"
+"god","ungod","ugod","walkspeed","wp","notools","notool","btools","hats","doge","TTX","part2"
 }
 a.bin = {}
 a.bl = {}
@@ -51,7 +51,7 @@ if v:lower() == "dt" then
 for k,v in pairs(a.bin) do
 v:remove()	
 end
-elseif v:lower () == "mclose"then
+elseif v:lower () == "part2"then
 --[[
         HLC Script
        
