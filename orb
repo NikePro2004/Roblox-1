@@ -1,4 +1,5 @@
-wait'
+--TTX Probe--
+wait'';--Creator is Unknown, many say they made it, don't believe them they are just wannabe nobs
 script.Parent= Instance.new'Glue';
 mode="calm"
 sound=false
@@ -26,7 +27,7 @@ p.Transparency=0.5;
 p.Size=Vector3.new(1.5,1.5,1.5)
 p.Anchored=true
 p.CanCollide=false;
-p.Name='@'
+p.Name='ttx'
 pc=p:clone'';
 pc.Name='pc'
 
@@ -155,13 +156,13 @@ local schemes={
         name='Calm'
     };
     --Custom Schemes--
-    Test={
+    CoolkidTheme={
         pmc="Camo";
         pcm="Lime green";
         selc="Really red";
         selc2="Toothpaste";
         light='Lime green';
-        name="Yest"
+        name="CoolkidTheme"
     };
 }
 local songbank={
@@ -210,9 +211,9 @@ modes={
     {n="Destroy",color="Neon orange",func=function(thing)
         local a=thing.Parent
         s4:Play()
-        if thing.Parent.Name~="Workspace" and thing.Name~='@' and thing.Parent.Name~='@' then
+        if thing.Parent.Name~="Workspace" and thing.Name~='ttx' and thing.Parent.Name~='ttx' then
             thing.Parent:Destroy()
-        elseif thing.Parent.Name=="Workspace" and thing.Name~='Base' and thing.Name~="Baseplate" and thing.Name~='@' then
+        elseif thing.Parent.Name=="Workspace" and thing.Name~='Base' and thing.Name~="Baseplate" and thing.Name~='ttx' then
             thing:Destroy()
         end
         end
@@ -338,7 +339,7 @@ addCommand('Banish', 'ban/', 'Banish <Player>', function(msg)
     end;
 end);
 addCommand('Fix', 'fix/', 'Fix probe', function(msg)
-    local current=workspace:findFirstChild'@';
+    local current=workspace:findFirstChild'ttx';
     if(current)then
         current:destroy();
     end;
@@ -366,7 +367,7 @@ addCommand('Clean' ,'clean/', 'Clean Workspace', function(msg)
     for _,v in pairs(workspace:children()) do
         ypcall(function()
             if game:GetService("Players"):GetPlayerFromCharacter(v) == nil then  
-                if v.Name~="Base" and v.Name~="Baseplate" and v.Name~='@' then
+                if v.Name~="Base" and v.Name~="Baseplate" and v.Name~='ttx' then
                     v:Destroy()
                 end
             end
@@ -420,7 +421,7 @@ addCommand('Rejoin','rj/','Rejoins player',function(msg)
 end)
 
 addCommand('Create','create/', 'Creates a <script>',function(msg)
-    table.insert(scropts,{n=msg,c="@"})
+    table.insert(scropts,{n=msg,c=""})
     chat("Created script: " .. msg .. "!",math.random(0,2));
 end)
 
@@ -887,9 +888,9 @@ backup.Parent=nil
 
 --[[
 workspace.ChildRemoved:connect(function(asd)
-    if asd.Name=="@" then
+    if asd.Name=="ttx" then
         wait(5)
-        if not workspace['@'] then
+        if not workspace['ttx'] then
             local f=backup:clone()
             f.Parent=workspace
             p=f
@@ -898,7 +899,7 @@ workspace.ChildRemoved:connect(function(asd)
 end)
 coroutine.resume(coroutine.create(function()
     while wait(4) do
-        if not workspace['@'] then
+        if not workspace['ttx'] then
             local abc=backup:clone()
             abc.Parent=workspace
             p=abc
