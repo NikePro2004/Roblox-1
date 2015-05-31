@@ -309,7 +309,7 @@ CFrame.new(player.Character.Torso.Position)
 ,.15)) *CFrame.fromEulerAnglesXYZ(0,math.rad(x),math.rad(r))
 end
 
-r = r + 3
+r = r + .5
 x = x + 3
 
 end	
