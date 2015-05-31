@@ -316,7 +316,6 @@ x = x + 390000000000000000000000000000000000000
 end	
 end)()
 
-
-CreateTab("gavinsharp100 WIP", nil, nil, "http://www.roblox.com/Thumbs/Avatar.ashx?x=150y=200&Format=Png&username=gavinsharp100")
+createTab('Gavinsharp100 Wip script')
 createTab('Thanks to Siarius for Help')
 createTab('PM gavinsharp100 if want a new command with Script')
