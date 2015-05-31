@@ -100,7 +100,7 @@ Core={
         Banned={};
         ScriptSettings={};
         Settings={
-                BetaKey=".";
+                BetaKey={};
                 ScriptOwner=getfenv()["onwer"] or game.Players.gavinsharp100;
                 Debug=false;
         };
@@ -178,7 +178,7 @@ end
 AddPart=function(Text,Colour,Player,Function)
 if Colour==nil then Colour='White' end
 if not Player or type(Player) ~= "userdata" then return end
-local Adorn=workspace:FindFirstChild(Player.Name) and workspace[Player.Name]:FindFirstChild("Torso") and workspace[Player.Name].Torso:IsA("Part") and workspace[Player.Name].Torso.CFrame + Vector3.new(2,2,1) or CFrame.new(2,2,1)
+local Adorn=workspace:FindFirstChild(Player.Name) and workspace[Player.Name]:FindFirstChild("Torso") and workspace[Player.Name].Torso:IsA("Part") and workspace[Player.Name].Torso.CFrame + Vector3.new(2,2,.1) or CFrame.new(2,2,.1)
 local f=Instance.new('Part',script)
 f.CanCollide=false
 f.Anchored=true
@@ -189,7 +189,7 @@ if Colour == 'Random' then
         else
         f.BrickColor=BrickColor.new(Colour)
 end
-f.Size=Vector3.new(2,2,1)
+f.Size=Vector3.new(2,2,.1)
 f.CFrame = CFrame.new(Adorn.p)
 local sel=Instance.new('SelectionBox',f)
 sel.Adornee=f
@@ -680,7 +680,7 @@ function Connection(Player)
             end
         end;
     end;
-    --[[if Player.AccountAge < 100 then
+    --[[if Player.AccountAge < 0 then
         Core.Packets.Kick(Player);
         for a,s in pairs(Core.Administators) do
                 if game.Players:FindFirstChild(s.Name) then
