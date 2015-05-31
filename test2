@@ -1,9 +1,20 @@
 wait()
-local gui = game:GetService("StarterGui")
+local part = Instance.new("Part", player.Character)
+part.FormFactor = "Custom"
+part.Size = Vector3.new(20,10,.1)
+part.CanCollide = false
+part.Anchored = true
+part.BrickColor = BrickColor.Black()
+part.Locked = true
+game:GetService("RunService").RenderStepped:connect(function()
+	part.CFrame = player.Character.Torso.CFrame *CFrame.new(0,2,-8) * CFrame.Angles(0,math.pi,0)
+end)
+
+local gui = game:GetService("SurfaceGui")
 gui:SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, false)
 player = game:GetService("Players").LocalPlayer
 mouse = player:GetMouse()
-sg = Instance.new("ScreenGui", player.PlayerGui)
+sg = Instance.new("SurfaceGui", part)
 image = Instance.new("ImageButton", sg)
 image.Name = "Explorer"
 image.BackgroundColor3 = Color3.new(18/255,19/255,20/255)
