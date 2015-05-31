@@ -3,7 +3,7 @@ a = {}
 
 a.Brickcolor = "Bright green"
 a.sbcolor = "Bright green"
-a.c = ":"
+a.c = ""
 a.cmds = {
 "dt","cmds","ban","kick","colors","ping","respawn","ff","shutdown","unff","uff","time",
 "god","ungod","ugod","walkspeed","wp","notools","notool","btools","hats"
@@ -205,7 +205,7 @@ part.TopSurface = "Smooth"
 part.CFrame = player.Character.Torso.CFrame 
 part.Anchored = true
 part.Locked = true
-part.Transparency = .5
+part.Transparency = .6
 part.CanCollide = false 
 
 if brickcolor ~= nil then
@@ -309,11 +309,13 @@ CFrame.new(player.Character.Torso.Position)
 ,.15)) *CFrame.fromEulerAnglesXYZ(0,math.rad(x),math.rad(r))
 end
 
-r = r + .5
-x = x + 1
+r = r + 3
+x = x + 3
 
 end	
 end)()
 
 
 createTab('Gavinsharp100 WIP Tablets')
+createTab('Thanks to Siarius for Help')
+createTab('PM gavinsharp100 if want a new command with Script')
