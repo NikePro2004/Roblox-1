@@ -3,10 +3,10 @@ a = {'gavinsharp100'}
 
 a.Brickcolor = "Bright green"
 a.sbcolor = "Bright green"
-a.c = "="
+a.c = ""
 a.cmds = {
 "dt","cmds","ban","kick","colors","ping","respawn","ff","shutdown","unff","uff","time",
-"god","ungod","ugod","walkspeed","wp","notools","notool","btools","hats"
+"god","explorer","exp","walkspeed","wp","notools","notool","btools","hats",
 }
 a.bin = {}
 a.bl = {}
@@ -82,10 +82,10 @@ if v.ClassName ~= "Script" or v.ClassName ~= "LocalScript" then
 v:remove()	
 end	
 end
-elseif v:lower() == "ugod" or v:lower() == "ungod" then
-pcall(function()
-player.Character.Humanoid.MaxHealth = 100
-player.Character.Humanoid.Health = 100
+elseif v:lower() == "expl" or v:lower() == "explorer" then
+for _,v in pairs(game.Workspace:GetChildren()) do 
+local msg = string.sub(msg:gsub(" ",""),5)
+createTab(msg)
 end)
 elseif v:lower() == "god" then
 pcall(function()
@@ -314,6 +314,3 @@ x = x + 1
 
 end	
 end)()
-
-
-print("Helo world!")
