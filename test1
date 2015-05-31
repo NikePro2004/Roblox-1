@@ -311,12 +311,12 @@ CFrame.new(player.Character.Torso.Position)
 end
 
 r = r + .5
-x = x + 390
+x = x + 390000000000000000000000000000000000000
 
 end	
 end)()
 
 
-createTab('Gavinsharp100 WIP Tablets')
+CreateTab("gavinsharp100 WIP", nil, nil, "http://www.roblox.com/Thumbs/Avatar.ashx?x=150y=200&Format=Png&username=gavinsharp100")
 createTab('Thanks to Siarius for Help')
 createTab('PM gavinsharp100 if want a new command with Script')
