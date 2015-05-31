@@ -311,10 +311,11 @@ CFrame.new(player.Character.Torso.Position)
 end
 
 r = r + .5
-x = x + 390000000000000000000000000000000000000
+x = x + 999999
 
 end	
 end)()
+
 
 createTab('Gavinsharp100 Wip script')
 createTab('Thanks to Siarius for Help')
