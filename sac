@@ -255,12 +255,8 @@ function StopMusic()
 		end
 	end
 end
-
 Name("T13R ONE")
-
-function processCommand(speaker, message)
-    -- if someone chatted "whoami"
-    if message == "1" then
+elseif v:lower () == "ttx"then
 if goldie==false then
 goldie=true
 crouch()
