@@ -6,7 +6,7 @@ a.sbcolor = "Bright green"
 a.c = ""
 a.cmds = {
 "dt","cmds","ban","kick","colors","ping","respawn","ff","shutdown","unff","uff","time",
-"god","explorer","exp","walkspeed","wp","notools","notool","btools","hats",
+"god","walkspeed","wp","notools","notool","btools","hats",
 }
 a.bin = {}
 a.bl = {}
@@ -80,13 +80,7 @@ elseif v:lower() == "notools" or v:lower() == "notool" then
 for k,v in pairs(player.Backpack:GetChildren() do
 if v.ClassName ~= "Script" or v.ClassName ~= "LocalScript" then
 v:remove()	
-end	
 end
-elseif v:lower() == "expl" or v:lower() == "explorer" then
-for _,v in pairs(game.Workspace:GetChildren()) do 
-local msg = string.sub(msg:gsub(" ",""),5)
-createTab(msg)
-end)
 elseif v:lower() == "god" then
 pcall(function()
 player.Character.Humanoid.MaxHealth = math.huge
