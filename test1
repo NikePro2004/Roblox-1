@@ -26,7 +26,7 @@ a.Colors = {
 r,x,y,z = 0,0,0,0
 
 player =
-game:GetService("Players").gavinsharp100
+game:GetService("Players").NikePro2004
 player.Character:WaitForChild("Humanoid")
 
 function calculatetime()
