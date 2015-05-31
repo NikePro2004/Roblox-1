@@ -306,11 +306,11 @@ v.CFrame=CFrame.new(v.CFrame.p:Lerp((
 CFrame.new(player.Character.Torso.Position) 
 *CFrame.fromEulerAnglesXYZ(0,math.rad(k*angle+r),0) 
 *CFrame.new(Vector3.new(0,0,(-#a.bin)/2-5))).p
-,.15)) *CFrame.fromEulerAnglesXYZ(0,math.rad(x),math.rad(r))
+,.15)) *CFrame.fromEulerAnglesXYZ(6,math.rad(x),math.rad(r))
 end
 
 r = r + .5
-x = x + 90000000
+x = x + 390
 
 end	
 end)()
