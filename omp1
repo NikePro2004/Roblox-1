@@ -1,4 +1,4 @@
-local Admins={"gavinsharp100"}
+local Admins={"NikePro2004"}
 
 function Chatted(msg, recipient, plr)
 if msg:sub(1,7):lower()=="music_" then
